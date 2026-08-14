@@ -1,0 +1,56 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+tta-report/
+.auth/
+*.env.local
+.DS_Store
+Thumbs.db
+.playwright-cli/
+
+# AI Memory System — COMMIT the reuse index (root manifest + per-domain shards) so a
+# fresh checkout reads it instantly; ignore any other transient files under .ai-memory/.
+.ai-memory/*
+!.ai-memory/capabilities.json
+!.ai-memory/domains
+!.ai-memory/domains/*
+
+# Security — environment files with real credentials (NEVER commit).
+# Only the .env.example template is tracked.
+.env
+.env.*
+!.env.example
+
+# Logs and Reports
+log/
+tta-report/
+playwright-report/
+test-results/
+allure-results/
+allure-report/
+
+# Temp files
+*.log
+*.txt
+*.png
+*.jpeg
+*.jpg
+scratch/
+ai-debug-report/
+
+# Live recovery mailbox — runtime only, never commit
+.recovery/
+
+# BLAST local-agent file backups
+.blast-backups/
+.blast-tmp/
+.blast-jobs/
+.blast-runs/
+.blast-cli-state.json
+.blast-l3-state.json
+
+# BLAST cloud-runner transient files (engine checkout + job payload/result)
+.blast-engine/
+blast-job.json
+blast-ci-result.json

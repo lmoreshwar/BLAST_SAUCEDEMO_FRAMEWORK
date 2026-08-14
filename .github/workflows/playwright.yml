@@ -1,0 +1,140 @@
+name: Playwright Tests
+
+on:
+  # Manual trigger with options
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to test against'
+        required: true
+        default: 'qa'
+        type: choice
+        options:
+          - qa
+          - uat
+          - dev
+      test_grep:
+        description: 'Test tag filter (e.g., @Smoke, @P0, @Regression)'
+        required: false
+        default: ''
+        type: string
+      browser:
+        description: 'Browser project'
+        required: false
+        default: 'desktop-chrome'
+        type: choice
+        options:
+          - desktop-chrome
+          - desktop-firefox
+          - desktop-safari
+          - desktop-edge
+          - mobile-chrome
+          - all
+      workers:
+        description: 'Parallelism (empty = config default, 1 = serial)'
+        required: false
+        default: ''
+        type: string
+      generate_allure:
+        description: 'Post-build: generate the Allure report'
+        required: false
+        default: true
+        type: boolean
+
+  # Also run on push to main
+  push:
+    branches: [main]
+
+  # Also run on PRs
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    # BLAST PRs (branch blast/auto-*) are already validated by blast-runner.yml — skip the
+    # full-suite re-run so they don't sit on GitHub's "Approve and run" gate.
+    if: ${{ github.event_name != 'pull_request' || !startsWith(github.head_ref, 'blast/auto-') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      # ─── Load credentials from GitHub Secrets ────────────────────────
+      - name: Load credentials from GitHub Secrets
+        run: |
+          echo "BASE_URL=${{ secrets.BASE_URL }}" >> $GITHUB_ENV
+          echo "APP_USERNAME=${{ secrets.APP_USERNAME }}" >> $GITHUB_ENV
+          echo "APP_PASSWORD=${{ secrets.APP_PASSWORD }}" >> $GITHUB_ENV
+
+      # ─── Set environment variables ───────────────────────────────────
+      - name: Set test environment
+        run: |
+          echo "TEST_ENV=${{ github.event.inputs.environment || 'qa' }}" >> $GITHUB_ENV
+
+      # ─── Run tests on the GitHub-hosted browser ─────────────────────
+      - name: Run tests
+        run: |
+          ARGS=""
+          if [ -n "${{ github.event.inputs.test_grep }}" ]; then
+            ARGS="$ARGS --grep '${{ github.event.inputs.test_grep }}'"
+          fi
+          if [ "${{ github.event.inputs.browser }}" != "all" ] && [ -n "${{ github.event.inputs.browser }}" ]; then
+            ARGS="$ARGS --project=${{ github.event.inputs.browser }}"
+          fi
+          if [ -n "${{ github.event.inputs.workers }}" ]; then
+            ARGS="$ARGS --workers=${{ github.event.inputs.workers }}"
+          fi
+          npx playwright test $ARGS
+        env:
+          BASE_URL: ${{ env.BASE_URL }}
+          APP_USERNAME: ${{ env.APP_USERNAME }}
+          APP_PASSWORD: ${{ env.APP_PASSWORD }}
+          TEST_ENV: ${{ env.TEST_ENV }}
+
+      # ─── Allure report ──────────────────────────────────────────────
+      - name: Setup Java (for Allure)
+        if: always() && github.event.inputs.generate_allure != 'false'
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Generate Allure report
+        if: always() && github.event.inputs.generate_allure != 'false'
+        # --single-file inlines all data into one self-contained index.html so the
+        # downloaded artifact opens directly from file:// (no "Failed to fetch").
+        run: npx allure generate allure-results --single-file --clean -o allure-report
+
+      - name: Upload Allure report
+        uses: actions/upload-artifact@v4
+        if: always() && github.event.inputs.generate_allure != 'false'
+        with:
+          name: allure-report-${{ github.event.inputs.environment || 'qa' }}
+          path: allure-report/index.html
+          retention-days: 14
+
+      # ─── Upload results ─────────────────────────────────────────────
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results-${{ github.event.inputs.environment || 'qa' }}
+          path: |
+            test-results/
+            playwright-report/
+            allure-results/
+          retention-days: 14

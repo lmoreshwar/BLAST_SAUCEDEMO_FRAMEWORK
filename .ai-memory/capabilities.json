@@ -1,0 +1,36 @@
+{
+  "$schema": "reuse-capability-index/v2-sharded",
+  "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
+  "generatedAt": "2026-08-14T18:44:24.868Z",
+  "regenerateWith": "npm run index",
+  "sourceHash": "sha1:6ab0da6a446b02c179643300fc20d275ee1884b6",
+  "shardDir": ".ai-memory/domains",
+  "counts": {
+    "pages": 0,
+    "modules": 0,
+    "specs": 0,
+    "tests": 0,
+    "domains": 0
+  },
+  "fixtures": [
+    "actions",
+    "workflowActions"
+  ],
+  "utils": [
+    "Actions",
+    "AiDebugReporter",
+    "DatePickerHelper",
+    "Logger",
+    "RecoveryConsole",
+    "SmartLocator",
+    "StepsReporter",
+    "WaitHelper",
+    "WorkflowActions",
+    "constants",
+    "paths",
+    "types",
+    "visual"
+  ],
+  "domains": [],
+  "testIndex": {}
+}
