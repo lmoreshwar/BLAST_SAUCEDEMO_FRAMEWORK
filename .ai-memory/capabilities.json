@@ -1,15 +1,15 @@
 {
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
-  "generatedAt": "2026-08-14T19:49:35.006Z",
+  "generatedAt": "2026-08-14T20:53:12.461Z",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:9304a04cf92d20fc9a360a77c5bc3183047f3c88",
+  "sourceHash": "sha1:3fda8362f5515524b425ba8900e94c1d5f0208fe",
   "shardDir": ".ai-memory/domains",
   "counts": {
     "pages": 2,
     "modules": 2,
-    "specs": 1,
-    "tests": 7,
+    "specs": 2,
+    "tests": 15,
     "domains": 2
   },
   "fixtures": [
@@ -46,12 +46,13 @@
         "src/modules/DashboardModule.ts"
       ],
       "specs": [
-        "src/tests/login.spec.ts"
+        "src/tests/login.spec.ts",
+        "src/tests/profilemenulogoutdropdown.spec.ts"
       ],
       "counts": {
         "locators": 0,
-        "methods": 1,
-        "tests": 7
+        "methods": 3,
+        "tests": 15
       }
     },
     {
@@ -77,12 +78,22 @@
         "domain": "Dashboard",
         "spec": "src/tests/login.spec.ts",
         "title": "[TC_001] Valid credentials reach the authenticated dashboard @LoginValidCredentials @Positive"
+      },
+      {
+        "domain": "Dashboard",
+        "spec": "src/tests/profilemenulogoutdropdown.spec.ts",
+        "title": "[TC_001] Valid credentials reach the authenticated dashboard @LoginValidCredentials @Positive"
       }
     ],
     "TC_002": [
       {
         "domain": "Dashboard",
         "spec": "src/tests/login.spec.ts",
+        "title": "[TC_002] Empty Username blocks login @LoginValidCredentials @Negative"
+      },
+      {
+        "domain": "Dashboard",
+        "spec": "src/tests/profilemenulogoutdropdown.spec.ts",
         "title": "[TC_002] Empty Username blocks login @LoginValidCredentials @Negative"
       }
     ],
@@ -91,12 +102,22 @@
         "domain": "Dashboard",
         "spec": "src/tests/login.spec.ts",
         "title": "[TC_003] Empty Password blocks login @LoginValidCredentials @Negative"
+      },
+      {
+        "domain": "Dashboard",
+        "spec": "src/tests/profilemenulogoutdropdown.spec.ts",
+        "title": "[TC_003] Empty Password blocks login @LoginValidCredentials @Negative"
       }
     ],
     "TC_004": [
       {
         "domain": "Dashboard",
         "spec": "src/tests/login.spec.ts",
+        "title": "[TC_004] Both empty inputs block login @LoginValidCredentials @Negative"
+      },
+      {
+        "domain": "Dashboard",
+        "spec": "src/tests/profilemenulogoutdropdown.spec.ts",
         "title": "[TC_004] Both empty inputs block login @LoginValidCredentials @Negative"
       }
     ],
@@ -105,12 +126,22 @@
         "domain": "Dashboard",
         "spec": "src/tests/login.spec.ts",
         "title": "[TC_005] Incorrect password does not authenticate @LoginValidCredentials @Negative"
+      },
+      {
+        "domain": "Dashboard",
+        "spec": "src/tests/profilemenulogoutdropdown.spec.ts",
+        "title": "[TC_005] Incorrect password does not authenticate @LoginValidCredentials @Negative"
       }
     ],
     "TC_006": [
       {
         "domain": "Dashboard",
         "spec": "src/tests/login.spec.ts",
+        "title": "[TC_006] Incorrect username does not authenticate @LoginValidCredentials @Negative"
+      },
+      {
+        "domain": "Dashboard",
+        "spec": "src/tests/profilemenulogoutdropdown.spec.ts",
         "title": "[TC_006] Incorrect username does not authenticate @LoginValidCredentials @Negative"
       }
     ],
@@ -119,6 +150,18 @@
         "domain": "Dashboard",
         "spec": "src/tests/login.spec.ts",
         "title": "[TC_007] Correcting invalid credentials allows recovery @LoginValidCredentials @Negative"
+      },
+      {
+        "domain": "Dashboard",
+        "spec": "src/tests/profilemenulogoutdropdown.spec.ts",
+        "title": "[TC_007] Correcting invalid credentials allows recovery @LoginValidCredentials @Negative"
+      }
+    ],
+    "TC_008": [
+      {
+        "domain": "Dashboard",
+        "spec": "src/tests/profilemenulogoutdropdown.spec.ts",
+        "title": "[TC_008] Logout ends the authenticated session from the profile dropdown @ProfileMenuLogoutDropdown @Positive"
       }
     ]
   }
