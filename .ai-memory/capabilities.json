@@ -1,19 +1,23 @@
 {
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
-  "generatedAt": "2026-08-14T18:44:24.868Z",
+  "generatedAt": "2026-08-14T19:49:35.006Z",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:6ab0da6a446b02c179643300fc20d275ee1884b6",
+  "sourceHash": "sha1:9304a04cf92d20fc9a360a77c5bc3183047f3c88",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 0,
-    "modules": 0,
-    "specs": 0,
-    "tests": 0,
-    "domains": 0
+    "pages": 2,
+    "modules": 2,
+    "specs": 1,
+    "tests": 7,
+    "domains": 2
   },
   "fixtures": [
     "actions",
+    "dashboardModule",
+    "dashboardPage",
+    "loginModule",
+    "loginPage",
     "workflowActions"
   ],
   "utils": [
@@ -31,6 +35,91 @@
     "types",
     "visual"
   ],
-  "domains": [],
-  "testIndex": {}
+  "domains": [
+    {
+      "domain": "Dashboard",
+      "shard": ".ai-memory/domains/dashboard.json",
+      "pages": [
+        "src/pages/DashboardPage.ts"
+      ],
+      "modules": [
+        "src/modules/DashboardModule.ts"
+      ],
+      "specs": [
+        "src/tests/login.spec.ts"
+      ],
+      "counts": {
+        "locators": 0,
+        "methods": 1,
+        "tests": 7
+      }
+    },
+    {
+      "domain": "Login",
+      "shard": ".ai-memory/domains/login.json",
+      "pages": [
+        "src/pages/LoginPage.ts"
+      ],
+      "modules": [
+        "src/modules/LoginModule.ts"
+      ],
+      "specs": [],
+      "counts": {
+        "locators": 0,
+        "methods": 8,
+        "tests": 0
+      }
+    }
+  ],
+  "testIndex": {
+    "TC_001": [
+      {
+        "domain": "Dashboard",
+        "spec": "src/tests/login.spec.ts",
+        "title": "[TC_001] Valid credentials reach the authenticated dashboard @LoginValidCredentials @Positive"
+      }
+    ],
+    "TC_002": [
+      {
+        "domain": "Dashboard",
+        "spec": "src/tests/login.spec.ts",
+        "title": "[TC_002] Empty Username blocks login @LoginValidCredentials @Negative"
+      }
+    ],
+    "TC_003": [
+      {
+        "domain": "Dashboard",
+        "spec": "src/tests/login.spec.ts",
+        "title": "[TC_003] Empty Password blocks login @LoginValidCredentials @Negative"
+      }
+    ],
+    "TC_004": [
+      {
+        "domain": "Dashboard",
+        "spec": "src/tests/login.spec.ts",
+        "title": "[TC_004] Both empty inputs block login @LoginValidCredentials @Negative"
+      }
+    ],
+    "TC_005": [
+      {
+        "domain": "Dashboard",
+        "spec": "src/tests/login.spec.ts",
+        "title": "[TC_005] Incorrect password does not authenticate @LoginValidCredentials @Negative"
+      }
+    ],
+    "TC_006": [
+      {
+        "domain": "Dashboard",
+        "spec": "src/tests/login.spec.ts",
+        "title": "[TC_006] Incorrect username does not authenticate @LoginValidCredentials @Negative"
+      }
+    ],
+    "TC_007": [
+      {
+        "domain": "Dashboard",
+        "spec": "src/tests/login.spec.ts",
+        "title": "[TC_007] Correcting invalid credentials allows recovery @LoginValidCredentials @Negative"
+      }
+    ]
+  }
 }
