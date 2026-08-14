@@ -2,17 +2,37 @@ import { test as base, type Page, type TestInfo } from '@playwright/test';
 import { SmartLocator } from '../utils/SmartLocator';
 import { Actions } from '../utils/Actions';
 import { WorkflowActions } from '../utils/WorkflowActions';
+import { LoginPage } from '../pages/LoginPage';
+import { DashboardPage } from '../pages/DashboardPage';
+import { LoginModule } from '../modules/LoginModule';
+import { DashboardModule } from '../modules/DashboardModule';
 
 // ===================================================================
 // Fixtures — Add new Page & Module fixtures here as you build them
 // ===================================================================
 
 export type TestFixtures = {
+    dashboardModule: DashboardModule;
+    loginModule: LoginModule;
+    dashboardPage: DashboardPage;
+    loginPage: LoginPage;
     actions: Actions;
     workflowActions: WorkflowActions;
 };
 
 export const test = base.extend<TestFixtures>({
+    dashboardModule: async ({ page }, use) => {
+        await use(new DashboardModule(page));
+    },
+    loginModule: async ({ page }, use) => {
+        await use(new LoginModule(page));
+    },
+    dashboardPage: async ({ page }, use) => {
+        await use(new DashboardPage(page));
+    },
+    loginPage: async ({ page }, use) => {
+        await use(new LoginPage(page));
+    },
     // Global popup/modal handlers
     page: async ({ page }, use, testInfo) => {
         const actions = new Actions(page);

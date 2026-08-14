@@ -1,0 +1,30 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "Login",
+  "generatedAt": "2026-08-14T19:49:35.005Z",
+  "sourceHash": "sha1:9304a04cf92d20fc9a360a77c5bc3183047f3c88",
+  "pages": [
+    {
+      "file": "src/pages/LoginPage.ts",
+      "class": "LoginPage",
+      "methods": []
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/LoginModule.ts",
+      "class": "LoginModule",
+      "methods": [
+        "goto",
+        "login",
+        "loginWithEmptyCredentials",
+        "loginWithEmptyPassword",
+        "loginWithEmptyUsername",
+        "loginWithIncorrectPassword",
+        "loginWithIncorrectUsername",
+        "recoverFromIncorrectPassword"
+      ]
+    }
+  ],
+  "specs": []
+}

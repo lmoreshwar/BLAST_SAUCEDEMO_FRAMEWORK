@@ -1,1 +1,11 @@
-{}
+{
+  "emptyUsername": {
+    "password": "admin123"
+  },
+  "emptyPassword": {
+    "username": "Admin"
+  },
+  "incorrectPassword": "incorrect-password",
+  "incorrectUsername": "incorrect-user",
+  "incorrectUsernamePassword": "admin123"
+}
