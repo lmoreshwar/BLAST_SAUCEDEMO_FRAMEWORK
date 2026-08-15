@@ -1,8 +1,8 @@
 {
   "$schema": "reuse-capability-shard/v1",
   "domain": "Dashboard",
-  "generatedAt": "2026-08-14T19:49:35.005Z",
-  "sourceHash": "sha1:9304a04cf92d20fc9a360a77c5bc3183047f3c88",
+  "generatedAt": "2026-08-15T06:30:00.906Z",
+  "sourceHash": "sha1:94cfb1a7f2ce5de57c8204bcd478117127080f3c",
   "pages": [
     {
       "file": "src/pages/DashboardPage.ts",
@@ -15,6 +15,8 @@
       "file": "src/modules/DashboardModule.ts",
       "class": "DashboardModule",
       "methods": [
+        "logout",
+        "openProfileMenu",
         "waitForDashboard"
       ]
     }
@@ -59,6 +61,54 @@
         {
           "id": "TC_007",
           "title": "[TC_007] Correcting invalid credentials allows recovery @LoginValidCredentials @Negative"
+        }
+      ]
+    },
+    {
+      "file": "src/tests/profilemenulogoutdropdown.spec.ts",
+      "describes": [
+        "Login",
+        "ProfileMenuLogoutDropdown"
+      ],
+      "tags": [
+        "@LoginValidCredentials",
+        "@Negative",
+        "@Positive",
+        "@ProfileMenuLogoutDropdown"
+      ],
+      "reuses": [],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "[TC_001] Valid credentials reach the authenticated dashboard @LoginValidCredentials @Positive"
+        },
+        {
+          "id": "TC_002",
+          "title": "[TC_002] Empty Username blocks login @LoginValidCredentials @Negative"
+        },
+        {
+          "id": "TC_003",
+          "title": "[TC_003] Empty Password blocks login @LoginValidCredentials @Negative"
+        },
+        {
+          "id": "TC_004",
+          "title": "[TC_004] Both empty inputs block login @LoginValidCredentials @Negative"
+        },
+        {
+          "id": "TC_005",
+          "title": "[TC_005] Incorrect password does not authenticate @LoginValidCredentials @Negative"
+        },
+        {
+          "id": "TC_006",
+          "title": "[TC_006] Incorrect username does not authenticate @LoginValidCredentials @Negative"
+        },
+        {
+          "id": "TC_007",
+          "title": "[TC_007] Correcting invalid credentials allows recovery @LoginValidCredentials @Negative"
+        },
+        {
+          "id": "TC_008",
+          "title": "[TC_008] Logout ends the authenticated session and returns to Login @ProfileMenuLogoutDropdown @Positive"
         }
       ]
     }

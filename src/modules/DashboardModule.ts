@@ -17,4 +17,15 @@ export class DashboardModule {
         this.logger.info('Wait for the authenticated dashboard');
         await this.actions.waitForVisible(this.dashboardPage.dashboardHeading);
     }
+
+    async openProfileMenu(): Promise<void> {
+        this.logger.info('Open profile menu');
+        await this.actions.click(this.dashboardPage.profileMenuButton);
+    }
+
+    async logout(): Promise<void> {
+        this.logger.info('Log out');
+        await this.actions.waitForVisible(this.dashboardPage.logoutLink);
+        await this.actions.click(this.dashboardPage.logoutLink);
+    }
 }
