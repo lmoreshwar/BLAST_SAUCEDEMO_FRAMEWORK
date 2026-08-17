@@ -1,0 +1,24 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "ProfileMenu",
+  "generatedAt": "2026-08-17T12:51:26.038Z",
+  "sourceHash": "sha1:c3196a0c4087856e974cdabc3792fda2a477e3f4",
+  "pages": [
+    {
+      "file": "src/pages/ProfileMenuPage.ts",
+      "class": "ProfileMenuPage",
+      "methods": []
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/ProfileMenuModule.ts",
+      "class": "ProfileMenuModule",
+      "methods": [
+        "logout",
+        "openProfileMenu"
+      ]
+    }
+  ],
+  "specs": []
+}

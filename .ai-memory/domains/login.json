@@ -1,8 +1,8 @@
 {
   "$schema": "reuse-capability-shard/v1",
   "domain": "Login",
-  "generatedAt": "2026-08-14T19:49:35.005Z",
-  "sourceHash": "sha1:9304a04cf92d20fc9a360a77c5bc3183047f3c88",
+  "generatedAt": "2026-08-17T12:51:26.038Z",
+  "sourceHash": "sha1:c3196a0c4087856e974cdabc3792fda2a477e3f4",
   "pages": [
     {
       "file": "src/pages/LoginPage.ts",
@@ -26,5 +26,25 @@
       ]
     }
   ],
-  "specs": []
+  "specs": [
+    {
+      "file": "src/tests/profile-menu-logout.spec.ts",
+      "describes": [
+        "Profile Menu Logout"
+      ],
+      "tags": [
+        "@Positive",
+        "@ProfileMenuLogout"
+      ],
+      "reuses": [
+        "ProfileMenuModule"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "[TC_001] Logout from the profile menu returns to the login page @ProfileMenuLogout @Positive"
+        }
+      ]
+    }
+  ]
 }
