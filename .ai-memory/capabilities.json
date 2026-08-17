@@ -1,16 +1,16 @@
 {
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
-  "generatedAt": "2026-08-14T19:49:35.006Z",
+  "generatedAt": "2026-08-17T12:51:26.038Z",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:9304a04cf92d20fc9a360a77c5bc3183047f3c88",
+  "sourceHash": "sha1:c3196a0c4087856e974cdabc3792fda2a477e3f4",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 2,
-    "modules": 2,
-    "specs": 1,
-    "tests": 7,
-    "domains": 2
+    "pages": 3,
+    "modules": 3,
+    "specs": 2,
+    "tests": 8,
+    "domains": 3
   },
   "fixtures": [
     "actions",
@@ -63,10 +63,28 @@
       "modules": [
         "src/modules/LoginModule.ts"
       ],
-      "specs": [],
+      "specs": [
+        "src/tests/profile-menu-logout.spec.ts"
+      ],
       "counts": {
         "locators": 0,
         "methods": 8,
+        "tests": 1
+      }
+    },
+    {
+      "domain": "ProfileMenu",
+      "shard": ".ai-memory/domains/profilemenu.json",
+      "pages": [
+        "src/pages/ProfileMenuPage.ts"
+      ],
+      "modules": [
+        "src/modules/ProfileMenuModule.ts"
+      ],
+      "specs": [],
+      "counts": {
+        "locators": 0,
+        "methods": 2,
         "tests": 0
       }
     }
@@ -77,6 +95,11 @@
         "domain": "Dashboard",
         "spec": "src/tests/login.spec.ts",
         "title": "[TC_001] Valid credentials reach the authenticated dashboard @LoginValidCredentials @Positive"
+      },
+      {
+        "domain": "Login",
+        "spec": "src/tests/profile-menu-logout.spec.ts",
+        "title": "[TC_001] Logout from the profile menu returns to the login page @ProfileMenuLogout @Positive"
       }
     ],
     "TC_002": [
