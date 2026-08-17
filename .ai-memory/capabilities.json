@@ -1,16 +1,16 @@
 {
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
-  "generatedAt": "2026-08-17T12:51:26.038Z",
+  "generatedAt": "2026-08-17T17:35:15.852Z",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:c3196a0c4087856e974cdabc3792fda2a477e3f4",
+  "sourceHash": "sha1:fbd2dc7f706034bb436be7c810c3aae1eed7dd4f",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 3,
-    "modules": 3,
-    "specs": 2,
-    "tests": 8,
-    "domains": 3
+    "pages": 4,
+    "modules": 4,
+    "specs": 3,
+    "tests": 9,
+    "domains": 4
   },
   "fixtures": [
     "actions",
@@ -36,6 +36,24 @@
     "visual"
   ],
   "domains": [
+    {
+      "domain": "AdminUserManagement",
+      "shard": ".ai-memory/domains/adminusermanagement.json",
+      "pages": [
+        "src/pages/AdminUserManagementPage.ts"
+      ],
+      "modules": [
+        "src/modules/AdminUserManagementModule.ts"
+      ],
+      "specs": [
+        "src/tests/admin-user-management.spec.ts"
+      ],
+      "counts": {
+        "locators": 0,
+        "methods": 2,
+        "tests": 1
+      }
+    },
     {
       "domain": "Dashboard",
       "shard": ".ai-memory/domains/dashboard.json",
@@ -91,6 +109,11 @@
   ],
   "testIndex": {
     "TC_001": [
+      {
+        "domain": "AdminUserManagement",
+        "spec": "src/tests/admin-user-management.spec.ts",
+        "title": "[TC_001] Authenticated navigation opens Admin user management @AdminUserManagement @Positive"
+      },
       {
         "domain": "Dashboard",
         "spec": "src/tests/login.spec.ts",
