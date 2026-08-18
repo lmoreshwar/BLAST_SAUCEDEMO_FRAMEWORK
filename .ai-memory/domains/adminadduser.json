@@ -1,0 +1,44 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "AdminAddUser",
+  "generatedAt": "2026-08-18T05:51:11.641Z",
+  "sourceHash": "sha1:75fdcae137de139f6172e62bce3b1d103a5e74c7",
+  "pages": [
+    {
+      "file": "src/pages/AdminAddUserPage.ts",
+      "class": "AdminAddUserPage",
+      "methods": []
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/AdminAddUserModule.ts",
+      "class": "AdminAddUserModule",
+      "methods": [
+        "addUser",
+        "goto"
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "file": "src/tests/admin-add-user.spec.ts",
+      "describes": [
+        "Admin Add User"
+      ],
+      "tags": [
+        "@AdminAddUser",
+        "@Positive"
+      ],
+      "reuses": [
+        "AdminAddUserModule"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "[TC_001] Admin can add a new user @AdminAddUser @Positive"
+        }
+      ]
+    }
+  ]
+}
