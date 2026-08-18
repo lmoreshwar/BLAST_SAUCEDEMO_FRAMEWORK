@@ -62,6 +62,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # ─── Reuse advisory (WARN-ONLY — never blocks) ──────────────────
+      # Emits GitHub `::warning` annotations when a Spec/Page/Module inlines an
+      # interaction already covered by a WorkflowActions helper. Visible in the run
+      # summary; exits 0 so it can never fail the suite.
+      - name: Reuse advisory (inline WorkflowActions duplication)
+        continue-on-error: true
+        run: npm run lint:reuse
+
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 

@@ -41,6 +41,7 @@
     "index": "node scripts/generate-capabilities.mjs",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
+    "lint:reuse": "node scripts/check-inline-reuse.mjs",
     "format": "prettier --write \"src/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\"",
     "build": "tsc",
