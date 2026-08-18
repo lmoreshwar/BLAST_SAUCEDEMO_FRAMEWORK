@@ -36,6 +36,10 @@ on:
       feature_name:
         description: Human feature name (for the branch/PR title)
         required: true
+      scenario_ids:
+        description: Comma-separated discovery scenario ids the user selected (empty = legacy full-trace)
+        required: false
+        default: ""
 
 jobs:
   approve:
@@ -97,6 +101,8 @@ jobs:
           BASE_BRANCH: ${{ github.ref_name }}
           # Job id → deterministic PR branch blast/auto-<jobId> so the API can find & merge this PR.
           JOB_ID: ${{ inputs.job_id }}
+          # The discovery scenarios the user selected — approve.ts filters the trace + coverage-gates them.
+          SELECTED_SCENARIO_IDS: ${{ inputs.scenario_ids }}
           # App login — used by the spec's real login during the green-before-PR verify run.
           APP_USERNAME: ${{ secrets.APP_USERNAME }}
           APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
