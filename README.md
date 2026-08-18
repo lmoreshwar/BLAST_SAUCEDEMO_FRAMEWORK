@@ -349,7 +349,7 @@ PAGES (src/pages/*Page.ts)       → locators + locator helpers ONLY. NO busines
 
 ## 🎯 Locator Standard
 
-**Priority:** `getByRole()` > `getByLabel()` > `getByPlaceholder()` > `getByText()` > `getByTestId()` > CSS
+**Locator priority (Playwright official order — pick the HIGHEST-priority strategy the element supports; fall back only when a higher one does not exist):** (1) `getByTestId()` (data-testid/data-test/data-qa) → (2) `getByRole()` name — PRIMARY for interactive elements → (3) `getByLabel()` → (4) `getByPlaceholder()` → (5) `getByText()` exact → (6) `getByAltText()` images → (7) scoped/chained CSS·XPath (LAST RESORT — never a bare brittle class or auto-generated id).
 
 > Write ONE good locator. Add a fallback only when you can name a concrete reason it will break.
 

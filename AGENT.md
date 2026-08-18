@@ -84,7 +84,7 @@ MODULES (src/modules/*Module.ts) → orchestrate page actions + Logger.step(). N
 PAGES (src/pages/*Page.ts)       → locators + locator helpers ONLY. NO business logic, NO assertions.
 ```
 
-**Locator priority:** `getByRole()` > `getByLabel()` > `getByPlaceholder()` > `getByText()` > `getByTestId()` > CSS
+**Locator priority (Playwright official order — pick the HIGHEST-priority strategy the element supports; fall back only when a higher one does not exist):** (1) `getByTestId()` (data-testid/data-test/data-qa) → (2) `getByRole()` name — PRIMARY for interactive elements → (3) `getByLabel()` → (4) `getByPlaceholder()` → (5) `getByText()` exact → (6) `getByAltText()` images → (7) scoped/chained CSS·XPath (LAST RESORT — never a bare brittle class or auto-generated id).
 
 **File naming:** `[Feature]Page.ts` · `[Feature]Module.ts` · `[feature].spec.ts`
 
@@ -177,7 +177,10 @@ Verify with `npm run test:sauce:uat -- --dry-run` (lists exact suite names). Run
   the overlay globally, and nowhere else.
 - **Promote repeated/complex logic to a shared helper (MANDATORY).** Date pickers, loader waits,
   overlay dismissal, dropdown selection, login chains → extract into `Actions` / `WaitHelper` /
-  `WorkflowActions` / a dedicated helper the first time. Never copy-paste a complex block into a second module.
+  `WorkflowActions` / a dedicated helper **the FIRST time you write it**: WRITE the new generic,
+  parameterized method INTO the util file (e.g. add it to `src/utils/WorkflowActions.ts`) and CALL it,
+  so the NEXT test reuses it — do NOT inline the interaction once-off in a Module or Spec. Never
+  copy-paste a complex block into a second module.
 - **Parameterize variants — never per-value twin methods.** A step that differs only by a choice
   (Yes/No, Save/Submit, tab name) takes a typed parameter with a default, and drives its locator from
   that parameter. One method covers every branch, e.g. `selectExistingTasCaseAndCreateDraft(choice: YesNo = 'No')`.
