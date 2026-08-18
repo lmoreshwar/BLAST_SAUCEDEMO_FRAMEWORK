@@ -153,7 +153,8 @@ test('7: navigates with the exact urlFor(routes.X) string (navigation URL contra
 test('8: urlRegex(routes.X) is a RegExp for assertions only, never a navigation target', async () => {
     const rx = urlRegex(routes.dashboard);
     expect(rx).toBeInstanceOf(RegExp);
-    expect(rx.test(`${config.baseUrl}/web/index.php/dashboard/index`)).toBe(true);
+    const dashboardUrl = `${config.baseUrl}/web/index.php/dashboard/index`;
+    expect(rx.test(dashboardUrl)).toBe(true);
     // The navigator only ever receives a plain string URL built by urlFor — never a RegExp.
     const page = fakePage(async () => null);
     await resilientNavigate(page, urlFor(routes.dashboard), { ...silent });

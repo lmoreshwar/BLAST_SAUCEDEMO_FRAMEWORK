@@ -1,0 +1,55 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "Navigation",
+  "sourceHash": "sha1:17d19b23ee5a8ec425d5a0ca93044e47f7826459",
+  "pages": [],
+  "modules": [],
+  "specs": [
+    {
+      "file": "src/tests/navigation.spec.ts",
+      "describes": [],
+      "tags": [
+        "@playwright"
+      ],
+      "reuses": [],
+      "tests": [
+        {
+          "id": "",
+          "title": "1: successful DOMContentLoaded navigation resolves on the first attempt"
+        },
+        {
+          "id": "",
+          "title": "2: a delayed load event never blocks — navigation uses domcontentloaded"
+        },
+        {
+          "id": "",
+          "title": "3: a transient navigation failure is retried and then succeeds"
+        },
+        {
+          "id": "",
+          "title": "4: navigation gives up with NavigationError once the retry limit is reached"
+        },
+        {
+          "id": "",
+          "title": "5: a readiness-element timeout is reported WITHOUT re-navigating the browser"
+        },
+        {
+          "id": "",
+          "title": "6: never retries beyond the bounded budget (no infinite retry)"
+        },
+        {
+          "id": "",
+          "title": "7: navigates with the exact urlFor(routes.X) string (navigation URL contract preserved)"
+        },
+        {
+          "id": "",
+          "title": "8: urlRegex(routes.X) is a RegExp for assertions only, never a navigation target"
+        },
+        {
+          "id": "",
+          "title": "isTransientNavError flags timeouts/resets/interruptions but not app errors"
+        }
+      ]
+    }
+  ]
+}
