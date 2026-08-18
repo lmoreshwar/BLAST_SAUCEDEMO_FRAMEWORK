@@ -79,23 +79,29 @@ jobs:
 
       # ─── Run tests on the GitHub-hosted browser ─────────────────────
       - name: Run tests
+        # Inputs are read from env (not interpolated into the script) and passed via a
+        # bash array so values reach Playwright as clean argv tokens — no literal quotes
+        # leak into --grep, and no shell-injection via workflow inputs.
         run: |
-          ARGS=""
-          if [ -n "${{ github.event.inputs.test_grep }}" ]; then
-            ARGS="$ARGS --grep '${{ github.event.inputs.test_grep }}'"
+          ARGS=()
+          if [ -n "$TEST_GREP" ]; then
+            ARGS+=(--grep "$TEST_GREP")
           fi
-          if [ "${{ github.event.inputs.browser }}" != "all" ] && [ -n "${{ github.event.inputs.browser }}" ]; then
-            ARGS="$ARGS --project=${{ github.event.inputs.browser }}"
+          if [ "$BROWSER" != "all" ] && [ -n "$BROWSER" ]; then
+            ARGS+=(--project="$BROWSER")
           fi
-          if [ -n "${{ github.event.inputs.workers }}" ]; then
-            ARGS="$ARGS --workers=${{ github.event.inputs.workers }}"
+          if [ -n "$WORKERS" ]; then
+            ARGS+=(--workers="$WORKERS")
           fi
-          npx playwright test $ARGS
+          npx playwright test "${ARGS[@]}"
         env:
           BASE_URL: ${{ env.BASE_URL }}
           APP_USERNAME: ${{ env.APP_USERNAME }}
           APP_PASSWORD: ${{ env.APP_PASSWORD }}
           TEST_ENV: ${{ env.TEST_ENV }}
+          TEST_GREP: ${{ github.event.inputs.test_grep }}
+          BROWSER: ${{ github.event.inputs.browser }}
+          WORKERS: ${{ github.event.inputs.workers }}
 
       # ─── Allure report ──────────────────────────────────────────────
       - name: Setup Java (for Allure)
