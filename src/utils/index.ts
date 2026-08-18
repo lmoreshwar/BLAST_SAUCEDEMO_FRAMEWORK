@@ -7,6 +7,8 @@ export type { ActionTarget } from './Actions';
 export { WorkflowActions } from './WorkflowActions';
 export { TIMEOUTS } from './constants';
 export type { TimeoutKey } from './constants';
+export { retryOnCollision, uniqueValue } from './UniqueData';
+export type { CollisionRetryOptions, UniqueValueKind, UniqueValueOptions } from './UniqueData';
 export { RecoveryConsole } from './RecoveryConsole';
 export type { RecoveryAction, RecoveryResolution, RecoveryContext } from './RecoveryConsole';
 export { DatePickerHelper } from './DatePickerHelper';

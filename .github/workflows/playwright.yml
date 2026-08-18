@@ -141,6 +141,7 @@ jobs:
           name: test-results-${{ github.event.inputs.environment || 'qa' }}
           path: |
             test-results/
+            ai-debug-report/
             playwright-report/
             allure-results/
           retention-days: 14

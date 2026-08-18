@@ -120,6 +120,18 @@ jobs:
         # for the whole generate process (harmless for the standard library-browser path too).
         run: ${{ inputs.level3 && 'xvfb-run -a ' || '' }}node .blast-engine/AI_Agents/scripts/blast-ci-generate.js blast-job.json
 
+      - name: Upload generation failure evidence
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: blast-failure-evidence-${{ inputs.job_id }}
+          path: |
+            test-results/
+            ai-debug-report/
+            playwright-report/
+          if-no-files-found: warn
+          retention-days: 14
+
       - name: Upload Playwright report
         if: always()
         uses: actions/upload-artifact@v4
