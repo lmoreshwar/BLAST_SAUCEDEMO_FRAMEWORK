@@ -70,8 +70,31 @@ jobs:
       - name: Install framework deps
         run: npm ci || npm install
 
+      # Read the EXACT Playwright version from the freshly-installed deps (never hardcoded) so a
+      # version bump yields a new cache key instead of restoring incompatible browser binaries.
+      - name: Determine Playwright version
+        id: playwright-version
+        run: echo "version=$(node -p "require('./node_modules/@playwright/test/package.json').version")" >> "$GITHUB_OUTPUT"
+
+      # Restore the Chromium binary from a prior run. Keyed on OS + arch + Playwright version so caches
+      # never mix across runners/versions. cache-hit is 'true' ONLY on an exact key match; any miss
+      # (first run, new version, or cache unavailable) falls through to the browser install below.
+      - name: Cache Playwright browsers
+        id: playwright-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ runner.arch }}-${{ steps.playwright-version.outputs.version }}
+
+      # OS libraries only (apt) — NOT stored in the ms-playwright cache, so run EVERY time (HIT and
+      # MISS). This is the OS-deps half of the old `--with-deps`; the browser download is now cached.
+      - name: Install Playwright OS dependencies
+        run: npx playwright install-deps chromium
+
+      # Browser binary — download ONLY on a cache MISS; on a HIT it is already restored above.
       - name: Install Playwright Chromium
-        run: npx playwright install --with-deps chromium
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx playwright install chromium
 
       # The agentic driver: Microsoft @playwright/cli + xvfb so the headless browser can start.
       - name: Install @playwright/cli + xvfb
