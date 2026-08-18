@@ -1,16 +1,16 @@
 {
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
-  "generatedAt": "2026-08-18T16:08:19.411Z",
+  "generatedAt": "2026-08-18T18:42:11.006Z",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:459ea00922fb4b2b8691a79c4e54ff88d4af9880",
+  "sourceHash": "sha1:171d6af575e059712ba3345233693d4b9882f4b8",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 6,
-    "modules": 6,
-    "specs": 5,
-    "tests": 12,
-    "domains": 6
+    "pages": 7,
+    "modules": 7,
+    "specs": 6,
+    "tests": 14,
+    "domains": 7
   },
   "fixtures": [
     "actions",
@@ -52,6 +52,24 @@
       "counts": {
         "locators": 0,
         "methods": 2,
+        "tests": 2
+      }
+    },
+    {
+      "domain": "AdminJobTitles",
+      "shard": ".ai-memory/domains/adminjobtitles.json",
+      "pages": [
+        "src/pages/AdminJobTitlesPage.ts"
+      ],
+      "modules": [
+        "src/modules/AdminJobTitlesModule.ts"
+      ],
+      "specs": [
+        "src/tests/adminJobTitles.spec.ts"
+      ],
+      "counts": {
+        "locators": 0,
+        "methods": 3,
         "tests": 2
       }
     },
@@ -152,6 +170,11 @@
         "title": "[TC_001] Admin can add a new user @AdminAddUser @Smoke @Regression"
       },
       {
+        "domain": "AdminJobTitles",
+        "spec": "src/tests/adminJobTitles.spec.ts",
+        "title": "[TC_001] Add a job title with description and note @AdminJobTitles @Smoke @Regression"
+      },
+      {
         "domain": "Dashboard",
         "spec": "src/tests/login.spec.ts",
         "title": "[TC_001] Valid credentials reach the authenticated dashboard @Login @Smoke @Regression"
@@ -177,6 +200,11 @@
         "domain": "AdminAddUser",
         "spec": "src/tests/admin-add-user.spec.ts",
         "title": "[TC_002] Admin can add another user with distinct details @AdminAddUser @Regression"
+      },
+      {
+        "domain": "AdminJobTitles",
+        "spec": "src/tests/adminJobTitles.spec.ts",
+        "title": "[TC_002] Open the Add Job Title form from the Job Titles list @AdminJobTitles @Regression"
       },
       {
         "domain": "Dashboard",

@@ -1,0 +1,51 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "AdminJobTitles",
+  "generatedAt": "2026-08-18T18:42:11.005Z",
+  "sourceHash": "sha1:171d6af575e059712ba3345233693d4b9882f4b8",
+  "pages": [
+    {
+      "file": "src/pages/AdminJobTitlesPage.ts",
+      "class": "AdminJobTitlesPage",
+      "methods": []
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/AdminJobTitlesModule.ts",
+      "class": "AdminJobTitlesModule",
+      "methods": [
+        "createJobTitle",
+        "goto",
+        "openAddForm"
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "file": "src/tests/adminJobTitles.spec.ts",
+      "describes": [
+        "Admin Job Titles"
+      ],
+      "tags": [
+        "@AdminJobTitles",
+        "@Regression",
+        "@Smoke"
+      ],
+      "reuses": [
+        "AdminJobTitlesModule",
+        "AdminJobTitlesPage"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "[TC_001] Add a job title with description and note @AdminJobTitles @Smoke @Regression"
+        },
+        {
+          "id": "TC_002",
+          "title": "[TC_002] Open the Add Job Title form from the Job Titles list @AdminJobTitles @Regression"
+        }
+      ]
+    }
+  ]
+}

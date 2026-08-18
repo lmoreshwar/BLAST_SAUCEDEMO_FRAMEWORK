@@ -93,6 +93,8 @@ export const routes = {
     pimViewPersonalDetails: '/web/index.php/pim/viewPersonalDetails/empNumber/',
     recruitmentAddCandidate: '/web/index.php/recruitment/addCandidate',
     recruitmentCandidateDetails: '/web/index.php/recruitment/addCandidate',
+    adminJobTitles: '/web/index.php/admin/viewJobTitleList',
+    adminSaveJobTitle: '/web/index.php/admin/saveJobTitle',
 } as const;
 
 export type RoutePath = (typeof routes)[keyof typeof routes] | string;

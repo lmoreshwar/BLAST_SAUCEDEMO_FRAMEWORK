@@ -1,8 +1,8 @@
 {
   "$schema": "reuse-capability-shard/v1",
   "domain": "PimAddEmployee",
-  "generatedAt": "2026-08-18T16:08:19.411Z",
-  "sourceHash": "sha1:459ea00922fb4b2b8691a79c4e54ff88d4af9880",
+  "generatedAt": "2026-08-18T18:42:11.005Z",
+  "sourceHash": "sha1:171d6af575e059712ba3345233693d4b9882f4b8",
   "pages": [
     {
       "file": "src/pages/PimAddEmployeePage.ts",
