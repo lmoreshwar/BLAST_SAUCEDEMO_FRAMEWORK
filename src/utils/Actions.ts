@@ -171,12 +171,51 @@ export class Actions {
 
     async check(target: ActionTarget, options?: { timeout?: number; force?: boolean }): Promise<void> {
         const locator = await this.waitForVisible(target, options?.timeout ?? TIMEOUTS.SHORT);
-        await locator.check({ force: options?.force });
+        await this.setCheckableState(locator, true, options);
     }
 
     async uncheck(target: ActionTarget, options?: { timeout?: number; force?: boolean }): Promise<void> {
         const locator = await this.waitForVisible(target, options?.timeout ?? TIMEOUTS.SHORT);
-        await locator.uncheck({ force: options?.force });
+        await this.setCheckableState(locator, false, options);
+    }
+
+    /**
+     * Toggle a checkbox/radio to `desired`, tolerating custom-styled controls (OXD/MUI/React) whose
+     * native <input> is visually hidden while a sibling/overlay element intercepts pointer events —
+     * a plain .check() keeps retrying the pointer-intercept actionability check until it times out.
+     * Escalates safely: no-op when already in state → normal (fail-fast) toggle → forced toggle →
+     * click the associated <label>/wrapper so the underlying input still toggles natively.
+     */
+    private async setCheckableState(
+        locator: Locator,
+        desired: boolean,
+        options?: { timeout?: number; force?: boolean },
+    ): Promise<void> {
+        const isDesired = async (): Promise<boolean> =>
+            (await locator.isChecked().catch(() => undefined)) === desired;
+        if (await isDesired()) return;
+
+        const toggle = (force: boolean, timeout?: number): Promise<void> =>
+            desired ? locator.check({ force, timeout }) : locator.uncheck({ force, timeout });
+
+        try {
+            // Honour an explicit force request directly; otherwise try a normal, fail-fast toggle.
+            await toggle(Boolean(options?.force), options?.force ? options?.timeout : TIMEOUTS.SHORT);
+            return;
+        } catch (firstError) {
+            // A styled overlay intercepts the click — bypass actionability, then click the label.
+            try {
+                await toggle(true, TIMEOUTS.SHORT);
+                return;
+            } catch {
+                const label = locator.locator('xpath=ancestor::label[1]');
+                if ((await label.count()) > 0) {
+                    await label.first().click({ force: true, timeout: TIMEOUTS.SHORT });
+                    if (await isDesired()) return;
+                }
+                throw firstError;
+            }
+        }
     }
 
     async selectOption(
