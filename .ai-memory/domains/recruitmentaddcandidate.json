@@ -1,0 +1,46 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "RecruitmentAddCandidate",
+  "generatedAt": "2026-08-18T16:08:19.411Z",
+  "sourceHash": "sha1:459ea00922fb4b2b8691a79c4e54ff88d4af9880",
+  "pages": [
+    {
+      "file": "src/pages/RecruitmentAddCandidatePage.ts",
+      "class": "RecruitmentAddCandidatePage",
+      "methods": []
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/RecruitmentAddCandidateModule.ts",
+      "class": "RecruitmentAddCandidateModule",
+      "methods": [
+        "addCandidate",
+        "goto"
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "file": "src/tests/recruitmentAddCandidate.spec.ts",
+      "describes": [
+        "Recruitment Add Candidate"
+      ],
+      "tags": [
+        "@RecruitmentAddCandidate",
+        "@Regression",
+        "@Smoke"
+      ],
+      "reuses": [
+        "RecruitmentAddCandidateModule",
+        "RecruitmentAddCandidatePage"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "[TC_001] Valid candidate details create a candidate profile @RecruitmentAddCandidate @Smoke @Regression"
+        }
+      ]
+    }
+  ]
+}

@@ -1,16 +1,16 @@
 {
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
-  "generatedAt": "2026-08-18T10:23:56.601Z",
+  "generatedAt": "2026-08-18T16:08:19.411Z",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:7db3f55c1dd5297ca54e1ed17bb59f21abb499c5",
+  "sourceHash": "sha1:459ea00922fb4b2b8691a79c4e54ff88d4af9880",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 5,
-    "modules": 5,
-    "specs": 4,
-    "tests": 11,
-    "domains": 5
+    "pages": 6,
+    "modules": 6,
+    "specs": 5,
+    "tests": 12,
+    "domains": 6
   },
   "fixtures": [
     "actions",
@@ -124,6 +124,24 @@
         "methods": 2,
         "tests": 0
       }
+    },
+    {
+      "domain": "RecruitmentAddCandidate",
+      "shard": ".ai-memory/domains/recruitmentaddcandidate.json",
+      "pages": [
+        "src/pages/RecruitmentAddCandidatePage.ts"
+      ],
+      "modules": [
+        "src/modules/RecruitmentAddCandidateModule.ts"
+      ],
+      "specs": [
+        "src/tests/recruitmentAddCandidate.spec.ts"
+      ],
+      "counts": {
+        "locators": 0,
+        "methods": 2,
+        "tests": 1
+      }
     }
   ],
   "testIndex": {
@@ -147,6 +165,11 @@
         "domain": "PimAddEmployee",
         "spec": "src/tests/pimAddEmployee.spec.ts",
         "title": "[TC_001] Add an employee with valid required details @PimAddEmployee @Smoke @Regression"
+      },
+      {
+        "domain": "RecruitmentAddCandidate",
+        "spec": "src/tests/recruitmentAddCandidate.spec.ts",
+        "title": "[TC_001] Valid candidate details create a candidate profile @RecruitmentAddCandidate @Smoke @Regression"
       }
     ],
     "TC_002": [

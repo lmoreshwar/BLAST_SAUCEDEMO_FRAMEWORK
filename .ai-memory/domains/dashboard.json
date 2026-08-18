@@ -1,8 +1,8 @@
 {
   "$schema": "reuse-capability-shard/v1",
   "domain": "Dashboard",
-  "generatedAt": "2026-08-18T10:23:56.601Z",
-  "sourceHash": "sha1:7db3f55c1dd5297ca54e1ed17bb59f21abb499c5",
+  "generatedAt": "2026-08-18T16:08:19.411Z",
+  "sourceHash": "sha1:459ea00922fb4b2b8691a79c4e54ff88d4af9880",
   "pages": [
     {
       "file": "src/pages/DashboardPage.ts",
