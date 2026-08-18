@@ -23,7 +23,7 @@ test.describe('Admin Add User', () => {
             'User',
         );
 
-        await expect(page).toHaveURL(/\/web\/index\.php\/admin\/saveSystemUser/);
+        await expect(page).toHaveURL(urlRegex(routes.adminAddUser));
     });
 
     test('[TC_002] Admin can add another user with distinct details @AdminAddUser @Regression', async ({

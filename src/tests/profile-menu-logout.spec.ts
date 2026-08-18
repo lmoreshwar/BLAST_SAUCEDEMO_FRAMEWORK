@@ -1,4 +1,4 @@
-import { credentials } from '../config';
+import { credentials, routes, urlRegex } from '../config';
 import { test, expect } from '../fixtures';
 import { ProfileMenuModule } from '../modules/ProfileMenuModule';
 
@@ -18,7 +18,7 @@ test.describe('Profile Menu Logout', () => {
         await profileMenuModule.openProfileMenu();
         await profileMenuModule.logout();
 
-        await expect(page).toHaveURL(/\/web\/index\.php\/auth\/login/);
+        await expect(page).toHaveURL(urlRegex(routes.login));
         await expect(loginPage.usernameTextbox).toBeVisible();
         await expect(loginPage.passwordTextbox).toBeVisible();
         await expect(loginPage.loginButton).toBeVisible();

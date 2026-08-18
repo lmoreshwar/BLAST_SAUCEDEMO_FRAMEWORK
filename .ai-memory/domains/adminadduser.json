@@ -1,8 +1,8 @@
 {
   "$schema": "reuse-capability-shard/v1",
   "domain": "AdminAddUser",
-  "generatedAt": "2026-08-18T07:42:57.915Z",
-  "sourceHash": "sha1:df81c9d536e7a213f415107bdeb60d1188043b10",
+  "generatedAt": "2026-08-18T07:50:43.335Z",
+  "sourceHash": "sha1:ad418c3138734184206f2236831586df486b8d4a",
   "pages": [
     {
       "file": "src/pages/AdminAddUserPage.ts",
