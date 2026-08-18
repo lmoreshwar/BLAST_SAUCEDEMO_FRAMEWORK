@@ -19,5 +19,10 @@
             "firstName": "Test",
             "lastName": "Employee"
         }
+    },
+    "recruitmentAddCandidate": {
+        "firstName": "Alex",
+        "lastName": "Candidate",
+        "emailSeed": "alex.candidate"
     }
 }
