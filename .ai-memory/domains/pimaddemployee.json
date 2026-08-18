@@ -1,0 +1,45 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "PimAddEmployee",
+  "generatedAt": "2026-08-18T10:13:05.354Z",
+  "sourceHash": "sha1:4ea27e7e09c8e2558f51bdade752cf9d50f1406a",
+  "pages": [
+    {
+      "file": "src/pages/PimAddEmployeePage.ts",
+      "class": "PimAddEmployeePage",
+      "methods": []
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/PimAddEmployeeModule.ts",
+      "class": "PimAddEmployeeModule",
+      "methods": [
+        "addEmployee",
+        "goto"
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "file": "src/tests/pim-add-employee.spec.ts",
+      "describes": [
+        "PIM Add Employee"
+      ],
+      "tags": [
+        "@PimAddEmployee",
+        "@Regression",
+        "@Smoke"
+      ],
+      "reuses": [
+        "PimAddEmployeeModule"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "[TC_001] Add employee with valid details @PimAddEmployee @Smoke @Regression"
+        }
+      ]
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 {
   "$schema": "reuse-capability-shard/v1",
   "domain": "ProfileMenu",
-  "generatedAt": "2026-08-18T07:50:43.354Z",
-  "sourceHash": "sha1:ad418c3138734184206f2236831586df486b8d4a",
+  "generatedAt": "2026-08-18T10:13:05.354Z",
+  "sourceHash": "sha1:4ea27e7e09c8e2558f51bdade752cf9d50f1406a",
   "pages": [
     {
       "file": "src/pages/ProfileMenuPage.ts",

@@ -1,17 +1,21 @@
 {
-  "emptyUsername": {
-    "password": "admin123"
-  },
-  "emptyPassword": {
-    "username": "Admin"
-  },
-  "incorrectPassword": "incorrect-password",
-  "incorrectUsername": "incorrect-user",
-  "incorrectUsernamePassword": "admin123",
-  "adminUser": {
-    "employeeName": "Admin",
-    "username": "auto_user_tc002",
-    "firstName": "Automation",
-    "lastName": "Regression"
-  }
+    "emptyUsername": {
+        "password": "admin123"
+    },
+    "emptyPassword": {
+        "username": "Admin"
+    },
+    "incorrectPassword": "incorrect-password",
+    "incorrectUsername": "incorrect-user",
+    "incorrectUsernamePassword": "admin123",
+    "adminUser": {
+        "employeeName": "Admin",
+        "username": "auto_user_tc002",
+        "firstName": "Automation",
+        "lastName": "Regression"
+    },
+    "pimAddEmployee": {
+        "firstName": "Test",
+        "lastName": "Employee"
+    }
 }
