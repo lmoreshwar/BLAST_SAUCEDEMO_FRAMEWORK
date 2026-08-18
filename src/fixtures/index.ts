@@ -1,6 +1,7 @@
 import { test as base, type Page, type TestInfo } from '@playwright/test';
 import { SmartLocator } from '../utils/SmartLocator';
 import { Actions } from '../utils/Actions';
+import { installResilientNavigation } from '../utils/Navigation';
 import { WorkflowActions } from '../utils/WorkflowActions';
 import { LoginPage } from '../pages/LoginPage';
 import { DashboardPage } from '../pages/DashboardPage';
@@ -35,6 +36,9 @@ export const test = base.extend<TestFixtures>({
     },
     // Global popup/modal handlers
     page: async ({ page }, use, testInfo) => {
+        // Make EVERY page.goto() resilient (domcontentloaded + bounded retry + diagnostics) for login,
+        // existing specs, and generated features alike — without touching any Module/POM or codegen.
+        installResilientNavigation(page);
         const actions = new Actions(page);
         let failurePauseExecuted = false;
 

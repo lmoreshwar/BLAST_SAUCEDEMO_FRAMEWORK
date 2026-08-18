@@ -19,6 +19,8 @@ export interface AppConfig {
     baseUrl: string;
     defaultTimeout: number;
     navigationTimeout: number;
+    /** Separate, shorter budget for the post-navigation page-ready element (kept distinct from the navigation timeout). */
+    readinessTimeout: number;
     logLevel: string;
     retryCount: number;
     testEnv: string;
@@ -28,6 +30,7 @@ export const config: AppConfig = {
     baseUrl: process.env.BASE_URL || 'https://opensource-demo.orangehrmlive.com',
     defaultTimeout: parseInt(process.env.DEFAULT_TIMEOUT || '30000', 10),
     navigationTimeout: parseInt(process.env.NAVIGATION_TIMEOUT || '90000', 10),
+    readinessTimeout: parseInt(process.env.READINESS_TIMEOUT || '15000', 10),
     logLevel: process.env.LOG_LEVEL || 'INFO',
     retryCount: parseInt(process.env.RETRY_COUNT || '2', 10),
     testEnv,

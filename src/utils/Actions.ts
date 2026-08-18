@@ -1,11 +1,48 @@
 import { Locator, Page } from '@playwright/test';
 import { TIMEOUTS } from './constants';
 import { RecoveryConsole } from './RecoveryConsole';
+import { Logger } from './Logger';
+import { resilientNavigate, type ReadinessCheck } from './Navigation';
 
 export type ActionTarget = Locator | string;
 
 export class Actions {
+    private readonly navLogger = Logger.create('Navigation');
+
     constructor(private page: Page) {}
+
+    /**
+     * Centralized resilient navigation for ALL modules: navigate with waitUntil:'domcontentloaded'
+     * (never the full 'load' event that slow SPAs delay via third-party/lazy resources), retry only
+     * transient navigation failures a small bounded number of times, then wait for the caller's OWN
+     * page-ready element under a SEPARATE readiness timeout. App-agnostic — the ready element is
+     * supplied by the caller (e.g. LoginModule → username textbox), never hardcoded here.
+     */
+    async navigate(
+        url: string,
+        options?: {
+            readyElement?: ActionTarget;
+            readyName?: string;
+            navigationTimeoutMs?: number;
+            readinessTimeoutMs?: number;
+            retries?: number;
+        },
+    ): Promise<void> {
+        const readyElement = options?.readyElement;
+        const readiness: ReadinessCheck | undefined = readyElement
+            ? {
+                  name: options?.readyName || this.describeTarget(readyElement),
+                  wait: (timeoutMs: number) => this.resolveTarget(readyElement).waitFor({ state: 'visible', timeout: timeoutMs }),
+              }
+            : undefined;
+        await resilientNavigate(this.page, url, {
+            readiness,
+            navigationTimeoutMs: options?.navigationTimeoutMs,
+            readinessTimeoutMs: options?.readinessTimeoutMs,
+            retries: options?.retries,
+            log: (line) => this.navLogger.info(line),
+        });
+    }
 
     private resolveTarget(target: ActionTarget): Locator {
         if (typeof target === 'string') {

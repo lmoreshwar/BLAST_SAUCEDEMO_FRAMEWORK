@@ -16,8 +16,10 @@ export class LoginModule {
 
     async goto(): Promise<void> {
         this.logger.info('Open the OrangeHRM login page');
-        await this.page.goto(urlFor(routes.login));
-        await this.actions.waitForVisible(this.loginPage.usernameTextbox);
+        await this.actions.navigate(urlFor(routes.login), {
+            readyElement: this.loginPage.usernameTextbox,
+            readyName: 'login username textbox',
+        });
     }
 
     async login(username: string, password: string): Promise<void> {
