@@ -3,7 +3,7 @@ import { test, expect } from '../fixtures';
 import { ProfileMenuModule } from '../modules/ProfileMenuModule';
 
 test.describe('Profile Menu Logout', () => {
-    test('[TC_001] Logout from the profile menu returns to the login page @ProfileMenuLogout @Positive', async ({
+    test('[TC_001] Logout from the profile menu returns to the login page @ProfileMenuLogout @Smoke @Regression', async ({
         loginModule,
         loginPage,
         dashboardModule,

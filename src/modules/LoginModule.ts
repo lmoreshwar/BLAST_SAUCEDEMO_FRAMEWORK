@@ -2,6 +2,7 @@ import { type Page } from '@playwright/test';
 import { Actions } from '../utils/Actions';
 import { Logger } from '../utils/Logger';
 import { LoginPage } from '../pages/LoginPage';
+import { routes, urlFor } from '../config';
 
 export class LoginModule {
     private readonly actions: Actions;
@@ -15,7 +16,7 @@ export class LoginModule {
 
     async goto(): Promise<void> {
         this.logger.info('Open the OrangeHRM login page');
-        await this.page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+        await this.page.goto(urlFor(routes.login));
         await this.actions.waitForVisible(this.loginPage.usernameTextbox);
     }
 

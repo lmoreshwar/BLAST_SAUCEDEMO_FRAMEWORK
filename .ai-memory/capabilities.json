@@ -1,15 +1,15 @@
 {
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
-  "generatedAt": "2026-08-18T05:51:11.642Z",
+  "generatedAt": "2026-08-18T07:42:57.939Z",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:75fdcae137de139f6172e62bce3b1d103a5e74c7",
+  "sourceHash": "sha1:df81c9d536e7a213f415107bdeb60d1188043b10",
   "shardDir": ".ai-memory/domains",
   "counts": {
     "pages": 4,
     "modules": 4,
     "specs": 3,
-    "tests": 9,
+    "tests": 10,
     "domains": 4
   },
   "fixtures": [
@@ -51,7 +51,7 @@
       "counts": {
         "locators": 0,
         "methods": 2,
-        "tests": 1
+        "tests": 2
       }
     },
     {
@@ -112,59 +112,64 @@
       {
         "domain": "AdminAddUser",
         "spec": "src/tests/admin-add-user.spec.ts",
-        "title": "[TC_001] Admin can add a new user @AdminAddUser @Positive"
+        "title": "[TC_001] Admin can add a new user @AdminAddUser @Smoke @Regression"
       },
       {
         "domain": "Dashboard",
         "spec": "src/tests/login.spec.ts",
-        "title": "[TC_001] Valid credentials reach the authenticated dashboard @LoginValidCredentials @Positive"
+        "title": "[TC_001] Valid credentials reach the authenticated dashboard @Login @Smoke @Regression"
       },
       {
         "domain": "Login",
         "spec": "src/tests/profile-menu-logout.spec.ts",
-        "title": "[TC_001] Logout from the profile menu returns to the login page @ProfileMenuLogout @Positive"
+        "title": "[TC_001] Logout from the profile menu returns to the login page @ProfileMenuLogout @Smoke @Regression"
       }
     ],
     "TC_002": [
       {
+        "domain": "AdminAddUser",
+        "spec": "src/tests/admin-add-user.spec.ts",
+        "title": "[TC_002] Admin can add another user with distinct details @AdminAddUser @Regression"
+      },
+      {
         "domain": "Dashboard",
         "spec": "src/tests/login.spec.ts",
-        "title": "[TC_002] Empty Username blocks login @LoginValidCredentials @Negative"
+        "title": "[TC_002] Empty Username blocks login @Login @Regression"
       }
     ],
     "TC_003": [
       {
         "domain": "Dashboard",
         "spec": "src/tests/login.spec.ts",
-        "title": "[TC_003] Empty Password blocks login @LoginValidCredentials @Negative"
+        "title": "[TC_003] Empty Password blocks login @Login @Regression"
       }
     ],
     "TC_004": [
       {
         "domain": "Dashboard",
         "spec": "src/tests/login.spec.ts",
-        "title": "[TC_004] Both empty inputs block login @LoginValidCredentials @Negative"
+        "title": "[TC_004] Both empty inputs block login @Login @Regression"
       }
     ],
     "TC_005": [
       {
         "domain": "Dashboard",
         "spec": "src/tests/login.spec.ts",
-        "title": "[TC_005] Incorrect password does not authenticate @LoginValidCredentials @Negative"
+        "title": "[TC_005] Incorrect password does not authenticate @Login @Regression"
       }
     ],
     "TC_006": [
       {
         "domain": "Dashboard",
         "spec": "src/tests/login.spec.ts",
-        "title": "[TC_006] Incorrect username does not authenticate @LoginValidCredentials @Negative"
+        "title": "[TC_006] Incorrect username does not authenticate @Login @Regression"
       }
     ],
     "TC_007": [
       {
         "domain": "Dashboard",
         "spec": "src/tests/login.spec.ts",
-        "title": "[TC_007] Correcting invalid credentials allows recovery @LoginValidCredentials @Negative"
+        "title": "[TC_007] Correcting invalid credentials allows recovery @Login @Regression"
       }
     ]
   }

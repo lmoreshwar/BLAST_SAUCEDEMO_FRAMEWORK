@@ -3,7 +3,7 @@ import testData from '../testdata/testData.json';
 import { test, expect } from '../fixtures';
 
 test.describe('Login', () => {
-    test('[TC_001] Valid credentials reach the authenticated dashboard @LoginValidCredentials @Positive', async ({
+    test('[TC_001] Valid credentials reach the authenticated dashboard @Login @Smoke @Regression', async ({
         loginModule,
         dashboardModule,
         dashboardPage,
@@ -19,7 +19,7 @@ test.describe('Login', () => {
         await expect(dashboardPage.dashboardHeading).toBeVisible();
     });
 
-    test('[TC_002] Empty Username blocks login @LoginValidCredentials @Negative', async ({
+    test('[TC_002] Empty Username blocks login @Login @Regression', async ({
         loginModule,
         loginPage,
         page,
@@ -31,7 +31,7 @@ test.describe('Login', () => {
         await expect(loginPage.usernameTextbox).toBeVisible();
     });
 
-    test('[TC_003] Empty Password blocks login @LoginValidCredentials @Negative', async ({
+    test('[TC_003] Empty Password blocks login @Login @Regression', async ({
         loginModule,
         loginPage,
         page,
@@ -44,7 +44,7 @@ test.describe('Login', () => {
         await expect(loginPage.passwordTextbox).toBeVisible();
     });
 
-    test('[TC_004] Both empty inputs block login @LoginValidCredentials @Negative', async ({
+    test('[TC_004] Both empty inputs block login @Login @Regression', async ({
         loginModule,
         loginPage,
         page,
@@ -58,7 +58,7 @@ test.describe('Login', () => {
         await expect(loginPage.loginButton).toBeVisible();
     });
 
-    test('[TC_005] Incorrect password does not authenticate @LoginValidCredentials @Negative', async ({
+    test('[TC_005] Incorrect password does not authenticate @Login @Regression', async ({
         loginModule,
         loginPage,
         page,
@@ -72,7 +72,7 @@ test.describe('Login', () => {
         await expect(loginPage.loginButton).toBeVisible();
     });
 
-    test('[TC_006] Incorrect username does not authenticate @LoginValidCredentials @Negative', async ({
+    test('[TC_006] Incorrect username does not authenticate @Login @Regression', async ({
         loginModule,
         loginPage,
         page,
@@ -87,7 +87,7 @@ test.describe('Login', () => {
         await expect(loginPage.loginButton).toBeVisible();
     });
 
-    test('[TC_007] Correcting invalid credentials allows recovery @LoginValidCredentials @Negative', async ({
+    test('[TC_007] Correcting invalid credentials allows recovery @Login @Regression', async ({
         loginModule,
         dashboardPage,
         page,

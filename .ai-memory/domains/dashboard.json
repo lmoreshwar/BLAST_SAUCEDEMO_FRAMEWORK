@@ -1,8 +1,8 @@
 {
   "$schema": "reuse-capability-shard/v1",
   "domain": "Dashboard",
-  "generatedAt": "2026-08-18T05:51:11.642Z",
-  "sourceHash": "sha1:75fdcae137de139f6172e62bce3b1d103a5e74c7",
+  "generatedAt": "2026-08-18T07:42:57.928Z",
+  "sourceHash": "sha1:df81c9d536e7a213f415107bdeb60d1188043b10",
   "pages": [
     {
       "file": "src/pages/DashboardPage.ts",
@@ -26,39 +26,39 @@
         "Login"
       ],
       "tags": [
-        "@LoginValidCredentials",
-        "@Negative",
-        "@Positive"
+        "@Login",
+        "@Regression",
+        "@Smoke"
       ],
       "reuses": [],
       "tests": [
         {
           "id": "TC_001",
-          "title": "[TC_001] Valid credentials reach the authenticated dashboard @LoginValidCredentials @Positive"
+          "title": "[TC_001] Valid credentials reach the authenticated dashboard @Login @Smoke @Regression"
         },
         {
           "id": "TC_002",
-          "title": "[TC_002] Empty Username blocks login @LoginValidCredentials @Negative"
+          "title": "[TC_002] Empty Username blocks login @Login @Regression"
         },
         {
           "id": "TC_003",
-          "title": "[TC_003] Empty Password blocks login @LoginValidCredentials @Negative"
+          "title": "[TC_003] Empty Password blocks login @Login @Regression"
         },
         {
           "id": "TC_004",
-          "title": "[TC_004] Both empty inputs block login @LoginValidCredentials @Negative"
+          "title": "[TC_004] Both empty inputs block login @Login @Regression"
         },
         {
           "id": "TC_005",
-          "title": "[TC_005] Incorrect password does not authenticate @LoginValidCredentials @Negative"
+          "title": "[TC_005] Incorrect password does not authenticate @Login @Regression"
         },
         {
           "id": "TC_006",
-          "title": "[TC_006] Incorrect username does not authenticate @LoginValidCredentials @Negative"
+          "title": "[TC_006] Incorrect username does not authenticate @Login @Regression"
         },
         {
           "id": "TC_007",
-          "title": "[TC_007] Correcting invalid credentials allows recovery @LoginValidCredentials @Negative"
+          "title": "[TC_007] Correcting invalid credentials allows recovery @Login @Regression"
         }
       ]
     }

@@ -78,4 +78,40 @@ export function credentials(profile: 'app' = 'app'): Credentials {
     return { username, password };
 }
 
+// ─── routes — the ONE place app paths live (never hardcode a URL/path elsewhere) ──────────────
+/**
+ * Application route PATHS (relative to `config.baseUrl`). Every Page/Module `goto()` and every
+ * spec URL assertion MUST reference a key here via `urlFor()` / `urlRegex()` — never a raw string
+ * literal. Add a new key here when automating a new screen; reuse an existing one otherwise.
+ */
+export const routes = {
+    login: '/web/index.php/auth/login',
+    dashboard: '/web/index.php/dashboard/index',
+    adminAddUser: '/web/index.php/admin/saveSystemUser',
+    adminUserManagement: '/web/index.php/admin/viewSystemUsers',
+} as const;
+
+export type RoutePath = (typeof routes)[keyof typeof routes] | string;
+
+/**
+ * Build a full, environment-correct URL from `config.baseUrl` + a relative route path.
+ * Use for navigation: `await page.goto(urlFor(routes.login))`. Idempotent if an absolute URL
+ * is passed. Never concatenate base URLs by hand.
+ */
+export function urlFor(routePath: RoutePath): string {
+    if (/^https?:\/\//i.test(routePath)) return routePath;
+    const rel = routePath.startsWith('/') ? routePath : `/${routePath}`;
+    return `${config.baseUrl}${rel}`;
+}
+
+/**
+ * Build an environment-agnostic RegExp that matches a route by its PATH, for URL assertions:
+ * `await expect(page).toHaveURL(urlRegex(routes.dashboard))`. Matching on path (not host) keeps
+ * assertions valid across environments/base URLs.
+ */
+export function urlRegex(routePath: RoutePath): RegExp {
+    const pathOnly = routePath.replace(/^https?:\/\/[^/]+/i, '');
+    return new RegExp(pathOnly.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+}
+
 export default config;

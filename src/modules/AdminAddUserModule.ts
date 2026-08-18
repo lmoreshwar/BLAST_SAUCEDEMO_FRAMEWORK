@@ -2,6 +2,7 @@ import { type Page } from '@playwright/test';
 import { Actions } from '../utils/Actions';
 import { Logger } from '../utils/Logger';
 import { AdminAddUserPage } from '../pages/AdminAddUserPage';
+import { routes, urlFor } from '../config';
 
 export class AdminAddUserModule {
     private readonly actions: Actions;
@@ -15,7 +16,7 @@ export class AdminAddUserModule {
 
     async goto(): Promise<void> {
         this.logger.step(1, 'Open the Add User page');
-        await this.page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveSystemUser');
+        await this.page.goto(urlFor(routes.adminAddUser));
         await this.actions.waitForVisible(this.adminAddUserPage.saveButton);
     }
 
