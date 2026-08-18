@@ -233,7 +233,9 @@ function hashSources() {
     for (const f of listTsFiles(SRC)) {
         h.update(rel(f));
         h.update('\0');
-        h.update(readFileSync(f, 'utf-8'));
+        // Normalize CRLF→LF so the hash is identical on Windows (autocrlf) and Linux/CI.
+        // Otherwise every checkout recomputes a different hash and the skip-guard never fires.
+        h.update(readFileSync(f, 'utf-8').replace(/\r\n/g, '\n'));
         h.update('\0');
     }
     return 'sha1:' + h.digest('hex');
@@ -400,7 +402,6 @@ function main() {
         const shard = {
             $schema: 'reuse-capability-shard/v1',
             domain: d.domain,
-            generatedAt: new Date().toISOString(),
             sourceHash,
             pages: d.pages,
             modules: d.modules,
@@ -426,7 +427,6 @@ function main() {
             'It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are ' +
             'caught across ALL domains without loading every shard. For a domain\u2019s locators/methods/tests, ' +
             'load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).',
-        generatedAt: new Date().toISOString(),
         regenerateWith: 'npm run index',
         sourceHash,
         shardDir: '.ai-memory/domains',
