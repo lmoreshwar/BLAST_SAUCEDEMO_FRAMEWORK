@@ -2,7 +2,7 @@ import { type Page } from '@playwright/test';
 import { Actions } from '../utils/Actions';
 import { Logger } from '../utils/Logger';
 import { PimAddEmployeePage } from '../pages/PimAddEmployeePage';
-import { routes, urlFor } from '../config';
+import { routes, urlFor, urlRegex } from '../config';
 
 export class PimAddEmployeeModule {
     private readonly actions: Actions;
@@ -25,6 +25,6 @@ export class PimAddEmployeeModule {
         await this.actions.fill(this.pimAddEmployeePage.firstNameTextbox, firstName);
         await this.actions.fill(this.pimAddEmployeePage.lastNameTextbox, lastName);
         await this.actions.click(this.pimAddEmployeePage.saveButton);
-        await this.page.waitForURL(/\/web\/index\.php\/pim\/viewPersonalDetails\/empNumber\//);
+        await this.page.waitForURL(urlRegex(routes.pimViewPersonalDetails));
     }
 }
