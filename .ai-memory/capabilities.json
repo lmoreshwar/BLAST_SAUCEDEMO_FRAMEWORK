@@ -1,16 +1,16 @@
 {
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
-  "generatedAt": "2026-08-18T07:50:43.361Z",
+  "generatedAt": "2026-08-18T10:23:56.601Z",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:ad418c3138734184206f2236831586df486b8d4a",
+  "sourceHash": "sha1:7db3f55c1dd5297ca54e1ed17bb59f21abb499c5",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 4,
-    "modules": 4,
-    "specs": 3,
-    "tests": 10,
-    "domains": 4
+    "pages": 5,
+    "modules": 5,
+    "specs": 4,
+    "tests": 11,
+    "domains": 5
   },
   "fixtures": [
     "actions",
@@ -28,6 +28,7 @@
     "RecoveryConsole",
     "SmartLocator",
     "StepsReporter",
+    "UniqueData",
     "WaitHelper",
     "WorkflowActions",
     "constants",
@@ -91,6 +92,24 @@
       }
     },
     {
+      "domain": "PimAddEmployee",
+      "shard": ".ai-memory/domains/pimaddemployee.json",
+      "pages": [
+        "src/pages/PimAddEmployeePage.ts"
+      ],
+      "modules": [
+        "src/modules/PimAddEmployeeModule.ts"
+      ],
+      "specs": [
+        "src/tests/pimAddEmployee.spec.ts"
+      ],
+      "counts": {
+        "locators": 0,
+        "methods": 2,
+        "tests": 1
+      }
+    },
+    {
       "domain": "ProfileMenu",
       "shard": ".ai-memory/domains/profilemenu.json",
       "pages": [
@@ -123,6 +142,11 @@
         "domain": "Login",
         "spec": "src/tests/profile-menu-logout.spec.ts",
         "title": "[TC_001] Logout from the profile menu returns to the login page @ProfileMenuLogout @Smoke @Regression"
+      },
+      {
+        "domain": "PimAddEmployee",
+        "spec": "src/tests/pimAddEmployee.spec.ts",
+        "title": "[TC_001] Add an employee with valid required details @PimAddEmployee @Smoke @Regression"
       }
     ],
     "TC_002": [

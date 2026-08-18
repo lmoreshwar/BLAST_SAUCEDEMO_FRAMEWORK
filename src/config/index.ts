@@ -89,6 +89,8 @@ export const routes = {
     dashboard: '/web/index.php/dashboard/index',
     adminAddUser: '/web/index.php/admin/saveSystemUser',
     adminUserManagement: '/web/index.php/admin/viewSystemUsers',
+    pimAddEmployee: '/web/index.php/pim/addEmployee',
+    pimViewPersonalDetails: '/web/index.php/pim/viewPersonalDetails/empNumber/',
 } as const;
 
 export type RoutePath = (typeof routes)[keyof typeof routes] | string;
