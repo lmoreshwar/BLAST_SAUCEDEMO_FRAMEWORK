@@ -1,7 +1,7 @@
 {
   "$schema": "reuse-capability-shard/v1",
   "domain": "Navigation",
-  "sourceHash": "sha1:aaec56195b312c60b8fc6f07006ba83710afbf2d",
+  "sourceHash": "sha1:130841bce0a051852d01a99525715ba916e969ba",
   "pages": [],
   "modules": [],
   "specs": [

@@ -27,7 +27,7 @@ export interface AppConfig {
 }
 
 export const config: AppConfig = {
-    baseUrl: process.env.BASE_URL || 'https://opensource-demo.orangehrmlive.com',
+    baseUrl: process.env.BASE_URL || 'https://www.saucedemo.com',
     defaultTimeout: parseInt(process.env.DEFAULT_TIMEOUT || '30000', 10),
     navigationTimeout: parseInt(process.env.NAVIGATION_TIMEOUT || '90000', 10),
     readinessTimeout: parseInt(process.env.READINESS_TIMEOUT || '15000', 10),
@@ -88,17 +88,8 @@ export function credentials(profile: 'app' = 'app'): Credentials {
  * literal. Add a new key here when automating a new screen; reuse an existing one otherwise.
  */
 export const routes = {
-    login: '/web/index.php/auth/login',
-    dashboard: '/web/index.php/dashboard/index',
-    adminAddUser: '/web/index.php/admin/saveSystemUser',
-    adminUserManagement: '/web/index.php/admin/viewSystemUsers',
-    pimAddEmployee: '/web/index.php/pim/addEmployee',
-    pimViewPersonalDetails: '/web/index.php/pim/viewPersonalDetails/empNumber/',
-    recruitmentAddCandidate: '/web/index.php/recruitment/addCandidate',
-    recruitmentCandidateDetails: '/web/index.php/recruitment/addCandidate',
-    adminJobTitles: '/web/index.php/admin/viewJobTitleList',
-    adminSaveJobTitle: '/web/index.php/admin/saveJobTitle',
-    pimReports: '/web/index.php/pim/viewDefinedPredefinedReports',
+    login: '/',
+    inventory: '/inventory.html',
 } as const;
 
 export type RoutePath = (typeof routes)[keyof typeof routes] | string;

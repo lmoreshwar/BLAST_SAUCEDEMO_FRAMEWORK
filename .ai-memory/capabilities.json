@@ -2,21 +2,17 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:aaec56195b312c60b8fc6f07006ba83710afbf2d",
+  "sourceHash": "sha1:130841bce0a051852d01a99525715ba916e969ba",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 8,
-    "modules": 8,
-    "specs": 8,
-    "tests": 26,
-    "domains": 9
+    "pages": 0,
+    "modules": 0,
+    "specs": 1,
+    "tests": 9,
+    "domains": 1
   },
   "fixtures": [
     "actions",
-    "dashboardModule",
-    "dashboardPage",
-    "loginModule",
-    "loginPage",
     "workflowActions"
   ],
   "utils": [
@@ -38,78 +34,6 @@
   ],
   "domains": [
     {
-      "domain": "AdminAddUser",
-      "shard": ".ai-memory/domains/adminadduser.json",
-      "pages": [
-        "src/pages/AdminAddUserPage.ts"
-      ],
-      "modules": [
-        "src/modules/AdminAddUserModule.ts"
-      ],
-      "specs": [
-        "src/tests/admin-add-user.spec.ts"
-      ],
-      "counts": {
-        "locators": 0,
-        "methods": 2,
-        "tests": 2
-      }
-    },
-    {
-      "domain": "AdminJobTitles",
-      "shard": ".ai-memory/domains/adminjobtitles.json",
-      "pages": [
-        "src/pages/AdminJobTitlesPage.ts"
-      ],
-      "modules": [
-        "src/modules/AdminJobTitlesModule.ts"
-      ],
-      "specs": [
-        "src/tests/adminJobTitles.spec.ts"
-      ],
-      "counts": {
-        "locators": 0,
-        "methods": 3,
-        "tests": 2
-      }
-    },
-    {
-      "domain": "Dashboard",
-      "shard": ".ai-memory/domains/dashboard.json",
-      "pages": [
-        "src/pages/DashboardPage.ts"
-      ],
-      "modules": [
-        "src/modules/DashboardModule.ts"
-      ],
-      "specs": [
-        "src/tests/login.spec.ts"
-      ],
-      "counts": {
-        "locators": 0,
-        "methods": 1,
-        "tests": 7
-      }
-    },
-    {
-      "domain": "Login",
-      "shard": ".ai-memory/domains/login.json",
-      "pages": [
-        "src/pages/LoginPage.ts"
-      ],
-      "modules": [
-        "src/modules/LoginModule.ts"
-      ],
-      "specs": [
-        "src/tests/profile-menu-logout.spec.ts"
-      ],
-      "counts": {
-        "locators": 0,
-        "methods": 8,
-        "tests": 1
-      }
-    },
-    {
       "domain": "Navigation",
       "shard": ".ai-memory/domains/navigation.json",
       "pages": [],
@@ -122,177 +46,7 @@
         "methods": 0,
         "tests": 9
       }
-    },
-    {
-      "domain": "PimAddEmployee",
-      "shard": ".ai-memory/domains/pimaddemployee.json",
-      "pages": [
-        "src/pages/PimAddEmployeePage.ts"
-      ],
-      "modules": [
-        "src/modules/PimAddEmployeeModule.ts"
-      ],
-      "specs": [
-        "src/tests/pimAddEmployee.spec.ts"
-      ],
-      "counts": {
-        "locators": 0,
-        "methods": 2,
-        "tests": 1
-      }
-    },
-    {
-      "domain": "PimReports",
-      "shard": ".ai-memory/domains/pimreports.json",
-      "pages": [
-        "src/pages/PimReportsPage.ts"
-      ],
-      "modules": [
-        "src/modules/PimReportsModule.ts"
-      ],
-      "specs": [
-        "src/tests/pimReports.spec.ts"
-      ],
-      "counts": {
-        "locators": 0,
-        "methods": 3,
-        "tests": 3
-      }
-    },
-    {
-      "domain": "ProfileMenu",
-      "shard": ".ai-memory/domains/profilemenu.json",
-      "pages": [
-        "src/pages/ProfileMenuPage.ts"
-      ],
-      "modules": [
-        "src/modules/ProfileMenuModule.ts"
-      ],
-      "specs": [],
-      "counts": {
-        "locators": 0,
-        "methods": 2,
-        "tests": 0
-      }
-    },
-    {
-      "domain": "RecruitmentAddCandidate",
-      "shard": ".ai-memory/domains/recruitmentaddcandidate.json",
-      "pages": [
-        "src/pages/RecruitmentAddCandidatePage.ts"
-      ],
-      "modules": [
-        "src/modules/RecruitmentAddCandidateModule.ts"
-      ],
-      "specs": [
-        "src/tests/recruitmentAddCandidate.spec.ts"
-      ],
-      "counts": {
-        "locators": 0,
-        "methods": 2,
-        "tests": 1
-      }
     }
   ],
-  "testIndex": {
-    "TC_001": [
-      {
-        "domain": "AdminAddUser",
-        "spec": "src/tests/admin-add-user.spec.ts",
-        "title": "[TC_001] Admin can add a new user @AdminAddUser @Smoke @Regression"
-      },
-      {
-        "domain": "AdminJobTitles",
-        "spec": "src/tests/adminJobTitles.spec.ts",
-        "title": "[TC_001] Add a job title with description and note @AdminJobTitles @Smoke @Regression"
-      },
-      {
-        "domain": "Dashboard",
-        "spec": "src/tests/login.spec.ts",
-        "title": "[TC_001] Valid credentials reach the authenticated dashboard @Login @Smoke @Regression"
-      },
-      {
-        "domain": "Login",
-        "spec": "src/tests/profile-menu-logout.spec.ts",
-        "title": "[TC_001] Logout from the profile menu returns to the login page @ProfileMenuLogout @Smoke @Regression"
-      },
-      {
-        "domain": "PimAddEmployee",
-        "spec": "src/tests/pimAddEmployee.spec.ts",
-        "title": "[TC_001] Add an employee with valid required details @PimAddEmployee @Smoke @Regression"
-      },
-      {
-        "domain": "PimReports",
-        "spec": "src/tests/pimReports.spec.ts",
-        "title": "[TC_001] Reports page displays predefined employee reports @PimReports @Smoke @Regression"
-      },
-      {
-        "domain": "RecruitmentAddCandidate",
-        "spec": "src/tests/recruitmentAddCandidate.spec.ts",
-        "title": "[TC_001] Valid candidate details create a candidate profile @RecruitmentAddCandidate @Smoke @Regression"
-      }
-    ],
-    "TC_002": [
-      {
-        "domain": "AdminAddUser",
-        "spec": "src/tests/admin-add-user.spec.ts",
-        "title": "[TC_002] Admin can add another user with distinct details @AdminAddUser @Regression"
-      },
-      {
-        "domain": "AdminJobTitles",
-        "spec": "src/tests/adminJobTitles.spec.ts",
-        "title": "[TC_002] Open the Add Job Title form from the Job Titles list @AdminJobTitles @Regression"
-      },
-      {
-        "domain": "Dashboard",
-        "spec": "src/tests/login.spec.ts",
-        "title": "[TC_002] Empty Username blocks login @Login @Regression"
-      },
-      {
-        "domain": "PimReports",
-        "spec": "src/tests/pimReports.spec.ts",
-        "title": "[TC_002] Searching reports returns matching report results @PimReports @Regression"
-      }
-    ],
-    "TC_003": [
-      {
-        "domain": "Dashboard",
-        "spec": "src/tests/login.spec.ts",
-        "title": "[TC_003] Empty Password blocks login @Login @Regression"
-      },
-      {
-        "domain": "PimReports",
-        "spec": "src/tests/pimReports.spec.ts",
-        "title": "[TC_003] Reset clears the report search criteria @PimReports @Regression"
-      }
-    ],
-    "TC_004": [
-      {
-        "domain": "Dashboard",
-        "spec": "src/tests/login.spec.ts",
-        "title": "[TC_004] Both empty inputs block login @Login @Regression"
-      }
-    ],
-    "TC_005": [
-      {
-        "domain": "Dashboard",
-        "spec": "src/tests/login.spec.ts",
-        "title": "[TC_005] Incorrect password does not authenticate @Login @Regression"
-      }
-    ],
-    "TC_006": [
-      {
-        "domain": "Dashboard",
-        "spec": "src/tests/login.spec.ts",
-        "title": "[TC_006] Incorrect username does not authenticate @Login @Regression"
-      }
-    ],
-    "TC_007": [
-      {
-        "domain": "Dashboard",
-        "spec": "src/tests/login.spec.ts",
-        "title": "[TC_007] Correcting invalid credentials allows recovery @Login @Regression"
-      }
-    ]
-  }
+  "testIndex": {}
 }

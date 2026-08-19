@@ -7,7 +7,7 @@ import { config } from '../config';
  *
  * WHY: Playwright's `page.goto(url)` defaults to `waitUntil: 'load'`, which blocks until the full
  * `load` event — every image, font, analytics/third-party request and lazy resource. On a slow SPA
- * (React/Angular/OrangeHRM) `load` is delayed past the navigation timeout, so `page.goto` times out
+ * (React/Angular SPAs) `load` is delayed past the navigation timeout, so `page.goto` times out
  * even though the DOM (and the page's own ready element) was interactable seconds earlier.
  *
  * WHAT: navigate with `waitUntil: 'domcontentloaded'` under a bounded navigation timeout, retry ONLY

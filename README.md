@@ -3,7 +3,7 @@
 The single source of truth for this framework. Everything a QA engineer needs — setup,
 architecture, every command (local, Sauce Labs, UI, debug), coding rules, CI, and AI usage — is here.
 
-> **App under test:** OrangeHRM (`https://opensource-demo.orangehrmlive.com`, `qa`)
+> **App under test:** Sauce Demo — Swag Labs (`https://www.saucedemo.com`, `qa`)
 > **Stack:** Playwright + TypeScript · `@playwright/cli` for locator discovery · Sauce Labs cloud · Sauce Visual (opt-in) · GitHub Copilot agent
 
 ---

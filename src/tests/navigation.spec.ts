@@ -142,24 +142,24 @@ test('6: never retries beyond the bounded budget (no infinite retry)', async () 
 test('7: navigates with the exact urlFor(routes.X) string (navigation URL contract preserved)', async () => {
     const page = fakePage(async () => null);
     const target = urlFor(routes.login);
-    expect(target).toBe(`${config.baseUrl}/web/index.php/auth/login`);
+    expect(target).toBe(`${config.baseUrl}/`);
     await resilientNavigate(page, target, { ...silent });
     expect(page.calls[0].url).toBe(target);
     expect(typeof page.calls[0].url).toBe('string');
     // urlFor is idempotent on an already-absolute URL.
-    expect(urlFor('https://host.example/web/index.php/auth/login')).toBe('https://host.example/web/index.php/auth/login');
+    expect(urlFor('https://host.example/inventory.html')).toBe('https://host.example/inventory.html');
 });
 
 test('8: urlRegex(routes.X) is a RegExp for assertions only, never a navigation target', async () => {
-    const rx = urlRegex(routes.dashboard);
+    const rx = urlRegex(routes.inventory);
     expect(rx).toBeInstanceOf(RegExp);
-    const dashboardUrl = `${config.baseUrl}/web/index.php/dashboard/index`;
-    expect(rx.test(dashboardUrl)).toBe(true);
+    const inventoryUrl = `${config.baseUrl}/inventory.html`;
+    expect(rx.test(inventoryUrl)).toBe(true);
     // The navigator only ever receives a plain string URL built by urlFor — never a RegExp.
     const page = fakePage(async () => null);
-    await resilientNavigate(page, urlFor(routes.dashboard), { ...silent });
+    await resilientNavigate(page, urlFor(routes.inventory), { ...silent });
     expect(typeof page.calls[0].url).toBe('string');
-    expect(page.calls[0].url).toBe(urlFor(routes.dashboard));
+    expect(page.calls[0].url).toBe(urlFor(routes.inventory));
 });
 
 test('isTransientNavError flags timeouts/resets/interruptions but not app errors', () => {
