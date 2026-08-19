@@ -74,7 +74,8 @@ jobs:
         shell: bash
         run: |
           npm install -g @playwright/cli@latest
-          sudo apt-get update && sudo apt-get install -y xvfb
+          # ubuntu-latest ships Xvfb preinstalled; only apt-install on the rare image without it.
+          command -v xvfb-run >/dev/null 2>&1 || { sudo apt-get update && sudo apt-get install -y xvfb; }
           echo "playwright-cli: $(which playwright-cli || echo 'NOT FOUND')"
 
       - name: Install engine dependencies
