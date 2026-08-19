@@ -92,6 +92,7 @@ export const routes = {
     inventory: '/inventory.html',
     productDetails: '/inventory-item.html?id=4',
     cart: '/cart.html',
+    checkoutStepTwo: '/checkout-step-two.html',
 } as const;
 
 export type RoutePath = (typeof routes)[keyof typeof routes] | string;

@@ -1,0 +1,51 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "CompletePurchase",
+  "sourceHash": "sha1:c15c2076ed7a44cf1c750abda287b3a5d9c20d01",
+  "pages": [
+    {
+      "file": "src/pages/CompletePurchasePage.ts",
+      "class": "CompletePurchasePage",
+      "methods": [
+        "backpackAddToCartButton",
+        "checkoutButton",
+        "continueButton",
+        "firstNameInput",
+        "lastNameInput",
+        "postalCodeInput"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/CompletePurchaseModule.ts",
+      "class": "CompletePurchaseModule",
+      "methods": [
+        "completePurchase",
+        "goto"
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "file": "src/tests/complete-end-to-end-purchase.spec.ts",
+      "describes": [
+        "Complete End-to-End Purchase"
+      ],
+      "tags": [
+        "@CompleteEndToEndPurchase",
+        "@Regression",
+        "@Smoke"
+      ],
+      "reuses": [
+        "CompletePurchaseModule"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "TC_001 complete purchase reaches checkout overview @CompleteEndToEndPurchase @Smoke @Regression"
+        }
+      ]
+    }
+  ]
+}
