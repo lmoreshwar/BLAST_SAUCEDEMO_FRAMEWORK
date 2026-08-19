@@ -1,0 +1,48 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "Login",
+  "sourceHash": "sha1:73f8b1263f8616f368f2593381d3fa8c73f9ed8d",
+  "pages": [
+    {
+      "file": "src/pages/LoginPage.ts",
+      "class": "LoginPage",
+      "methods": [
+        "loginButton",
+        "passwordInput",
+        "usernameInput"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/LoginModule.ts",
+      "class": "LoginModule",
+      "methods": [
+        "goto",
+        "login"
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "file": "src/tests/login.spec.ts",
+      "describes": [
+        "Valid User Login"
+      ],
+      "tags": [
+        "@Login",
+        "@Regression",
+        "@Smoke"
+      ],
+      "reuses": [
+        "LoginModule"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "TC_001 valid credentials reach the inventory @Login @Smoke @Regression"
+        }
+      ]
+    }
+  ]
+}
