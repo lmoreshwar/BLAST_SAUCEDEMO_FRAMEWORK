@@ -86,21 +86,23 @@ jobs:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ runner.arch }}-${{ steps.playwright-version.outputs.version }}
 
-      # OS libraries only (apt) — NOT stored in the ms-playwright cache, so run EVERY time (HIT and
-      # MISS). This is the OS-deps half of the old `--with-deps`; the browser download is now cached.
-      - name: Install Playwright OS dependencies
-        run: npx playwright install-deps chromium
-
       # Browser binary — download ONLY on a cache MISS; on a HIT it is already restored above.
+      # No `install-deps`: ubuntu-latest already ships Chromium's OS libs (the same libs the
+      # blast-approve verify run uses deps-free), and the apt-get it triggers intermittently hangs
+      # the job for minutes on the Azure package mirror. xvfb + its X client libs are installed below.
       - name: Install Playwright Chromium
         if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install chromium
 
-      # The agentic driver: Microsoft @playwright/cli + xvfb so the headless browser can start.
+      # The agentic driver: Microsoft @playwright/cli + xvfb so the headed browser can start. Harden
+      # apt first — drop the flaky Azure mirror and bound retries/timeout so a mirror outage fails fast
+      # and falls back to archive.ubuntu.com instead of hanging the job on package-list fetch.
       - name: Install @playwright/cli + xvfb
         run: |
+          sudo sed -i 's|azure.archive.ubuntu.com|archive.ubuntu.com|g' /etc/apt/sources.list.d/ubuntu.sources /etc/apt/sources.list 2>/dev/null || true
+          sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=25 -o Acquire::https::Timeout=25 update
+          sudo apt-get install -y xvfb
           npm install -g @playwright/cli@latest
-          sudo apt-get update && sudo apt-get install -y xvfb
 
       - name: Install agent-loop deps
         working-directory: .blast-engine/AI_Agents/agent-loop
