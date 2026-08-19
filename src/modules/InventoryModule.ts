@@ -18,30 +18,16 @@ export class InventoryModule {
 
   async goto(): Promise<void> {
     this.logger.step(1, 'Open the inventory page');
-    await this.actions.navigate(urlFor(routes.inventory));
+    await this.actions.navigate(urlFor(routes.inventory), { readyElement: this.inventoryPage.backpackAddToCartButton() });
   }
 
   async addBackpackToCart(): Promise<void> {
+    this.logger.step(2, 'Add the backpack to the cart');
     await this.actions.click(this.inventoryPage.backpackAddToCartButton());
   }
 
-  async addBikeLightToCart(): Promise<void> {
-    await this.actions.click(this.inventoryPage.bikeLightAddToCartButton());
-  }
-
-  async addBoltTShirtToCart(): Promise<void> {
-    await this.actions.click(this.inventoryPage.boltTShirtAddToCartButton());
-  }
-
-  async addFleeceJacketToCart(): Promise<void> {
-    await this.actions.click(this.inventoryPage.fleeceJacketAddToCartButton());
-  }
-
-  async addOnesieToCart(): Promise<void> {
-    await this.actions.click(this.inventoryPage.onesieAddToCartButton());
-  }
-
-  async addRedTShirtToCart(): Promise<void> {
-    await this.actions.click(this.inventoryPage.redTShirtAddToCartButton());
+  async removeBackpackFromCart(): Promise<void> {
+    this.logger.step(3, 'Remove the backpack from the cart');
+    await this.actions.click(this.inventoryPage.backpackRemoveButton());
   }
 }
