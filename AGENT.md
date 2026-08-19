@@ -35,8 +35,6 @@ Read values in code:
 ```typescript
 import { env, credentials } from '../config';
 credentials('app')   // { username, password } from APP_USERNAME / APP_PASSWORD
-credentials('app')   // FTR_APP_USERNAME / FTR_APP_PASSWORD
-credentials('app')   // DPR_APP_USERNAME / DPR_APP_PASSWORD
 env('ANY_KEY')       // any other .env value
 ```
 
