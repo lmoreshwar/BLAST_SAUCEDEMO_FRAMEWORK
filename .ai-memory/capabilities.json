@@ -2,14 +2,14 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:be57848b81eddd80b620c126ec93cec5b99cacde",
+  "sourceHash": "sha1:ab91e50b1450649a596a39fe11e4c52e2351f81a",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 3,
-    "modules": 4,
-    "specs": 6,
-    "tests": 17,
-    "domains": 5
+    "pages": 4,
+    "modules": 5,
+    "specs": 7,
+    "tests": 18,
+    "domains": 6
   },
   "fixtures": [
     "actions",
@@ -33,6 +33,24 @@
     "visual"
   ],
   "domains": [
+    {
+      "domain": "Cart",
+      "shard": ".ai-memory/domains/cart.json",
+      "pages": [
+        "src/pages/CartPage.ts"
+      ],
+      "modules": [
+        "src/modules/CartModule.ts"
+      ],
+      "specs": [
+        "src/tests/view-cart.spec.ts"
+      ],
+      "counts": {
+        "locators": 1,
+        "methods": 2,
+        "tests": 1
+      }
+    },
     {
       "domain": "Inventory",
       "shard": ".ai-memory/domains/inventory.json",
@@ -119,6 +137,11 @@
   ],
   "testIndex": {
     "TC_001": [
+      {
+        "domain": "Cart",
+        "spec": "src/tests/view-cart.spec.ts",
+        "title": "TC_001 authenticated user views an added product in the cart @ViewCart @Smoke @Regression"
+      },
       {
         "domain": "Inventory",
         "spec": "src/tests/add-product-to-cart.spec.ts",
