@@ -1,0 +1,22 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "ProductDetails",
+  "sourceHash": "sha1:be57848b81eddd80b620c126ec93cec5b99cacde",
+  "pages": [
+    {
+      "file": "src/pages/ProductDetailsPage.ts",
+      "class": "ProductDetailsPage",
+      "methods": []
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/ProductDetailsModule.ts",
+      "class": "ProductDetailsModule",
+      "methods": [
+        "goto"
+      ]
+    }
+  ],
+  "specs": []
+}
