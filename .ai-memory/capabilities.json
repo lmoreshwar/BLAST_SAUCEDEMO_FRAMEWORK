@@ -2,14 +2,14 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:73f8b1263f8616f368f2593381d3fa8c73f9ed8d",
+  "sourceHash": "sha1:d991ea2856f4230a6f908dd598ce199e1aa22fb6",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 1,
-    "modules": 1,
-    "specs": 2,
-    "tests": 10,
-    "domains": 2
+    "pages": 2,
+    "modules": 2,
+    "specs": 3,
+    "tests": 12,
+    "domains": 3
   },
   "fixtures": [
     "actions",
@@ -33,6 +33,24 @@
     "visual"
   ],
   "domains": [
+    {
+      "domain": "Inventory",
+      "shard": ".ai-memory/domains/inventory.json",
+      "pages": [
+        "src/pages/InventoryPage.ts"
+      ],
+      "modules": [
+        "src/modules/InventoryModule.ts"
+      ],
+      "specs": [
+        "src/tests/add-product-to-cart.spec.ts"
+      ],
+      "counts": {
+        "locators": 12,
+        "methods": 7,
+        "tests": 2
+      }
+    },
     {
       "domain": "Login",
       "shard": ".ai-memory/domains/login.json",
@@ -69,9 +87,21 @@
   "testIndex": {
     "TC_001": [
       {
+        "domain": "Inventory",
+        "spec": "src/tests/add-product-to-cart.spec.ts",
+        "title": "TC_001 add a product to the cart @AddProductToCart @Smoke @Regression"
+      },
+      {
         "domain": "Login",
         "spec": "src/tests/login.spec.ts",
         "title": "TC_001 valid credentials reach the inventory @Login @Smoke @Regression"
+      }
+    ],
+    "TC_002": [
+      {
+        "domain": "Inventory",
+        "spec": "src/tests/add-product-to-cart.spec.ts",
+        "title": "TC_002 add multiple products to the cart @AddProductToCart @Regression"
       }
     ]
   }
