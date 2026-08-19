@@ -26,6 +26,16 @@ export class InventoryModule {
     await this.actions.click(this.inventoryPage.backpackAddToCartButton());
   }
 
+  async addBikeLightToCart(): Promise<void> {
+    this.logger.step(2, 'Add the bike light to the cart');
+    await this.actions.click(this.inventoryPage.bikeLightAddToCartButton());
+  }
+
+  async addBoltTShirtToCart(): Promise<void> {
+    this.logger.step(2, 'Add the bolt t-shirt to the cart');
+    await this.actions.click(this.inventoryPage.boltTShirtAddToCartButton());
+  }
+
   async removeBackpackFromCart(): Promise<void> {
     this.logger.step(3, 'Remove the backpack from the cart');
     await this.actions.click(this.inventoryPage.backpackRemoveButton());

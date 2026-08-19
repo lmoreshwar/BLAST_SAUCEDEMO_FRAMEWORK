@@ -1,12 +1,16 @@
 {
   "$schema": "reuse-capability-shard/v1",
   "domain": "Inventory",
-  "sourceHash": "sha1:5da37bf2f5296ea60e7619109ae3c287dcadc9f4",
+  "sourceHash": "sha1:4d7c79bc30c7e60e1260803ccdb7c6352bcd7589",
   "pages": [
     {
       "file": "src/pages/InventoryPage.ts",
       "class": "InventoryPage",
       "methods": [
+        "backpackAddToCartButton",
+        "backpackRemoveButton",
+        "bikeLightAddToCartButton",
+        "boltTShirtAddToCartButton",
         "productNames",
         "productPrices",
         "productSortContainer",
@@ -20,6 +24,8 @@
       "class": "InventoryModule",
       "methods": [
         "addBackpackToCart",
+        "addBikeLightToCart",
+        "addBoltTShirtToCart",
         "goto",
         "removeBackpackFromCart"
       ]

@@ -1,7 +1,7 @@
 import { type Page } from '@playwright/test';
 import { Actions } from '../utils/Actions';
 import { Logger } from '../utils/Logger';
-import { credentials, routes, urlFor } from '../config';
+import { credentials, type Credentials, routes, urlFor } from '../config';
 import { LoginPage } from '../pages/LoginPage';
 
 export class LoginModule {
@@ -21,8 +21,8 @@ export class LoginModule {
     await this.actions.navigate(urlFor(routes.login), { readyElement: this.loginPage.usernameInput() });
   }
 
-  async login(): Promise<void> {
-    const { username, password } = credentials('app');
+  async login(loginCredentials?: Credentials): Promise<void> {
+    const { username, password } = loginCredentials ?? credentials('app');
     this.logger.step(2, 'Submit valid credentials');
     await this.actions.fill(this.loginPage.usernameInput(), username);
     await this.actions.fill(this.loginPage.passwordInput(), password);
