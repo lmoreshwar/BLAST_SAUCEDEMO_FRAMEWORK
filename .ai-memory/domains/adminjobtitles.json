@@ -1,7 +1,7 @@
 {
   "$schema": "reuse-capability-shard/v1",
   "domain": "AdminJobTitles",
-  "sourceHash": "sha1:17d19b23ee5a8ec425d5a0ca93044e47f7826459",
+  "sourceHash": "sha1:aaec56195b312c60b8fc6f07006ba83710afbf2d",
   "pages": [
     {
       "file": "src/pages/AdminJobTitlesPage.ts",
