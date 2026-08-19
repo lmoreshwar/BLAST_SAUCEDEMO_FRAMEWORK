@@ -1,15 +1,16 @@
 {
   "$schema": "reuse-capability-shard/v1",
   "domain": "Inventory",
-  "sourceHash": "sha1:710e23e9eb4253e94ef05911a4bada58361e6baa",
+  "sourceHash": "sha1:5da37bf2f5296ea60e7619109ae3c287dcadc9f4",
   "pages": [
     {
       "file": "src/pages/InventoryPage.ts",
       "class": "InventoryPage",
       "methods": [
-        "backpackAddToCartButton",
-        "backpackPriceAddToCartButton",
-        "backpackRemoveButton"
+        "productNames",
+        "productPrices",
+        "productSortContainer",
+        "productsHeading"
       ]
     }
   ],
@@ -47,6 +48,36 @@
         {
           "id": "TC_002",
           "title": "TC_002 add multiple products to the cart @AddProductToCart @Regression"
+        }
+      ]
+    },
+    {
+      "file": "src/tests/product-sorting.spec.ts",
+      "describes": [
+        "Product Sorting"
+      ],
+      "tags": [
+        "@InventorySorting",
+        "@Regression",
+        "@Smoke"
+      ],
+      "reuses": [
+        "InventoryPage",
+        "InventorySortingModule",
+        "LoginModule"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "TC_001 sort products by name descending @InventorySorting @Smoke @Regression"
+        },
+        {
+          "id": "TC_002",
+          "title": "TC_002 sort products by price ascending @InventorySorting @Regression"
+        },
+        {
+          "id": "TC_003",
+          "title": "TC_003 sort products by price descending @InventorySorting @Regression"
         }
       ]
     },

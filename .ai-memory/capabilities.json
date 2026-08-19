@@ -2,14 +2,14 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:710e23e9eb4253e94ef05911a4bada58361e6baa",
+  "sourceHash": "sha1:5da37bf2f5296ea60e7619109ae3c287dcadc9f4",
   "shardDir": ".ai-memory/domains",
   "counts": {
     "pages": 2,
-    "modules": 2,
-    "specs": 4,
-    "tests": 13,
-    "domains": 3
+    "modules": 3,
+    "specs": 5,
+    "tests": 16,
+    "domains": 4
   },
   "fixtures": [
     "actions",
@@ -44,12 +44,27 @@
       ],
       "specs": [
         "src/tests/add-product-to-cart.spec.ts",
+        "src/tests/product-sorting.spec.ts",
         "src/tests/remove-product-from-cart.spec.ts"
       ],
       "counts": {
-        "locators": 3,
+        "locators": 4,
         "methods": 3,
-        "tests": 3
+        "tests": 6
+      }
+    },
+    {
+      "domain": "InventorySorting",
+      "shard": ".ai-memory/domains/inventorysorting.json",
+      "pages": [],
+      "modules": [
+        "src/modules/InventorySortingModule.ts"
+      ],
+      "specs": [],
+      "counts": {
+        "locators": 0,
+        "methods": 2,
+        "tests": 0
       }
     },
     {
@@ -94,6 +109,11 @@
       },
       {
         "domain": "Inventory",
+        "spec": "src/tests/product-sorting.spec.ts",
+        "title": "TC_001 sort products by name descending @InventorySorting @Smoke @Regression"
+      },
+      {
+        "domain": "Inventory",
         "spec": "src/tests/remove-product-from-cart.spec.ts",
         "title": "TC_001 remove an added backpack from the cart @InventoryRemoveProduct @Smoke @Regression"
       },
@@ -108,6 +128,18 @@
         "domain": "Inventory",
         "spec": "src/tests/add-product-to-cart.spec.ts",
         "title": "TC_002 add multiple products to the cart @AddProductToCart @Regression"
+      },
+      {
+        "domain": "Inventory",
+        "spec": "src/tests/product-sorting.spec.ts",
+        "title": "TC_002 sort products by price ascending @InventorySorting @Regression"
+      }
+    ],
+    "TC_003": [
+      {
+        "domain": "Inventory",
+        "spec": "src/tests/product-sorting.spec.ts",
+        "title": "TC_003 sort products by price descending @InventorySorting @Regression"
       }
     ]
   }

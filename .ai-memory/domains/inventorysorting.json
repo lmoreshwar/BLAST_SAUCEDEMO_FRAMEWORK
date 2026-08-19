@@ -1,0 +1,17 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "InventorySorting",
+  "sourceHash": "sha1:5da37bf2f5296ea60e7619109ae3c287dcadc9f4",
+  "pages": [],
+  "modules": [
+    {
+      "file": "src/modules/InventorySortingModule.ts",
+      "class": "InventorySortingModule",
+      "methods": [
+        "goto",
+        "sortBy"
+      ]
+    }
+  ],
+  "specs": []
+}
