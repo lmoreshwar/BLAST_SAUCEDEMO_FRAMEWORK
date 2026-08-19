@@ -1,0 +1,57 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "CheckoutOverview",
+  "sourceHash": "sha1:c09e28c6e7900577c25d73e09244afbbcc551d8a",
+  "pages": [
+    {
+      "file": "src/pages/CheckoutOverviewPage.ts",
+      "class": "CheckoutOverviewPage",
+      "methods": [
+        "facebookLink",
+        "linkedInLink",
+        "openMenuButton",
+        "twitterLink"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/CheckoutOverviewModule.ts",
+      "class": "CheckoutOverviewModule",
+      "methods": [
+        "goto"
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "file": "src/tests/checkoutOverview.spec.ts",
+      "describes": [
+        "Checkout Overview"
+      ],
+      "tags": [
+        "@CheckoutOverview",
+        "@Regression",
+        "@Smoke"
+      ],
+      "reuses": [
+        "CartModule",
+        "CheckoutOverviewModule",
+        "CheckoutOverviewPage",
+        "CompletePurchaseModule",
+        "InventoryModule",
+        "LoginModule"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "TC_001 authenticated user reaches checkout overview with cart item @CheckoutOverview @Smoke @Regression"
+        },
+        {
+          "id": "TC_002",
+          "title": "TC_002 checkout overview displays the application menu control @CheckoutOverview @Regression"
+        }
+      ]
+    }
+  ]
+}

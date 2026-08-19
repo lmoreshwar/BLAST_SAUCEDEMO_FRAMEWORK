@@ -6,5 +6,10 @@
     },
     "checkoutFirstName": "Jordan",
     "checkoutLastName": "Rivera",
-    "checkoutPostalCode": "94107"
+    "checkoutPostalCode": "94107",
+    "checkoutOverview": {
+        "firstName": "Jordan",
+        "lastName": "Lee",
+        "postalCode": "94107"
+    }
 }
