@@ -1,7 +1,7 @@
 {
   "$schema": "reuse-capability-shard/v1",
   "domain": "Login",
-  "sourceHash": "sha1:d991ea2856f4230a6f908dd598ce199e1aa22fb6",
+  "sourceHash": "sha1:710e23e9eb4253e94ef05911a4bada58361e6baa",
   "pages": [
     {
       "file": "src/pages/LoginPage.ts",

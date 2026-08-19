@@ -2,13 +2,13 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:d991ea2856f4230a6f908dd598ce199e1aa22fb6",
+  "sourceHash": "sha1:710e23e9eb4253e94ef05911a4bada58361e6baa",
   "shardDir": ".ai-memory/domains",
   "counts": {
     "pages": 2,
     "modules": 2,
-    "specs": 3,
-    "tests": 12,
+    "specs": 4,
+    "tests": 13,
     "domains": 3
   },
   "fixtures": [
@@ -43,12 +43,13 @@
         "src/modules/InventoryModule.ts"
       ],
       "specs": [
-        "src/tests/add-product-to-cart.spec.ts"
+        "src/tests/add-product-to-cart.spec.ts",
+        "src/tests/remove-product-from-cart.spec.ts"
       ],
       "counts": {
-        "locators": 12,
-        "methods": 7,
-        "tests": 2
+        "locators": 3,
+        "methods": 3,
+        "tests": 3
       }
     },
     {
@@ -90,6 +91,11 @@
         "domain": "Inventory",
         "spec": "src/tests/add-product-to-cart.spec.ts",
         "title": "TC_001 add a product to the cart @AddProductToCart @Smoke @Regression"
+      },
+      {
+        "domain": "Inventory",
+        "spec": "src/tests/remove-product-from-cart.spec.ts",
+        "title": "TC_001 remove an added backpack from the cart @InventoryRemoveProduct @Smoke @Regression"
       },
       {
         "domain": "Login",
