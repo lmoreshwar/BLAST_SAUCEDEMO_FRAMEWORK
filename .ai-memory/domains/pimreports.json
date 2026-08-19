@@ -1,0 +1,54 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "PimReports",
+  "sourceHash": "sha1:aaec56195b312c60b8fc6f07006ba83710afbf2d",
+  "pages": [
+    {
+      "file": "src/pages/PimReportsPage.ts",
+      "class": "PimReportsPage",
+      "methods": []
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/PimReportsModule.ts",
+      "class": "PimReportsModule",
+      "methods": [
+        "goto",
+        "resetSearch",
+        "searchReport"
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "file": "src/tests/pimReports.spec.ts",
+      "describes": [
+        "PIM Reports"
+      ],
+      "tags": [
+        "@PimReports",
+        "@Regression",
+        "@Smoke"
+      ],
+      "reuses": [
+        "PimReportsModule",
+        "PimReportsPage"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "[TC_001] Reports page displays predefined employee reports @PimReports @Smoke @Regression"
+        },
+        {
+          "id": "TC_002",
+          "title": "[TC_002] Searching reports returns matching report results @PimReports @Regression"
+        },
+        {
+          "id": "TC_003",
+          "title": "[TC_003] Reset clears the report search criteria @PimReports @Regression"
+        }
+      ]
+    }
+  ]
+}
