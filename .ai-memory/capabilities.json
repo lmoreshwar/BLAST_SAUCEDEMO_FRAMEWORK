@@ -2,14 +2,14 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:ab91e50b1450649a596a39fe11e4c52e2351f81a",
+  "sourceHash": "sha1:c15c2076ed7a44cf1c750abda287b3a5d9c20d01",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 4,
-    "modules": 5,
-    "specs": 7,
-    "tests": 18,
-    "domains": 6
+    "pages": 5,
+    "modules": 6,
+    "specs": 8,
+    "tests": 19,
+    "domains": 7
   },
   "fixtures": [
     "actions",
@@ -47,6 +47,24 @@
       ],
       "counts": {
         "locators": 1,
+        "methods": 2,
+        "tests": 1
+      }
+    },
+    {
+      "domain": "CompletePurchase",
+      "shard": ".ai-memory/domains/completepurchase.json",
+      "pages": [
+        "src/pages/CompletePurchasePage.ts"
+      ],
+      "modules": [
+        "src/modules/CompletePurchaseModule.ts"
+      ],
+      "specs": [
+        "src/tests/complete-end-to-end-purchase.spec.ts"
+      ],
+      "counts": {
+        "locators": 6,
         "methods": 2,
         "tests": 1
       }
@@ -141,6 +159,11 @@
         "domain": "Cart",
         "spec": "src/tests/view-cart.spec.ts",
         "title": "TC_001 authenticated user views an added product in the cart @ViewCart @Smoke @Regression"
+      },
+      {
+        "domain": "CompletePurchase",
+        "spec": "src/tests/complete-end-to-end-purchase.spec.ts",
+        "title": "TC_001 complete purchase reaches checkout overview @CompleteEndToEndPurchase @Smoke @Regression"
       },
       {
         "domain": "Inventory",

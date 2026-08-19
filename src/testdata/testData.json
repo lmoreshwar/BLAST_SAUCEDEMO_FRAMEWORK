@@ -3,5 +3,8 @@
         "nameDescending": "Name (Z to A)",
         "priceAscending": "Price (low to high)",
         "priceDescending": "Price (high to low)"
-    }
+    },
+    "checkoutFirstName": "Jordan",
+    "checkoutLastName": "Rivera",
+    "checkoutPostalCode": "94107"
 }
