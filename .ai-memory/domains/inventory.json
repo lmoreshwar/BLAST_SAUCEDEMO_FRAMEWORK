@@ -1,0 +1,67 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "Inventory",
+  "sourceHash": "sha1:d991ea2856f4230a6f908dd598ce199e1aa22fb6",
+  "pages": [
+    {
+      "file": "src/pages/InventoryPage.ts",
+      "class": "InventoryPage",
+      "methods": [
+        "backpackAddToCartButton",
+        "backpackPriceAddToCartButton",
+        "bikeLightAddToCartButton",
+        "bikeLightPriceAddToCartButton",
+        "boltTShirtAddToCartButton",
+        "boltTShirtPriceAddToCartButton",
+        "fleeceJacketAddToCartButton",
+        "fleeceJacketPriceAddToCartButton",
+        "onesieAddToCartButton",
+        "onesiePriceAddToCartButton",
+        "redTShirtAddToCartButton",
+        "redTShirtPriceAddToCartButton"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/InventoryModule.ts",
+      "class": "InventoryModule",
+      "methods": [
+        "addBackpackToCart",
+        "addBikeLightToCart",
+        "addBoltTShirtToCart",
+        "addFleeceJacketToCart",
+        "addOnesieToCart",
+        "addRedTShirtToCart",
+        "goto"
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "file": "src/tests/add-product-to-cart.spec.ts",
+      "describes": [
+        "Add Product to Cart"
+      ],
+      "tags": [
+        "@AddProductToCart",
+        "@Regression",
+        "@Smoke"
+      ],
+      "reuses": [
+        "InventoryModule",
+        "LoginModule"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "TC_001 add a product to the cart @AddProductToCart @Smoke @Regression"
+        },
+        {
+          "id": "TC_002",
+          "title": "TC_002 add multiple products to the cart @AddProductToCart @Regression"
+        }
+      ]
+    }
+  ]
+}
