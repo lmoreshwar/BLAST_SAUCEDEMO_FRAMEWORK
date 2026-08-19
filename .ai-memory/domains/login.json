@@ -1,7 +1,7 @@
 {
   "$schema": "reuse-capability-shard/v1",
   "domain": "Login",
-  "sourceHash": "sha1:4d7c79bc30c7e60e1260803ccdb7c6352bcd7589",
+  "sourceHash": "sha1:be57848b81eddd80b620c126ec93cec5b99cacde",
   "pages": [
     {
       "file": "src/pages/LoginPage.ts",
@@ -41,6 +41,27 @@
         {
           "id": "TC_001",
           "title": "TC_001 valid credentials reach the inventory @Login @Smoke @Regression"
+        }
+      ]
+    },
+    {
+      "file": "src/tests/product-details.spec.ts",
+      "describes": [
+        "Product Details"
+      ],
+      "tags": [
+        "@ProductDetails",
+        "@Regression",
+        "@Smoke"
+      ],
+      "reuses": [
+        "LoginModule",
+        "ProductDetailsModule"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "TC_001 product details page opens for the Sauce Labs Backpack @ProductDetails @Smoke @Regression"
         }
       ]
     }

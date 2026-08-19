@@ -90,6 +90,7 @@ export function credentials(profile: 'app' = 'app'): Credentials {
 export const routes = {
     login: '/',
     inventory: '/inventory.html',
+    productDetails: '/inventory-item.html?id=4',
 } as const;
 
 export type RoutePath = (typeof routes)[keyof typeof routes] | string;

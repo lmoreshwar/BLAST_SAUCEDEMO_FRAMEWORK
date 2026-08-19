@@ -2,14 +2,14 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:4d7c79bc30c7e60e1260803ccdb7c6352bcd7589",
+  "sourceHash": "sha1:be57848b81eddd80b620c126ec93cec5b99cacde",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 2,
-    "modules": 3,
-    "specs": 5,
-    "tests": 16,
-    "domains": 4
+    "pages": 3,
+    "modules": 4,
+    "specs": 6,
+    "tests": 17,
+    "domains": 5
   },
   "fixtures": [
     "actions",
@@ -77,12 +77,13 @@
         "src/modules/LoginModule.ts"
       ],
       "specs": [
-        "src/tests/login.spec.ts"
+        "src/tests/login.spec.ts",
+        "src/tests/product-details.spec.ts"
       ],
       "counts": {
         "locators": 3,
         "methods": 2,
-        "tests": 1
+        "tests": 2
       }
     },
     {
@@ -97,6 +98,22 @@
         "locators": 0,
         "methods": 0,
         "tests": 9
+      }
+    },
+    {
+      "domain": "ProductDetails",
+      "shard": ".ai-memory/domains/productdetails.json",
+      "pages": [
+        "src/pages/ProductDetailsPage.ts"
+      ],
+      "modules": [
+        "src/modules/ProductDetailsModule.ts"
+      ],
+      "specs": [],
+      "counts": {
+        "locators": 0,
+        "methods": 1,
+        "tests": 0
       }
     }
   ],
@@ -121,6 +138,11 @@
         "domain": "Login",
         "spec": "src/tests/login.spec.ts",
         "title": "TC_001 valid credentials reach the inventory @Login @Smoke @Regression"
+      },
+      {
+        "domain": "Login",
+        "spec": "src/tests/product-details.spec.ts",
+        "title": "TC_001 product details page opens for the Sauce Labs Backpack @ProductDetails @Smoke @Regression"
       }
     ],
     "TC_002": [
