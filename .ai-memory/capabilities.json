@@ -2,14 +2,14 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:4ae3ed1021aaf5b5a036064288d9d83f5e0b4d49",
+  "sourceHash": "sha1:0695dc9cb6363e7963e0b65391dd94f2e68b00ed",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 0,
-    "modules": 0,
-    "specs": 1,
-    "tests": 9,
-    "domains": 1
+    "pages": 1,
+    "modules": 1,
+    "specs": 2,
+    "tests": 12,
+    "domains": 2
   },
   "fixtures": [
     "actions",
@@ -34,6 +34,24 @@
   ],
   "domains": [
     {
+      "domain": "CompleteProductPurchaseJourney",
+      "shard": ".ai-memory/domains/completeproductpurchasejourney.json",
+      "pages": [
+        "src/pages/CompleteProductPurchaseJourneyPage.ts"
+      ],
+      "modules": [
+        "src/modules/CompleteProductPurchaseJourneyModule.ts"
+      ],
+      "specs": [
+        "src/tests/complete-product-purchase-journey.spec.ts"
+      ],
+      "counts": {
+        "locators": 16,
+        "methods": 4,
+        "tests": 3
+      }
+    },
+    {
       "domain": "Navigation",
       "shard": ".ai-memory/domains/navigation.json",
       "pages": [],
@@ -48,5 +66,27 @@
       }
     }
   ],
-  "testIndex": {}
+  "testIndex": {
+    "TC_001": [
+      {
+        "domain": "CompleteProductPurchaseJourney",
+        "spec": "src/tests/complete-product-purchase-journey.spec.ts",
+        "title": "TC_001 valid customer information reaches order overview @CompleteProductPurchaseJourney @Smoke @Regression"
+      }
+    ],
+    "TC_002": [
+      {
+        "domain": "CompleteProductPurchaseJourney",
+        "spec": "src/tests/complete-product-purchase-journey.spec.ts",
+        "title": "TC_002 missing customer information remains on checkout form @CompleteProductPurchaseJourney @Regression"
+      }
+    ],
+    "TC_003": [
+      {
+        "domain": "CompleteProductPurchaseJourney",
+        "spec": "src/tests/complete-product-purchase-journey.spec.ts",
+        "title": "TC_003 boundary postal code value is accepted for checkout information @CompleteProductPurchaseJourney @Regression"
+      }
+    ]
+  }
 }

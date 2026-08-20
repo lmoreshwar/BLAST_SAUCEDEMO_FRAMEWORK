@@ -1,0 +1,71 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "CompleteProductPurchaseJourney",
+  "sourceHash": "sha1:0695dc9cb6363e7963e0b65391dd94f2e68b00ed",
+  "pages": [
+    {
+      "file": "src/pages/CompleteProductPurchaseJourneyPage.ts",
+      "class": "CompleteProductPurchaseJourneyPage",
+      "methods": [
+        "backpackAddToCartButton",
+        "checkoutButton",
+        "continueButton",
+        "facebookLink",
+        "firstNameField",
+        "firstNameInput",
+        "lastNameField",
+        "lastNameInput",
+        "linkedInLink",
+        "loginButton",
+        "openMenuButton",
+        "passwordInput",
+        "postalCodeField",
+        "postalCodeInput",
+        "twitterLink",
+        "usernameInput"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/CompleteProductPurchaseJourneyModule.ts",
+      "class": "CompleteProductPurchaseJourneyModule",
+      "methods": [
+        "addBackpackAndOpenCheckout",
+        "enterCustomerInformation",
+        "goto",
+        "login"
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "file": "src/tests/complete-product-purchase-journey.spec.ts",
+      "describes": [
+        "Complete Product Purchase Journey"
+      ],
+      "tags": [
+        "@CompleteProductPurchaseJourney",
+        "@Regression",
+        "@Smoke"
+      ],
+      "reuses": [
+        "CompleteProductPurchaseJourneyModule"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "TC_001 valid customer information reaches order overview @CompleteProductPurchaseJourney @Smoke @Regression"
+        },
+        {
+          "id": "TC_002",
+          "title": "TC_002 missing customer information remains on checkout form @CompleteProductPurchaseJourney @Regression"
+        },
+        {
+          "id": "TC_003",
+          "title": "TC_003 boundary postal code value is accepted for checkout information @CompleteProductPurchaseJourney @Regression"
+        }
+      ]
+    }
+  ]
+}
