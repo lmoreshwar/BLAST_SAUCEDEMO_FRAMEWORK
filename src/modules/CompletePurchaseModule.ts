@@ -1,11 +1,7 @@
 import { type Page } from '@playwright/test';
 import { Actions } from '../utils/Actions';
 import { Logger } from '../utils/Logger';
-import { credentials, routes, urlFor } from '../config';
-import { LoginModule } from './LoginModule';
-import { InventoryModule } from './InventoryModule';
-import { CheckoutYourInformationModule } from './CheckoutYourInformationModule';
-import { CheckoutOverviewModule } from './CheckoutOverviewModule';
+import { routes, urlFor } from '../config';
 import { CompletePurchasePage } from '../pages/CompletePurchasePage';
 
 export class CompletePurchaseModule {
@@ -21,23 +17,25 @@ export class CompletePurchaseModule {
   }
 
   async goto(): Promise<void> {
-    this.logger.step(1, 'Open the checkout overview page');
-    await this.actions.navigate(urlFor(routes.checkoutStepTwo));
+    this.logger.step(1, 'Open the cart page');
+    await this.actions.navigate(urlFor(routes.cart));
   }
 
-  async completePurchase(): Promise<void> {
-    const loginModule = new LoginModule(this.page);
-    const inventoryModule = new InventoryModule(this.page);
-    const checkoutYourInformationModule = new CheckoutYourInformationModule(this.page);
-    const checkoutOverviewModule = new CheckoutOverviewModule(this.page);
-
-    await loginModule.goto();
-    await loginModule.login(credentials('app'));
-    await inventoryModule.addBackpackToCart();
+  async completePurchase(firstName?: string, lastName?: string, postalCode?: string): Promise<void> {
+    this.logger.step(2, 'Add a product and open checkout');
+    await this.actions.navigate(urlFor(routes.inventory));
+    await this.actions.click(this.completePurchasePage.backpackAddToCartButton());
     await this.actions.navigate(urlFor(routes.cart));
     await this.actions.click(this.completePurchasePage.checkoutButton());
-    await checkoutYourInformationModule.enterInformation('Jordan', 'Rivera', '94107');
-    await checkoutYourInformationModule.continue();
-    await checkoutOverviewModule.goto();
+    if (firstName !== undefined) {
+      await this.actions.fill(this.completePurchasePage.firstNameInput(), firstName);
+    }
+    if (lastName !== undefined) {
+      await this.actions.fill(this.completePurchasePage.lastNameInput(), lastName);
+    }
+    if (postalCode !== undefined) {
+      await this.actions.fill(this.completePurchasePage.postalCodeInput(), postalCode);
+    }
+    await this.actions.click(this.completePurchasePage.continueButton());
   }
 }

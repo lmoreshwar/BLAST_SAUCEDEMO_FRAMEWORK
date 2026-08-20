@@ -2,13 +2,13 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:40e0fda193b7ea147d7dad1a1674cf3010a41ea6",
+  "sourceHash": "sha1:214065c46a796894229ba322691b512bbc5ac023",
   "shardDir": ".ai-memory/domains",
   "counts": {
     "pages": 8,
     "modules": 9,
-    "specs": 12,
-    "tests": 24,
+    "specs": 13,
+    "tests": 27,
     "domains": 10
   },
   "fixtures": [
@@ -98,12 +98,13 @@
       ],
       "specs": [
         "src/tests/complete-end-to-end-purchase.spec.ts",
+        "src/tests/complete-product-purchase.spec.ts",
         "src/tests/order-complete.spec.ts"
       ],
       "counts": {
         "locators": 6,
         "methods": 2,
-        "tests": 2
+        "tests": 5
       }
     },
     {
@@ -232,6 +233,11 @@
       },
       {
         "domain": "CompletePurchase",
+        "spec": "src/tests/complete-product-purchase.spec.ts",
+        "title": "TC_001 valid product purchase reaches checkout overview @CompletePurchase @Smoke @Regression"
+      },
+      {
+        "domain": "CompletePurchase",
         "spec": "src/tests/order-complete.spec.ts",
         "title": "TC_001 complete a backpack order @CompletePurchase @Smoke @Regression"
       },
@@ -273,6 +279,11 @@
         "title": "TC_002 checkout overview displays the application menu control @CheckoutOverview @Regression"
       },
       {
+        "domain": "CompletePurchase",
+        "spec": "src/tests/complete-product-purchase.spec.ts",
+        "title": "TC_002 checkout information is required @CompletePurchase @Regression"
+      },
+      {
         "domain": "Inventory",
         "spec": "src/tests/add-product-to-cart.spec.ts",
         "title": "TC_002 add multiple products to the cart @AddProductToCart @Regression"
@@ -284,6 +295,11 @@
       }
     ],
     "TC_003": [
+      {
+        "domain": "CompletePurchase",
+        "spec": "src/tests/complete-product-purchase.spec.ts",
+        "title": "TC_003 checkout rejects script-like input without leaving the flow @CompletePurchase @Regression"
+      },
       {
         "domain": "Inventory",
         "spec": "src/tests/product-sorting.spec.ts",

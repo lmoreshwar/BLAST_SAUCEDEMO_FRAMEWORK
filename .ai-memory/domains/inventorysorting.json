@@ -1,7 +1,7 @@
 {
   "$schema": "reuse-capability-shard/v1",
   "domain": "InventorySorting",
-  "sourceHash": "sha1:40e0fda193b7ea147d7dad1a1674cf3010a41ea6",
+  "sourceHash": "sha1:214065c46a796894229ba322691b512bbc5ac023",
   "pages": [],
   "modules": [
     {

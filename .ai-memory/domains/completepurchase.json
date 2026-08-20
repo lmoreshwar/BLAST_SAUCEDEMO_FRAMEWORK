@@ -1,7 +1,7 @@
 {
   "$schema": "reuse-capability-shard/v1",
   "domain": "CompletePurchase",
-  "sourceHash": "sha1:40e0fda193b7ea147d7dad1a1674cf3010a41ea6",
+  "sourceHash": "sha1:214065c46a796894229ba322691b512bbc5ac023",
   "pages": [
     {
       "file": "src/pages/CompletePurchasePage.ts",
@@ -44,6 +44,35 @@
         {
           "id": "TC_001",
           "title": "TC_001 complete purchase reaches checkout overview @CompleteEndToEndPurchase @Smoke @Regression"
+        }
+      ]
+    },
+    {
+      "file": "src/tests/complete-product-purchase.spec.ts",
+      "describes": [
+        "Complete Product Purchase"
+      ],
+      "tags": [
+        "@CompletePurchase",
+        "@Regression",
+        "@Smoke"
+      ],
+      "reuses": [
+        "CompletePurchaseModule",
+        "LoginModule"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "TC_001 valid product purchase reaches checkout overview @CompletePurchase @Smoke @Regression"
+        },
+        {
+          "id": "TC_002",
+          "title": "TC_002 checkout information is required @CompletePurchase @Regression"
+        },
+        {
+          "id": "TC_003",
+          "title": "TC_003 checkout rejects script-like input without leaving the flow @CompletePurchase @Regression"
         }
       ]
     },
