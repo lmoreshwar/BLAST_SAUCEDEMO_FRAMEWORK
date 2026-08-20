@@ -1,7 +1,7 @@
 {
   "$schema": "reuse-capability-shard/v1",
   "domain": "CompletePurchase",
-  "sourceHash": "sha1:40e0fda193b7ea147d7dad1a1674cf3010a41ea6",
+  "sourceHash": "sha1:0ae0f4fb2f8d9a05251fb077f9ed74fef3266d0b",
   "pages": [
     {
       "file": "src/pages/CompletePurchasePage.ts",
@@ -44,6 +44,35 @@
         {
           "id": "TC_001",
           "title": "TC_001 complete purchase reaches checkout overview @CompleteEndToEndPurchase @Smoke @Regression"
+        }
+      ]
+    },
+    {
+      "file": "src/tests/complete-product-purchase-journey.spec.ts",
+      "describes": [
+        "Complete Product Purchase Journey"
+      ],
+      "tags": [
+        "@CompleteProductPurchaseJourney",
+        "@Regression",
+        "@Smoke"
+      ],
+      "reuses": [
+        "CompletePurchaseModule",
+        "LoginModule"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "TC_001 completes a backpack purchase journey @CompleteProductPurchaseJourney @Smoke @Regression"
+        },
+        {
+          "id": "TC_002",
+          "title": "TC_002 rejects checkout when required information is empty @CompleteProductPurchaseJourney @Regression"
+        },
+        {
+          "id": "TC_003",
+          "title": "TC_003 accepts a boundary postal code value @CompleteProductPurchaseJourney @Regression"
         }
       ]
     },
