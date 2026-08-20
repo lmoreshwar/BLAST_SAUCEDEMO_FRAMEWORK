@@ -2,14 +2,14 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:c09e28c6e7900577c25d73e09244afbbcc551d8a",
+  "sourceHash": "sha1:85014fba271f3387277be7017312f88ae631fe20",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 6,
-    "modules": 7,
-    "specs": 9,
-    "tests": 21,
-    "domains": 8
+    "pages": 7,
+    "modules": 8,
+    "specs": 10,
+    "tests": 22,
+    "domains": 9
   },
   "fixtures": [
     "actions",
@@ -169,6 +169,24 @@
         "methods": 1,
         "tests": 0
       }
+    },
+    {
+      "domain": "SideMenu",
+      "shard": ".ai-memory/domains/sidemenu.json",
+      "pages": [
+        "src/pages/SideMenuPage.ts"
+      ],
+      "modules": [
+        "src/modules/SideMenuModule.ts"
+      ],
+      "specs": [
+        "src/tests/side-menu-logout.spec.ts"
+      ],
+      "counts": {
+        "locators": 3,
+        "methods": 2,
+        "tests": 1
+      }
     }
   ],
   "testIndex": {
@@ -212,6 +230,11 @@
         "domain": "Login",
         "spec": "src/tests/product-details.spec.ts",
         "title": "TC_001 product details page opens for the Sauce Labs Backpack @ProductDetails @Smoke @Regression"
+      },
+      {
+        "domain": "SideMenu",
+        "spec": "src/tests/side-menu-logout.spec.ts",
+        "title": "TC_001 valid user can log out from the side menu @SideMenuLogout @Smoke @Regression"
       }
     ],
     "TC_002": [

@@ -1,0 +1,50 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "SideMenu",
+  "sourceHash": "sha1:85014fba271f3387277be7017312f88ae631fe20",
+  "pages": [
+    {
+      "file": "src/pages/SideMenuPage.ts",
+      "class": "SideMenuPage",
+      "methods": [
+        "logoutLink",
+        "openMenuButton",
+        "usernameInput"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/SideMenuModule.ts",
+      "class": "SideMenuModule",
+      "methods": [
+        "goto",
+        "logout"
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "file": "src/tests/side-menu-logout.spec.ts",
+      "describes": [
+        "Side Menu Logout"
+      ],
+      "tags": [
+        "@Regression",
+        "@SideMenuLogout",
+        "@Smoke"
+      ],
+      "reuses": [
+        "LoginModule",
+        "SideMenuModule",
+        "SideMenuPage"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "TC_001 valid user can log out from the side menu @SideMenuLogout @Smoke @Regression"
+        }
+      ]
+    }
+  ]
+}
