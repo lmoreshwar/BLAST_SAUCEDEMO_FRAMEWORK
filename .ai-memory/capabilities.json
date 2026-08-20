@@ -2,17 +2,19 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:4ae3ed1021aaf5b5a036064288d9d83f5e0b4d49",
+  "sourceHash": "sha1:965aba94fbe1be8f6c44591821f8b7e52f6ea0c1",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 0,
-    "modules": 0,
-    "specs": 1,
-    "tests": 9,
-    "domains": 1
+    "pages": 1,
+    "modules": 1,
+    "specs": 2,
+    "tests": 13,
+    "domains": 2
   },
   "fixtures": [
     "actions",
+    "loginModule",
+    "loginPage",
     "workflowActions"
   ],
   "utils": [
@@ -34,6 +36,24 @@
   ],
   "domains": [
     {
+      "domain": "Login",
+      "shard": ".ai-memory/domains/login.json",
+      "pages": [
+        "src/pages/LoginPage.ts"
+      ],
+      "modules": [
+        "src/modules/LoginModule.ts"
+      ],
+      "specs": [
+        "src/tests/login.spec.ts"
+      ],
+      "counts": {
+        "locators": 0,
+        "methods": 1,
+        "tests": 4
+      }
+    },
+    {
       "domain": "Navigation",
       "shard": ".ai-memory/domains/navigation.json",
       "pages": [],
@@ -48,5 +68,34 @@
       }
     }
   ],
-  "testIndex": {}
+  "testIndex": {
+    "TC_001": [
+      {
+        "domain": "Login",
+        "spec": "src/tests/login.spec.ts",
+        "title": "TC_001 @Login @Smoke @Regression Login with valid credentials"
+      }
+    ],
+    "TC_003": [
+      {
+        "domain": "Login",
+        "spec": "src/tests/login.spec.ts",
+        "title": "TC_003 @Login @Regression Login with invalid username"
+      }
+    ],
+    "TC_004": [
+      {
+        "domain": "Login",
+        "spec": "src/tests/login.spec.ts",
+        "title": "TC_004 @Login @Regression Login with invalid password"
+      }
+    ],
+    "TC_005": [
+      {
+        "domain": "Login",
+        "spec": "src/tests/login.spec.ts",
+        "title": "TC_005 @Login @Regression Login with both username and password invalid"
+      }
+    ]
+  }
 }

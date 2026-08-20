@@ -1,1 +1,7 @@
-{}
+{
+  "login": {
+    "invalidUsername": "invalid_user",
+    "standardUsername": "standard_user",
+    "invalidPassword": "invalid_password"
+  }
+}
