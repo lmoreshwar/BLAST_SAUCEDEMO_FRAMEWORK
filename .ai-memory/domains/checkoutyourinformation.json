@@ -1,0 +1,53 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "CheckoutYourInformation",
+  "sourceHash": "sha1:dcf41fd1dfd462c860c12cf7f27beecc2182dab9",
+  "pages": [
+    {
+      "file": "src/pages/CheckoutYourInformationPage.ts",
+      "class": "CheckoutYourInformationPage",
+      "methods": [
+        "continueButton",
+        "firstNameInput",
+        "lastNameInput",
+        "openMenuButton",
+        "postalCodeInput"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/CheckoutYourInformationModule.ts",
+      "class": "CheckoutYourInformationModule",
+      "methods": [
+        "continue",
+        "enterInformation",
+        "goto"
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "file": "src/tests/checkoutYourInformation.spec.ts",
+      "describes": [
+        "Checkout Your Information"
+      ],
+      "tags": [
+        "@CheckoutYourInformation",
+        "@Regression",
+        "@Smoke"
+      ],
+      "reuses": [
+        "CheckoutYourInformationModule",
+        "CheckoutYourInformationPage",
+        "LoginModule"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "TC_001 valid information reaches checkout overview @CheckoutYourInformation @Smoke @Regression"
+        }
+      ]
+    }
+  ]
+}
