@@ -19,5 +19,10 @@
     },
     "firstName": "Jordan",
     "lastName": "Rivera",
-    "postalCode": "94107"
+    "postalCode": "94107",
+    "completePurchase": {
+        "firstName": "Jordan",
+        "lastName": "Rivera",
+        "postalCode": "94107"
+    }
 }
