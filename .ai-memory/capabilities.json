@@ -2,13 +2,13 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:dcf41fd1dfd462c860c12cf7f27beecc2182dab9",
+  "sourceHash": "sha1:40e0fda193b7ea147d7dad1a1674cf3010a41ea6",
   "shardDir": ".ai-memory/domains",
   "counts": {
     "pages": 8,
     "modules": 9,
-    "specs": 11,
-    "tests": 23,
+    "specs": 12,
+    "tests": 24,
     "domains": 10
   },
   "fixtures": [
@@ -97,12 +97,13 @@
         "src/modules/CompletePurchaseModule.ts"
       ],
       "specs": [
-        "src/tests/complete-end-to-end-purchase.spec.ts"
+        "src/tests/complete-end-to-end-purchase.spec.ts",
+        "src/tests/order-complete.spec.ts"
       ],
       "counts": {
         "locators": 6,
         "methods": 2,
-        "tests": 1
+        "tests": 2
       }
     },
     {
@@ -228,6 +229,11 @@
         "domain": "CompletePurchase",
         "spec": "src/tests/complete-end-to-end-purchase.spec.ts",
         "title": "TC_001 complete purchase reaches checkout overview @CompleteEndToEndPurchase @Smoke @Regression"
+      },
+      {
+        "domain": "CompletePurchase",
+        "spec": "src/tests/order-complete.spec.ts",
+        "title": "TC_001 complete a backpack order @CompletePurchase @Smoke @Regression"
       },
       {
         "domain": "Inventory",
