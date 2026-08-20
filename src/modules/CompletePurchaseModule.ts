@@ -1,7 +1,11 @@
 import { type Page } from '@playwright/test';
 import { Actions } from '../utils/Actions';
 import { Logger } from '../utils/Logger';
-import { routes, urlFor } from '../config';
+import { credentials, routes, urlFor } from '../config';
+import { LoginModule } from './LoginModule';
+import { InventoryModule } from './InventoryModule';
+import { CheckoutYourInformationModule } from './CheckoutYourInformationModule';
+import { CheckoutOverviewModule } from './CheckoutOverviewModule';
 import { CompletePurchasePage } from '../pages/CompletePurchasePage';
 
 export class CompletePurchaseModule {
@@ -17,23 +21,23 @@ export class CompletePurchaseModule {
   }
 
   async goto(): Promise<void> {
-    this.logger.step(1, 'Open the inventory page');
-    await this.actions.navigate(urlFor(routes.inventory));
+    this.logger.step(1, 'Open the checkout overview page');
+    await this.actions.navigate(urlFor(routes.checkoutStepTwo));
   }
 
-  async openCheckout(): Promise<void> {
-    this.logger.step(2, 'Add the backpack and open checkout');
-    await this.actions.click(this.completePurchasePage.backpackAddToCartButton());
+  async completePurchase(): Promise<void> {
+    const loginModule = new LoginModule(this.page);
+    const inventoryModule = new InventoryModule(this.page);
+    const checkoutYourInformationModule = new CheckoutYourInformationModule(this.page);
+    const checkoutOverviewModule = new CheckoutOverviewModule(this.page);
+
+    await loginModule.goto();
+    await loginModule.login(credentials('app'));
+    await inventoryModule.addBackpackToCart();
     await this.actions.navigate(urlFor(routes.cart));
     await this.actions.click(this.completePurchasePage.checkoutButton());
-  }
-
-  async completePurchase(firstName: string, lastName: string, postalCode: string): Promise<void> {
-    await this.openCheckout();
-    this.logger.step(3, 'Enter checkout information');
-    await this.actions.fill(this.completePurchasePage.firstNameInput(), firstName);
-    await this.actions.fill(this.completePurchasePage.lastNameInput(), lastName);
-    await this.actions.fill(this.completePurchasePage.postalCodeInput(), postalCode);
-    await this.actions.click(this.completePurchasePage.continueButton());
+    await checkoutYourInformationModule.enterInformation('Jordan', 'Rivera', '94107');
+    await checkoutYourInformationModule.continue();
+    await checkoutOverviewModule.goto();
   }
 }
