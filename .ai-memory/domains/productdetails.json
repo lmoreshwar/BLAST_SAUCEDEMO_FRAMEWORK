@@ -1,7 +1,7 @@
 {
   "$schema": "reuse-capability-shard/v1",
   "domain": "ProductDetails",
-  "sourceHash": "sha1:85014fba271f3387277be7017312f88ae631fe20",
+  "sourceHash": "sha1:dcf41fd1dfd462c860c12cf7f27beecc2182dab9",
   "pages": [
     {
       "file": "src/pages/ProductDetailsPage.ts",
