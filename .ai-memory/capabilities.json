@@ -2,14 +2,14 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:0ae0f4fb2f8d9a05251fb077f9ed74fef3266d0b",
+  "sourceHash": "sha1:4ae3ed1021aaf5b5a036064288d9d83f5e0b4d49",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 8,
-    "modules": 9,
-    "specs": 13,
-    "tests": 27,
-    "domains": 10
+    "pages": 0,
+    "modules": 0,
+    "specs": 1,
+    "tests": 9,
+    "domains": 1
   },
   "fixtures": [
     "actions",
@@ -34,133 +34,6 @@
   ],
   "domains": [
     {
-      "domain": "Cart",
-      "shard": ".ai-memory/domains/cart.json",
-      "pages": [
-        "src/pages/CartPage.ts"
-      ],
-      "modules": [
-        "src/modules/CartModule.ts"
-      ],
-      "specs": [
-        "src/tests/view-cart.spec.ts"
-      ],
-      "counts": {
-        "locators": 1,
-        "methods": 2,
-        "tests": 1
-      }
-    },
-    {
-      "domain": "CheckoutOverview",
-      "shard": ".ai-memory/domains/checkoutoverview.json",
-      "pages": [
-        "src/pages/CheckoutOverviewPage.ts"
-      ],
-      "modules": [
-        "src/modules/CheckoutOverviewModule.ts"
-      ],
-      "specs": [
-        "src/tests/checkoutOverview.spec.ts"
-      ],
-      "counts": {
-        "locators": 4,
-        "methods": 1,
-        "tests": 2
-      }
-    },
-    {
-      "domain": "CheckoutYourInformation",
-      "shard": ".ai-memory/domains/checkoutyourinformation.json",
-      "pages": [
-        "src/pages/CheckoutYourInformationPage.ts"
-      ],
-      "modules": [
-        "src/modules/CheckoutYourInformationModule.ts"
-      ],
-      "specs": [
-        "src/tests/checkoutYourInformation.spec.ts"
-      ],
-      "counts": {
-        "locators": 5,
-        "methods": 3,
-        "tests": 1
-      }
-    },
-    {
-      "domain": "CompletePurchase",
-      "shard": ".ai-memory/domains/completepurchase.json",
-      "pages": [
-        "src/pages/CompletePurchasePage.ts"
-      ],
-      "modules": [
-        "src/modules/CompletePurchaseModule.ts"
-      ],
-      "specs": [
-        "src/tests/complete-end-to-end-purchase.spec.ts",
-        "src/tests/complete-product-purchase-journey.spec.ts",
-        "src/tests/order-complete.spec.ts"
-      ],
-      "counts": {
-        "locators": 6,
-        "methods": 2,
-        "tests": 5
-      }
-    },
-    {
-      "domain": "Inventory",
-      "shard": ".ai-memory/domains/inventory.json",
-      "pages": [
-        "src/pages/InventoryPage.ts"
-      ],
-      "modules": [
-        "src/modules/InventoryModule.ts"
-      ],
-      "specs": [
-        "src/tests/add-product-to-cart.spec.ts",
-        "src/tests/product-sorting.spec.ts",
-        "src/tests/remove-product-from-cart.spec.ts"
-      ],
-      "counts": {
-        "locators": 8,
-        "methods": 5,
-        "tests": 6
-      }
-    },
-    {
-      "domain": "InventorySorting",
-      "shard": ".ai-memory/domains/inventorysorting.json",
-      "pages": [],
-      "modules": [
-        "src/modules/InventorySortingModule.ts"
-      ],
-      "specs": [],
-      "counts": {
-        "locators": 0,
-        "methods": 2,
-        "tests": 0
-      }
-    },
-    {
-      "domain": "Login",
-      "shard": ".ai-memory/domains/login.json",
-      "pages": [
-        "src/pages/LoginPage.ts"
-      ],
-      "modules": [
-        "src/modules/LoginModule.ts"
-      ],
-      "specs": [
-        "src/tests/login.spec.ts",
-        "src/tests/product-details.spec.ts"
-      ],
-      "counts": {
-        "locators": 3,
-        "methods": 2,
-        "tests": 2
-      }
-    },
-    {
       "domain": "Navigation",
       "shard": ".ai-memory/domains/navigation.json",
       "pages": [],
@@ -173,138 +46,7 @@
         "methods": 0,
         "tests": 9
       }
-    },
-    {
-      "domain": "ProductDetails",
-      "shard": ".ai-memory/domains/productdetails.json",
-      "pages": [
-        "src/pages/ProductDetailsPage.ts"
-      ],
-      "modules": [
-        "src/modules/ProductDetailsModule.ts"
-      ],
-      "specs": [],
-      "counts": {
-        "locators": 0,
-        "methods": 1,
-        "tests": 0
-      }
-    },
-    {
-      "domain": "SideMenu",
-      "shard": ".ai-memory/domains/sidemenu.json",
-      "pages": [
-        "src/pages/SideMenuPage.ts"
-      ],
-      "modules": [
-        "src/modules/SideMenuModule.ts"
-      ],
-      "specs": [
-        "src/tests/side-menu-logout.spec.ts"
-      ],
-      "counts": {
-        "locators": 3,
-        "methods": 2,
-        "tests": 1
-      }
     }
   ],
-  "testIndex": {
-    "TC_001": [
-      {
-        "domain": "Cart",
-        "spec": "src/tests/view-cart.spec.ts",
-        "title": "TC_001 authenticated user views an added product in the cart @ViewCart @Smoke @Regression"
-      },
-      {
-        "domain": "CheckoutOverview",
-        "spec": "src/tests/checkoutOverview.spec.ts",
-        "title": "TC_001 authenticated user reaches checkout overview with cart item @CheckoutOverview @Smoke @Regression"
-      },
-      {
-        "domain": "CheckoutYourInformation",
-        "spec": "src/tests/checkoutYourInformation.spec.ts",
-        "title": "TC_001 valid information reaches checkout overview @CheckoutYourInformation @Smoke @Regression"
-      },
-      {
-        "domain": "CompletePurchase",
-        "spec": "src/tests/complete-end-to-end-purchase.spec.ts",
-        "title": "TC_001 complete purchase reaches checkout overview @CompleteEndToEndPurchase @Smoke @Regression"
-      },
-      {
-        "domain": "CompletePurchase",
-        "spec": "src/tests/complete-product-purchase-journey.spec.ts",
-        "title": "TC_001 completes a backpack purchase journey @CompleteProductPurchaseJourney @Smoke @Regression"
-      },
-      {
-        "domain": "CompletePurchase",
-        "spec": "src/tests/order-complete.spec.ts",
-        "title": "TC_001 complete a backpack order @CompletePurchase @Smoke @Regression"
-      },
-      {
-        "domain": "Inventory",
-        "spec": "src/tests/add-product-to-cart.spec.ts",
-        "title": "TC_001 add a product to the cart @AddProductToCart @Smoke @Regression"
-      },
-      {
-        "domain": "Inventory",
-        "spec": "src/tests/product-sorting.spec.ts",
-        "title": "TC_001 sort products by name descending @InventorySorting @Smoke @Regression"
-      },
-      {
-        "domain": "Inventory",
-        "spec": "src/tests/remove-product-from-cart.spec.ts",
-        "title": "TC_001 remove an added backpack from the cart @InventoryRemoveProduct @Smoke @Regression"
-      },
-      {
-        "domain": "Login",
-        "spec": "src/tests/login.spec.ts",
-        "title": "TC_001 valid credentials reach the inventory @Login @Smoke @Regression"
-      },
-      {
-        "domain": "Login",
-        "spec": "src/tests/product-details.spec.ts",
-        "title": "TC_001 product details page opens for the Sauce Labs Backpack @ProductDetails @Smoke @Regression"
-      },
-      {
-        "domain": "SideMenu",
-        "spec": "src/tests/side-menu-logout.spec.ts",
-        "title": "TC_001 valid user can log out from the side menu @SideMenuLogout @Smoke @Regression"
-      }
-    ],
-    "TC_002": [
-      {
-        "domain": "CheckoutOverview",
-        "spec": "src/tests/checkoutOverview.spec.ts",
-        "title": "TC_002 checkout overview displays the application menu control @CheckoutOverview @Regression"
-      },
-      {
-        "domain": "CompletePurchase",
-        "spec": "src/tests/complete-product-purchase-journey.spec.ts",
-        "title": "TC_002 rejects checkout when required information is empty @CompleteProductPurchaseJourney @Regression"
-      },
-      {
-        "domain": "Inventory",
-        "spec": "src/tests/add-product-to-cart.spec.ts",
-        "title": "TC_002 add multiple products to the cart @AddProductToCart @Regression"
-      },
-      {
-        "domain": "Inventory",
-        "spec": "src/tests/product-sorting.spec.ts",
-        "title": "TC_002 sort products by price ascending @InventorySorting @Regression"
-      }
-    ],
-    "TC_003": [
-      {
-        "domain": "CompletePurchase",
-        "spec": "src/tests/complete-product-purchase-journey.spec.ts",
-        "title": "TC_003 accepts a boundary postal code value @CompleteProductPurchaseJourney @Regression"
-      },
-      {
-        "domain": "Inventory",
-        "spec": "src/tests/product-sorting.spec.ts",
-        "title": "TC_003 sort products by price descending @InventorySorting @Regression"
-      }
-    ]
-  }
+  "testIndex": {}
 }
