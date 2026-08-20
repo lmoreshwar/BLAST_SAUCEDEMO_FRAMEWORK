@@ -2,14 +2,14 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:c15c2076ed7a44cf1c750abda287b3a5d9c20d01",
+  "sourceHash": "sha1:c09e28c6e7900577c25d73e09244afbbcc551d8a",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 5,
-    "modules": 6,
-    "specs": 8,
-    "tests": 19,
-    "domains": 7
+    "pages": 6,
+    "modules": 7,
+    "specs": 9,
+    "tests": 21,
+    "domains": 8
   },
   "fixtures": [
     "actions",
@@ -49,6 +49,24 @@
         "locators": 1,
         "methods": 2,
         "tests": 1
+      }
+    },
+    {
+      "domain": "CheckoutOverview",
+      "shard": ".ai-memory/domains/checkoutoverview.json",
+      "pages": [
+        "src/pages/CheckoutOverviewPage.ts"
+      ],
+      "modules": [
+        "src/modules/CheckoutOverviewModule.ts"
+      ],
+      "specs": [
+        "src/tests/checkoutOverview.spec.ts"
+      ],
+      "counts": {
+        "locators": 4,
+        "methods": 1,
+        "tests": 2
       }
     },
     {
@@ -161,6 +179,11 @@
         "title": "TC_001 authenticated user views an added product in the cart @ViewCart @Smoke @Regression"
       },
       {
+        "domain": "CheckoutOverview",
+        "spec": "src/tests/checkoutOverview.spec.ts",
+        "title": "TC_001 authenticated user reaches checkout overview with cart item @CheckoutOverview @Smoke @Regression"
+      },
+      {
         "domain": "CompletePurchase",
         "spec": "src/tests/complete-end-to-end-purchase.spec.ts",
         "title": "TC_001 complete purchase reaches checkout overview @CompleteEndToEndPurchase @Smoke @Regression"
@@ -192,6 +215,11 @@
       }
     ],
     "TC_002": [
+      {
+        "domain": "CheckoutOverview",
+        "spec": "src/tests/checkoutOverview.spec.ts",
+        "title": "TC_002 checkout overview displays the application menu control @CheckoutOverview @Regression"
+      },
       {
         "domain": "Inventory",
         "spec": "src/tests/add-product-to-cart.spec.ts",
