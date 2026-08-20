@@ -11,5 +11,10 @@
         "firstName": "Jordan",
         "lastName": "Lee",
         "postalCode": "94107"
+    },
+    "checkoutYourInformation": {
+        "firstName": "Avery",
+        "lastName": "Morgan",
+        "postalCode": "94107"
     }
 }

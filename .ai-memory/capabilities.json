@@ -2,14 +2,14 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:85014fba271f3387277be7017312f88ae631fe20",
+  "sourceHash": "sha1:4a3e42354934927511574db8c78fd92ea75df90b",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 7,
-    "modules": 8,
-    "specs": 10,
-    "tests": 22,
-    "domains": 9
+    "pages": 8,
+    "modules": 9,
+    "specs": 11,
+    "tests": 23,
+    "domains": 10
   },
   "fixtures": [
     "actions",
@@ -67,6 +67,24 @@
         "locators": 4,
         "methods": 1,
         "tests": 2
+      }
+    },
+    {
+      "domain": "CheckoutYourInformation",
+      "shard": ".ai-memory/domains/checkoutyourinformation.json",
+      "pages": [
+        "src/pages/CheckoutYourInformationPage.ts"
+      ],
+      "modules": [
+        "src/modules/CheckoutYourInformationModule.ts"
+      ],
+      "specs": [
+        "src/tests/checkout-your-information.spec.ts"
+      ],
+      "counts": {
+        "locators": 4,
+        "methods": 2,
+        "tests": 1
       }
     },
     {
@@ -200,6 +218,11 @@
         "domain": "CheckoutOverview",
         "spec": "src/tests/checkoutOverview.spec.ts",
         "title": "TC_001 authenticated user reaches checkout overview with cart item @CheckoutOverview @Smoke @Regression"
+      },
+      {
+        "domain": "CheckoutYourInformation",
+        "spec": "src/tests/checkout-your-information.spec.ts",
+        "title": "TC_001 valid checkout information reaches checkout overview @CheckoutYourInformation @Smoke @Regression"
       },
       {
         "domain": "CompletePurchase",
