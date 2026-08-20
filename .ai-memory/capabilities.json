@@ -2,17 +2,18 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:dcf41fd1dfd462c860c12cf7f27beecc2182dab9",
+  "sourceHash": "sha1:013d4cb3505756f611bac85d382716b8a466ae3b",
   "shardDir": ".ai-memory/domains",
   "counts": {
     "pages": 8,
     "modules": 9,
-    "specs": 11,
-    "tests": 23,
+    "specs": 12,
+    "tests": 27,
     "domains": 10
   },
   "fixtures": [
     "actions",
+    "sideMenuModule",
     "workflowActions"
   ],
   "utils": [
@@ -198,12 +199,13 @@
         "src/modules/SideMenuModule.ts"
       ],
       "specs": [
+        "src/tests/logout.spec.ts",
         "src/tests/side-menu-logout.spec.ts"
       ],
       "counts": {
         "locators": 3,
-        "methods": 2,
-        "tests": 1
+        "methods": 5,
+        "tests": 5
       }
     }
   ],
@@ -256,6 +258,11 @@
       },
       {
         "domain": "SideMenu",
+        "spec": "src/tests/logout.spec.ts",
+        "title": "TC_001 logout through hamburger menu @SideMenu @Smoke @Regression"
+      },
+      {
+        "domain": "SideMenu",
         "spec": "src/tests/side-menu-logout.spec.ts",
         "title": "TC_001 valid user can log out from the side menu @SideMenuLogout @Smoke @Regression"
       }
@@ -275,6 +282,11 @@
         "domain": "Inventory",
         "spec": "src/tests/product-sorting.spec.ts",
         "title": "TC_002 sort products by price ascending @InventorySorting @Regression"
+      },
+      {
+        "domain": "SideMenu",
+        "spec": "src/tests/logout.spec.ts",
+        "title": "TC_002 hamburger menu provides logout option @SideMenu @Logout @Authentication @UI @Regression"
       }
     ],
     "TC_003": [
@@ -282,6 +294,20 @@
         "domain": "Inventory",
         "spec": "src/tests/product-sorting.spec.ts",
         "title": "TC_003 sort products by price descending @InventorySorting @Regression"
+      }
+    ],
+    "TC_006": [
+      {
+        "domain": "SideMenu",
+        "spec": "src/tests/logout.spec.ts",
+        "title": "TC_006 browser back navigation does not restore authenticated access @SideMenu @Logout @Authentication @Session @Navigation @Regression"
+      }
+    ],
+    "TC_007": [
+      {
+        "domain": "SideMenu",
+        "spec": "src/tests/logout.spec.ts",
+        "title": "TC_007 repeated logout action after session termination @SideMenu @Logout @Authentication @Session @Regression"
       }
     ]
   }

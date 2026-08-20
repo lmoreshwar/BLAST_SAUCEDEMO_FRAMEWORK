@@ -29,4 +29,26 @@ export class SideMenuModule {
     this.logger.step(3, 'Log out from the side menu');
     await this.actions.click(this.sideMenuPage.logoutLink());
   }
+
+    public async openMenu(): Promise<void> {
+        this.logger.info('Open the side menu');
+        await this.actions.click(this.sideMenuPage.openMenuButton());
+    }
+
+    public async goBack(): Promise<void> {
+        this.logger.info('Navigate back in browser history');
+        await this.page.goBack();
+    }
+
+    public async attemptRepeatedLogout(): Promise<boolean> {
+        this.logger.info('Attempt logout after the session has ended');
+
+        const logoutAvailable: boolean = await this.sideMenuPage.logoutLink().isVisible();
+        if (logoutAvailable) {
+            await this.actions.click(this.sideMenuPage.logoutLink());
+            return true;
+        }
+
+        return false;
+    }
 }

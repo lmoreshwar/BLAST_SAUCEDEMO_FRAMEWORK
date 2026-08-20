@@ -3,17 +3,22 @@ import { SmartLocator } from '../utils/SmartLocator';
 import { Actions } from '../utils/Actions';
 import { installResilientNavigation } from '../utils/Navigation';
 import { WorkflowActions } from '../utils/WorkflowActions';
+import { SideMenuModule } from '../modules/SideMenuModule';
 
 // ===================================================================
 // Fixtures — Add new Page & Module fixtures here as you build them
 // ===================================================================
 
 export type TestFixtures = {
+    sideMenuModule: SideMenuModule;
     actions: Actions;
     workflowActions: WorkflowActions;
 };
 
 export const test = base.extend<TestFixtures>({
+    sideMenuModule: async ({ page }, use) => {
+        await use(new SideMenuModule(page));
+    },
     // Global popup/modal handlers
     page: async ({ page }, use, testInfo) => {
         // Make EVERY page.goto() resilient (domcontentloaded + bounded retry + diagnostics) for login,

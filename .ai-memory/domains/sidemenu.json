@@ -1,7 +1,7 @@
 {
   "$schema": "reuse-capability-shard/v1",
   "domain": "SideMenu",
-  "sourceHash": "sha1:dcf41fd1dfd462c860c12cf7f27beecc2182dab9",
+  "sourceHash": "sha1:013d4cb3505756f611bac85d382716b8a466ae3b",
   "pages": [
     {
       "file": "src/pages/SideMenuPage.ts",
@@ -18,12 +18,55 @@
       "file": "src/modules/SideMenuModule.ts",
       "class": "SideMenuModule",
       "methods": [
+        "attemptRepeatedLogout",
+        "goBack",
         "goto",
-        "logout"
+        "logout",
+        "openMenu"
       ]
     }
   ],
   "specs": [
+    {
+      "file": "src/tests/logout.spec.ts",
+      "describes": [
+        "Side Menu"
+      ],
+      "tags": [
+        "@Authentication",
+        "@Logout",
+        "@Navigation",
+        "@Regression",
+        "@Session",
+        "@SideMenu",
+        "@Smoke",
+        "@UI"
+      ],
+      "reuses": [
+        "LoginModule",
+        "LoginPage",
+        "SideMenuModule",
+        "SideMenuPage"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "TC_001 logout through hamburger menu @SideMenu @Smoke @Regression"
+        },
+        {
+          "id": "TC_002",
+          "title": "TC_002 hamburger menu provides logout option @SideMenu @Logout @Authentication @UI @Regression"
+        },
+        {
+          "id": "TC_006",
+          "title": "TC_006 browser back navigation does not restore authenticated access @SideMenu @Logout @Authentication @Session @Navigation @Regression"
+        },
+        {
+          "id": "TC_007",
+          "title": "TC_007 repeated logout action after session termination @SideMenu @Logout @Authentication @Session @Regression"
+        }
+      ]
+    },
     {
       "file": "src/tests/side-menu-logout.spec.ts",
       "describes": [
