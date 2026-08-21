@@ -1,0 +1,23 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "ProductCatalog",
+  "sourceHash": "sha1:30103ecce9f96b3e2cfc0db198669d6eefe5a4d7",
+  "pages": [
+    {
+      "file": "src/pages/ProductCatalogPage.ts",
+      "class": "ProductCatalogPage",
+      "methods": []
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/ProductCatalogModule.ts",
+      "class": "ProductCatalogModule",
+      "methods": [
+        "displayedProductNames",
+        "selectSortOption"
+      ]
+    }
+  ],
+  "specs": []
+}

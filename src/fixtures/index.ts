@@ -3,17 +3,37 @@ import { SmartLocator } from '../utils/SmartLocator';
 import { Actions } from '../utils/Actions';
 import { installResilientNavigation } from '../utils/Navigation';
 import { WorkflowActions } from '../utils/WorkflowActions';
+import { LoginPage } from '../pages/LoginPage';
+import { ProductCatalogPage } from '../pages/ProductCatalogPage';
+import { LoginModule } from '../modules/LoginModule';
+import { ProductCatalogModule } from '../modules/ProductCatalogModule';
 
 // ===================================================================
 // Fixtures — Add new Page & Module fixtures here as you build them
 // ===================================================================
 
 export type TestFixtures = {
+    productCatalogModule: ProductCatalogModule;
+    loginModule: LoginModule;
+    productCatalogPage: ProductCatalogPage;
+    loginPage: LoginPage;
     actions: Actions;
     workflowActions: WorkflowActions;
 };
 
 export const test = base.extend<TestFixtures>({
+    productCatalogModule: async ({ page }, use) => {
+        await use(new ProductCatalogModule(page));
+    },
+    loginModule: async ({ page }, use) => {
+        await use(new LoginModule(page));
+    },
+    productCatalogPage: async ({ page }, use) => {
+        await use(new ProductCatalogPage(page));
+    },
+    loginPage: async ({ page }, use) => {
+        await use(new LoginPage(page));
+    },
     // Global popup/modal handlers
     page: async ({ page }, use, testInfo) => {
         // Make EVERY page.goto() resilient (domcontentloaded + bounded retry + diagnostics) for login,

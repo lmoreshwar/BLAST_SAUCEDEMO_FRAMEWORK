@@ -2,17 +2,21 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:4ae3ed1021aaf5b5a036064288d9d83f5e0b4d49",
+  "sourceHash": "sha1:30103ecce9f96b3e2cfc0db198669d6eefe5a4d7",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 0,
-    "modules": 0,
-    "specs": 1,
-    "tests": 9,
-    "domains": 1
+    "pages": 2,
+    "modules": 2,
+    "specs": 3,
+    "tests": 11,
+    "domains": 3
   },
   "fixtures": [
     "actions",
+    "loginModule",
+    "loginPage",
+    "productCatalogModule",
+    "productCatalogPage",
     "workflowActions"
   ],
   "utils": [
@@ -34,6 +38,25 @@
   ],
   "domains": [
     {
+      "domain": "Login",
+      "shard": ".ai-memory/domains/login.json",
+      "pages": [
+        "src/pages/LoginPage.ts"
+      ],
+      "modules": [
+        "src/modules/LoginModule.ts"
+      ],
+      "specs": [
+        "src/tests/productCatalog.spec.ts",
+        "src/tests/sorting.spec.ts"
+      ],
+      "counts": {
+        "locators": 0,
+        "methods": 2,
+        "tests": 2
+      }
+    },
+    {
       "domain": "Navigation",
       "shard": ".ai-memory/domains/navigation.json",
       "pages": [],
@@ -46,7 +69,38 @@
         "methods": 0,
         "tests": 9
       }
+    },
+    {
+      "domain": "ProductCatalog",
+      "shard": ".ai-memory/domains/productcatalog.json",
+      "pages": [
+        "src/pages/ProductCatalogPage.ts"
+      ],
+      "modules": [
+        "src/modules/ProductCatalogModule.ts"
+      ],
+      "specs": [],
+      "counts": {
+        "locators": 0,
+        "methods": 2,
+        "tests": 0
+      }
     }
   ],
-  "testIndex": {}
+  "testIndex": {
+    "TC_001": [
+      {
+        "domain": "Login",
+        "spec": "src/tests/productCatalog.spec.ts",
+        "title": "TC_001 @ProductCatalog @Sorting @Validation @Smoke @Regression Verify Name A-Z sorting option and ordering"
+      }
+    ],
+    "TC_002": [
+      {
+        "domain": "Login",
+        "spec": "src/tests/sorting.spec.ts",
+        "title": "TC_002 @ProductCatalog @Sorting @Validation @Regression Verify Name Z-A sorting option and ordering"
+      }
+    ]
+  }
 }
