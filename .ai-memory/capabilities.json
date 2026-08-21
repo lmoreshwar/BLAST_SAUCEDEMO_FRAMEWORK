@@ -2,14 +2,14 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:4ae3ed1021aaf5b5a036064288d9d83f5e0b4d49",
+  "sourceHash": "sha1:a61e0cafe1d4b56307c6050d44e61bab31049de9",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 0,
-    "modules": 0,
-    "specs": 1,
-    "tests": 9,
-    "domains": 1
+    "pages": 1,
+    "modules": 1,
+    "specs": 2,
+    "tests": 12,
+    "domains": 2
   },
   "fixtures": [
     "actions",
@@ -46,7 +46,47 @@
         "methods": 0,
         "tests": 9
       }
+    },
+    {
+      "domain": "ProductPurchase",
+      "shard": ".ai-memory/domains/productpurchase.json",
+      "pages": [
+        "src/pages/ProductPurchasePage.ts"
+      ],
+      "modules": [
+        "src/modules/ProductPurchaseModule.ts"
+      ],
+      "specs": [
+        "src/tests/product-purchase.spec.ts"
+      ],
+      "counts": {
+        "locators": 13,
+        "methods": 4,
+        "tests": 3
+      }
     }
   ],
-  "testIndex": {}
+  "testIndex": {
+    "TC_001": [
+      {
+        "domain": "ProductPurchase",
+        "spec": "src/tests/product-purchase.spec.ts",
+        "title": "TC_001 standard user reaches checkout review with valid customer information @ProductPurchase @Smoke @Regression"
+      }
+    ],
+    "TC_002": [
+      {
+        "domain": "ProductPurchase",
+        "spec": "src/tests/product-purchase.spec.ts",
+        "title": "TC_002 checkout information cannot continue with a blank first name @ProductPurchase @Regression"
+      }
+    ],
+    "TC_003": [
+      {
+        "domain": "ProductPurchase",
+        "spec": "src/tests/product-purchase.spec.ts",
+        "title": "TC_003 checkout information accepts a boundary one-character customer name @ProductPurchase @Regression"
+      }
+    ]
+  }
 }

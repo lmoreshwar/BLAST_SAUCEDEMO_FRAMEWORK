@@ -1,0 +1,68 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "ProductPurchase",
+  "sourceHash": "sha1:a61e0cafe1d4b56307c6050d44e61bab31049de9",
+  "pages": [
+    {
+      "file": "src/pages/ProductPurchasePage.ts",
+      "class": "ProductPurchasePage",
+      "methods": [
+        "backpackAddToCartButton",
+        "checkoutButton",
+        "continueButton",
+        "firstNameField",
+        "firstNameInput",
+        "lastNameField",
+        "lastNameInput",
+        "loginButton",
+        "openMenuButton",
+        "passwordInput",
+        "postalCodeField",
+        "postalCodeInput",
+        "usernameInput"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/ProductPurchaseModule.ts",
+      "class": "ProductPurchaseModule",
+      "methods": [
+        "addBackpackAndOpenCheckout",
+        "enterCustomerInformation",
+        "goto",
+        "login"
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "file": "src/tests/product-purchase.spec.ts",
+      "describes": [
+        "Complete Product Purchase Journey"
+      ],
+      "tags": [
+        "@ProductPurchase",
+        "@Regression",
+        "@Smoke"
+      ],
+      "reuses": [
+        "ProductPurchaseModule"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "TC_001 standard user reaches checkout review with valid customer information @ProductPurchase @Smoke @Regression"
+        },
+        {
+          "id": "TC_002",
+          "title": "TC_002 checkout information cannot continue with a blank first name @ProductPurchase @Regression"
+        },
+        {
+          "id": "TC_003",
+          "title": "TC_003 checkout information accepts a boundary one-character customer name @ProductPurchase @Regression"
+        }
+      ]
+    }
+  ]
+}

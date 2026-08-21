@@ -1,1 +1,17 @@
-{}
+{
+    "customer": {
+        "firstName": "Jordan",
+        "lastName": "Rivera",
+        "postalCode": "94107"
+    },
+    "boundaryCustomer": {
+        "firstName": "J",
+        "lastName": "R",
+        "postalCode": "0"
+    },
+    "invalidCustomer": {
+        "firstName": "",
+        "lastName": "Rivera",
+        "postalCode": "94107"
+    }
+}
