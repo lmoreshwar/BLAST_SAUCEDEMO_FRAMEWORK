@@ -1,0 +1,70 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "CompleteProductPurchaseJourney",
+  "sourceHash": "sha1:7813b33fa0bd4118fc5363c677f8b14804c5f187",
+  "pages": [
+    {
+      "file": "src/pages/CompleteProductPurchaseJourneyPage.ts",
+      "class": "CompleteProductPurchaseJourneyPage",
+      "methods": [
+        "backpackAddToCartButton",
+        "checkoutButton",
+        "continueButton",
+        "firstNameInput",
+        "lastNameInput",
+        "loginButton",
+        "openMenuButton",
+        "passwordInput",
+        "postalCodeInput",
+        "usernameInput"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/CompleteProductPurchaseJourneyModule.ts",
+      "class": "CompleteProductPurchaseJourneyModule",
+      "methods": [
+        "addBackpackToCart",
+        "completePurchase",
+        "continueToOverview",
+        "enterCustomerInformation",
+        "goto",
+        "login",
+        "openCart",
+        "startCheckout",
+        "submitCheckoutInformation"
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "file": "src/tests/complete-product-purchase-journey.spec.ts",
+      "describes": [
+        "Complete Product Purchase Journey"
+      ],
+      "tags": [
+        "@CompleteProductPurchaseJourney",
+        "@Regression",
+        "@Smoke"
+      ],
+      "reuses": [
+        "CompleteProductPurchaseJourneyModule"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "TC_001 completes checkout information with valid data @CompleteProductPurchaseJourney @Smoke @Regression"
+        },
+        {
+          "id": "TC_002",
+          "title": "TC_002 submits checkout information with a missing first name @CompleteProductPurchaseJourney @Regression"
+        },
+        {
+          "id": "TC_003",
+          "title": "TC_003 accepts a boundary postal code value @CompleteProductPurchaseJourney @Regression"
+        }
+      ]
+    }
+  ]
+}

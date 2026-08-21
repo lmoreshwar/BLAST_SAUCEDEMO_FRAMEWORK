@@ -1,1 +1,8 @@
-{}
+{
+    "purchase": {
+        "firstName": "Jordan",
+        "lastName": "Rivera",
+        "postalCode": "94107",
+        "boundaryPostalCode": "0"
+    }
+}

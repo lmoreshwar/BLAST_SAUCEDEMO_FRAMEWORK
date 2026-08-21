@@ -2,14 +2,14 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:4ae3ed1021aaf5b5a036064288d9d83f5e0b4d49",
+  "sourceHash": "sha1:7813b33fa0bd4118fc5363c677f8b14804c5f187",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 0,
-    "modules": 0,
-    "specs": 1,
-    "tests": 9,
-    "domains": 1
+    "pages": 1,
+    "modules": 1,
+    "specs": 2,
+    "tests": 12,
+    "domains": 2
   },
   "fixtures": [
     "actions",
@@ -34,6 +34,24 @@
   ],
   "domains": [
     {
+      "domain": "CompleteProductPurchaseJourney",
+      "shard": ".ai-memory/domains/completeproductpurchasejourney.json",
+      "pages": [
+        "src/pages/CompleteProductPurchaseJourneyPage.ts"
+      ],
+      "modules": [
+        "src/modules/CompleteProductPurchaseJourneyModule.ts"
+      ],
+      "specs": [
+        "src/tests/complete-product-purchase-journey.spec.ts"
+      ],
+      "counts": {
+        "locators": 10,
+        "methods": 9,
+        "tests": 3
+      }
+    },
+    {
       "domain": "Navigation",
       "shard": ".ai-memory/domains/navigation.json",
       "pages": [],
@@ -48,5 +66,27 @@
       }
     }
   ],
-  "testIndex": {}
+  "testIndex": {
+    "TC_001": [
+      {
+        "domain": "CompleteProductPurchaseJourney",
+        "spec": "src/tests/complete-product-purchase-journey.spec.ts",
+        "title": "TC_001 completes checkout information with valid data @CompleteProductPurchaseJourney @Smoke @Regression"
+      }
+    ],
+    "TC_002": [
+      {
+        "domain": "CompleteProductPurchaseJourney",
+        "spec": "src/tests/complete-product-purchase-journey.spec.ts",
+        "title": "TC_002 submits checkout information with a missing first name @CompleteProductPurchaseJourney @Regression"
+      }
+    ],
+    "TC_003": [
+      {
+        "domain": "CompleteProductPurchaseJourney",
+        "spec": "src/tests/complete-product-purchase-journey.spec.ts",
+        "title": "TC_003 accepts a boundary postal code value @CompleteProductPurchaseJourney @Regression"
+      }
+    ]
+  }
 }
