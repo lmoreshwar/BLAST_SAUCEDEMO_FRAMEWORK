@@ -1,0 +1,66 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "ProductCatalog",
+  "sourceHash": "sha1:97c55a51942a6d5722c947cefe02da560f220da5",
+  "pages": [
+    {
+      "file": "src/pages/ProductCatalogPage.ts",
+      "class": "ProductCatalogPage",
+      "methods": [
+        "catalogTitle",
+        "productNames",
+        "sortControl"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/ProductCatalogModule.ts",
+      "class": "ProductCatalogModule",
+      "methods": [
+        "selectSortOption",
+        "trySelectUnsupportedSortOption"
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "file": "src/tests/productCatalog.spec.ts",
+      "describes": [
+        "Product Catalog sorting"
+      ],
+      "tags": [
+        "@ProductCatalog",
+        "@Regression",
+        "@Smoke",
+        "@Sorting"
+      ],
+      "reuses": [],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "TC_001 @ProductCatalog @Sorting @Smoke @Regression Verify Name A-Z sorting option and ordering"
+        }
+      ]
+    },
+    {
+      "file": "src/tests/sorting.spec.ts",
+      "describes": [
+        "Product Catalog sorting"
+      ],
+      "tags": [
+        "@ProductCatalog",
+        "@Regression",
+        "@Smoke",
+        "@Sorting"
+      ],
+      "reuses": [],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "TC_001 @ProductCatalog @Sorting @Smoke @Regression Verify Name A-Z sorting option and ordering"
+        }
+      ]
+    }
+  ]
+}

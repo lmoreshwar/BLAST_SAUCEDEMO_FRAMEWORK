@@ -1,1 +1,5 @@
-{}
+{
+  "sorting": {
+    "invalidOption": "Invalid-Sort-Option"
+  }
+}

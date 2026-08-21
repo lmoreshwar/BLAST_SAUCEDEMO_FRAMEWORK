@@ -1,0 +1,27 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "Login",
+  "sourceHash": "sha1:97c55a51942a6d5722c947cefe02da560f220da5",
+  "pages": [
+    {
+      "file": "src/pages/LoginPage.ts",
+      "class": "LoginPage",
+      "methods": [
+        "loginButton",
+        "password",
+        "username"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/LoginModule.ts",
+      "class": "LoginModule",
+      "methods": [
+        "goto",
+        "login"
+      ]
+    }
+  ],
+  "specs": []
+}
