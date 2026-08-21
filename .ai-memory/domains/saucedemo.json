@@ -1,0 +1,57 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "SauceDemo",
+  "sourceHash": "sha1:7c4d3ac6dfaab2133187bb494d7d3138a6ac6934",
+  "pages": [
+    {
+      "file": "src/pages/SauceDemoPage.ts",
+      "class": "SauceDemoPage",
+      "methods": [
+        "backpackImage",
+        "bikeLightImage",
+        "boltTShirtImage",
+        "fleeceJacketImage",
+        "loginButton",
+        "onesieImage",
+        "passwordInput",
+        "productSortContainer",
+        "redTShirtImage",
+        "usernameInput"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/SauceDemoModule.ts",
+      "class": "SauceDemoModule",
+      "methods": [
+        "goto",
+        "login",
+        "sortByPriceHighToLow"
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "file": "src/tests/saucedemo.spec.ts",
+      "describes": [
+        "SauceDemo"
+      ],
+      "tags": [
+        "@Regression",
+        "@SauceDemo",
+        "@Smoke"
+      ],
+      "reuses": [
+        "SauceDemoModule",
+        "SauceDemoPage"
+      ],
+      "tests": [
+        {
+          "id": "TC_004",
+          "title": "TC_004 Verify Price High-Low sorting option and ordering @SauceDemo @Smoke @Regression"
+        }
+      ]
+    }
+  ]
+}

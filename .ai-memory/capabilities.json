@@ -2,14 +2,14 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:4ae3ed1021aaf5b5a036064288d9d83f5e0b4d49",
+  "sourceHash": "sha1:7c4d3ac6dfaab2133187bb494d7d3138a6ac6934",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 0,
-    "modules": 0,
-    "specs": 1,
-    "tests": 9,
-    "domains": 1
+    "pages": 1,
+    "modules": 1,
+    "specs": 2,
+    "tests": 10,
+    "domains": 2
   },
   "fixtures": [
     "actions",
@@ -46,7 +46,33 @@
         "methods": 0,
         "tests": 9
       }
+    },
+    {
+      "domain": "SauceDemo",
+      "shard": ".ai-memory/domains/saucedemo.json",
+      "pages": [
+        "src/pages/SauceDemoPage.ts"
+      ],
+      "modules": [
+        "src/modules/SauceDemoModule.ts"
+      ],
+      "specs": [
+        "src/tests/saucedemo.spec.ts"
+      ],
+      "counts": {
+        "locators": 10,
+        "methods": 3,
+        "tests": 1
+      }
     }
   ],
-  "testIndex": {}
+  "testIndex": {
+    "TC_004": [
+      {
+        "domain": "SauceDemo",
+        "spec": "src/tests/saucedemo.spec.ts",
+        "title": "TC_004 Verify Price High-Low sorting option and ordering @SauceDemo @Smoke @Regression"
+      }
+    ]
+  }
 }
