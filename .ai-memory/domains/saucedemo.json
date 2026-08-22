@@ -1,0 +1,48 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "SauceDemo",
+  "sourceHash": "sha1:6897e21b5bf21cb341a552e93e879ac8222ab603",
+  "pages": [
+    {
+      "file": "src/pages/SauceDemoPage.ts",
+      "class": "SauceDemoPage",
+      "methods": [
+        "loginButton",
+        "passwordInput",
+        "usernameInput"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/SauceDemoModule.ts",
+      "class": "SauceDemoModule",
+      "methods": [
+        "goto",
+        "login"
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "file": "src/tests/saucedemo.spec.ts",
+      "describes": [
+        "SauceDemo"
+      ],
+      "tags": [
+        "@Regression",
+        "@SauceDemo",
+        "@Smoke"
+      ],
+      "reuses": [
+        "SauceDemoModule"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "[TC_001] Login with valid credentials @SauceDemo @Smoke @Regression"
+        }
+      ]
+    }
+  ]
+}
