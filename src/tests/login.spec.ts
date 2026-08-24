@@ -3,6 +3,7 @@ import { credentials, routes, urlRegex } from '../config';
 import { LoginModule } from '../modules/LoginModule';
 
 test.describe('Login', () => {
+  // Valid credentials should land on the inventory page.
   test('TC_001 valid credentials reach the app @Login @Smoke @Regression', async ({ page }) => {
     const loginModule = new LoginModule(page);
     const { username, password } = credentials('app');
@@ -11,6 +12,7 @@ test.describe('Login', () => {
     await expect(page).toHaveURL(urlRegex(routes.inventory));
   });
 
+  // Invalid credentials should stay on the login page.
   test('TC_002 invalid credentials remain on the login page @Login @Regression', async ({ page }) => {
     const loginModule = new LoginModule(page);
     await loginModule.goto();

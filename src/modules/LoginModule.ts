@@ -4,6 +4,7 @@ import { Logger } from '../utils/Logger';
 import { routes, urlFor } from '../config';
 import { LoginPage } from '../pages/LoginPage';
 
+/** Login workflow: open the page and submit credentials for an authenticated session. */
 export class LoginModule {
   private readonly page: Page;
   private readonly actions: Actions;
@@ -16,11 +17,13 @@ export class LoginModule {
     this.loginPage = new LoginPage(page);
   }
 
+  /** Open the login page and wait for the username field. */
   async goto(): Promise<void> {
     this.logger.step(1, 'Open the login page');
     await this.actions.navigate(urlFor(routes.login), { readyElement: this.loginPage.usernameInput() });
   }
 
+  /** Enter credentials and submit. */
   async login(username: string, password: string): Promise<void> {
     this.logger.step(2, 'Submit credentials');
     await this.actions.fill(this.loginPage.usernameInput(), username);

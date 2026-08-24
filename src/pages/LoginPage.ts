@@ -1,5 +1,6 @@
 import { type Locator, type Page } from '@playwright/test';
 
+/** Login screen — locators only. */
 export class LoginPage {
   constructor(private readonly page: Page) {}
 
