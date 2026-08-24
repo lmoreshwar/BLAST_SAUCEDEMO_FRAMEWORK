@@ -1,0 +1,53 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "CompleteProductPurchaseJourney",
+  "sourceHash": "sha1:420f82f5487ef974e2d49ec8fb44dca332314c7a",
+  "pages": [
+    {
+      "file": "src/pages/CompleteProductPurchaseJourneyPage.ts",
+      "class": "CompleteProductPurchaseJourneyPage",
+      "methods": [
+        "backpackAddToCartButton",
+        "checkoutButton",
+        "continueButton",
+        "firstNameInput",
+        "lastNameInput",
+        "postalCodeInput"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/CompleteProductPurchaseJourneyModule.ts",
+      "class": "CompleteProductPurchaseJourneyModule",
+      "methods": [
+        "goto",
+        "login",
+        "startCheckout",
+        "submitCheckoutInformation"
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "file": "src/tests/complete-product-purchase-journey.spec.ts",
+      "describes": [
+        "Complete Product Purchase Journey"
+      ],
+      "tags": [
+        "@CompleteProductPurchaseJourney",
+        "@Regression",
+        "@Smoke"
+      ],
+      "reuses": [
+        "CompleteProductPurchaseJourneyModule"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "TC_001 complete product purchase journey reaches order review @CompleteProductPurchaseJourney @Smoke @Regression"
+        }
+      ]
+    }
+  ]
+}
