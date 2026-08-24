@@ -1,0 +1,52 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "Login",
+  "sourceHash": "sha1:3ea70878df615944408981a2b5e56f8fcbe73336",
+  "pages": [
+    {
+      "file": "src/pages/LoginPage.ts",
+      "class": "LoginPage",
+      "methods": [
+        "loginButton",
+        "passwordInput",
+        "usernameInput"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/LoginModule.ts",
+      "class": "LoginModule",
+      "methods": [
+        "goto",
+        "login"
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "file": "src/tests/login.spec.ts",
+      "describes": [
+        "Login"
+      ],
+      "tags": [
+        "@Login",
+        "@Regression",
+        "@Smoke"
+      ],
+      "reuses": [
+        "LoginModule"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "TC_001 valid credentials reach the app @Login @Smoke @Regression"
+        },
+        {
+          "id": "TC_002",
+          "title": "TC_002 invalid credentials remain on the login page @Login @Regression"
+        }
+      ]
+    }
+  ]
+}

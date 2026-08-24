@@ -2,14 +2,14 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:919e4ae24db24273dca52dbe82c9ac18d0b9907b",
+  "sourceHash": "sha1:3ea70878df615944408981a2b5e56f8fcbe73336",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 0,
-    "modules": 0,
-    "specs": 0,
-    "tests": 0,
-    "domains": 0
+    "pages": 1,
+    "modules": 1,
+    "specs": 1,
+    "tests": 2,
+    "domains": 1
   },
   "fixtures": [
     "actions",
@@ -32,6 +32,40 @@
     "types",
     "visual"
   ],
-  "domains": [],
-  "testIndex": {}
+  "domains": [
+    {
+      "domain": "Login",
+      "shard": ".ai-memory/domains/login.json",
+      "pages": [
+        "src/pages/LoginPage.ts"
+      ],
+      "modules": [
+        "src/modules/LoginModule.ts"
+      ],
+      "specs": [
+        "src/tests/login.spec.ts"
+      ],
+      "counts": {
+        "locators": 3,
+        "methods": 2,
+        "tests": 2
+      }
+    }
+  ],
+  "testIndex": {
+    "TC_001": [
+      {
+        "domain": "Login",
+        "spec": "src/tests/login.spec.ts",
+        "title": "TC_001 valid credentials reach the app @Login @Smoke @Regression"
+      }
+    ],
+    "TC_002": [
+      {
+        "domain": "Login",
+        "spec": "src/tests/login.spec.ts",
+        "title": "TC_002 invalid credentials remain on the login page @Login @Regression"
+      }
+    ]
+  }
 }
