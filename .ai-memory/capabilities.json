@@ -2,14 +2,14 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:919e4ae24db24273dca52dbe82c9ac18d0b9907b",
+  "sourceHash": "sha1:07041ffbc80385cf5e332c5a100a0bb33baad254",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 0,
-    "modules": 0,
-    "specs": 0,
-    "tests": 0,
-    "domains": 0
+    "pages": 1,
+    "modules": 1,
+    "specs": 1,
+    "tests": 1,
+    "domains": 1
   },
   "fixtures": [
     "actions",
@@ -32,6 +32,33 @@
     "types",
     "visual"
   ],
-  "domains": [],
-  "testIndex": {}
+  "domains": [
+    {
+      "domain": "CompleteProductPurchaseJourney",
+      "shard": ".ai-memory/domains/completeproductpurchasejourney.json",
+      "pages": [
+        "src/pages/CompleteProductPurchaseJourneyPage.ts"
+      ],
+      "modules": [
+        "src/modules/CompleteProductPurchaseJourneyModule.ts"
+      ],
+      "specs": [
+        "src/tests/complete-product-purchase-journey.spec.ts"
+      ],
+      "counts": {
+        "locators": 11,
+        "methods": 6,
+        "tests": 1
+      }
+    }
+  ],
+  "testIndex": {
+    "TC_001": [
+      {
+        "domain": "CompleteProductPurchaseJourney",
+        "spec": "src/tests/complete-product-purchase-journey.spec.ts",
+        "title": "TC_001 complete product purchase journey reaches checkout overview @CompleteProductPurchaseJourney @Smoke @Regression"
+      }
+    ]
+  }
 }

@@ -1,0 +1,61 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "CompleteProductPurchaseJourney",
+  "sourceHash": "sha1:07041ffbc80385cf5e332c5a100a0bb33baad254",
+  "pages": [
+    {
+      "file": "src/pages/CompleteProductPurchaseJourneyPage.ts",
+      "class": "CompleteProductPurchaseJourneyPage",
+      "methods": [
+        "addBackpackToCartButton",
+        "checkoutButton",
+        "continueButton",
+        "firstNameInput",
+        "inventorySidebarLink",
+        "lastNameInput",
+        "loginButton",
+        "openMenuButton",
+        "passwordInput",
+        "postalCodeInput",
+        "usernameInput"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/CompleteProductPurchaseJourneyModule.ts",
+      "class": "CompleteProductPurchaseJourneyModule",
+      "methods": [
+        "addBackpackToCart",
+        "beginCheckout",
+        "goto",
+        "login",
+        "openAllItems",
+        "submitCheckoutInformation"
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "file": "src/tests/complete-product-purchase-journey.spec.ts",
+      "describes": [
+        "Complete Product Purchase Journey"
+      ],
+      "tags": [
+        "@CompleteProductPurchaseJourney",
+        "@Regression",
+        "@Smoke"
+      ],
+      "reuses": [
+        "CompleteProductPurchaseJourneyModule",
+        "CompleteProductPurchaseJourneyPage"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "TC_001 complete product purchase journey reaches checkout overview @CompleteProductPurchaseJourney @Smoke @Regression"
+        }
+      ]
+    }
+  ]
+}
