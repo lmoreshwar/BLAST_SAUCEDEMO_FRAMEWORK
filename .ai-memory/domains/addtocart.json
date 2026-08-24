@@ -1,0 +1,47 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "AddToCart",
+  "sourceHash": "sha1:a69c8561e8a816e18ac7903d7e111e5bdaf44ee5",
+  "pages": [
+    {
+      "file": "src/pages/AddToCartPage.ts",
+      "class": "AddToCartPage",
+      "methods": [
+        "backpackAddToCartButton"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/AddToCartModule.ts",
+      "class": "AddToCartModule",
+      "methods": [
+        "addBackpackToCart",
+        "goto",
+        "login"
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "file": "src/tests/add-to-cart.spec.ts",
+      "describes": [
+        "SauceDemo"
+      ],
+      "tags": [
+        "@AddToCart",
+        "@Regression",
+        "@Smoke"
+      ],
+      "reuses": [
+        "AddToCartModule"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "[TC_001] Add the Sauce Labs Backpack to the cart @AddToCart @Smoke @Regression"
+        }
+      ]
+    }
+  ]
+}

@@ -2,14 +2,14 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:6897e21b5bf21cb341a552e93e879ac8222ab603",
+  "sourceHash": "sha1:a69c8561e8a816e18ac7903d7e111e5bdaf44ee5",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 1,
-    "modules": 1,
-    "specs": 2,
-    "tests": 10,
-    "domains": 2
+    "pages": 2,
+    "modules": 2,
+    "specs": 3,
+    "tests": 11,
+    "domains": 3
   },
   "fixtures": [
     "actions",
@@ -33,6 +33,24 @@
     "visual"
   ],
   "domains": [
+    {
+      "domain": "AddToCart",
+      "shard": ".ai-memory/domains/addtocart.json",
+      "pages": [
+        "src/pages/AddToCartPage.ts"
+      ],
+      "modules": [
+        "src/modules/AddToCartModule.ts"
+      ],
+      "specs": [
+        "src/tests/add-to-cart.spec.ts"
+      ],
+      "counts": {
+        "locators": 1,
+        "methods": 3,
+        "tests": 1
+      }
+    },
     {
       "domain": "Navigation",
       "shard": ".ai-memory/domains/navigation.json",
@@ -68,6 +86,11 @@
   ],
   "testIndex": {
     "TC_001": [
+      {
+        "domain": "AddToCart",
+        "spec": "src/tests/add-to-cart.spec.ts",
+        "title": "[TC_001] Add the Sauce Labs Backpack to the cart @AddToCart @Smoke @Regression"
+      },
       {
         "domain": "SauceDemo",
         "spec": "src/tests/saucedemo.spec.ts",
