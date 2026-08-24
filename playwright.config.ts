@@ -48,6 +48,10 @@ export default defineConfig({
 
     use: {
         baseURL: process.env.BASE_URL || 'https://www.saucedemo.com',
+        // SauceDemo tags interactive elements with `data-test`, so `getByTestId(...)` resolves
+        // against that attribute (Playwright defaults to `data-testid`). This makes the Tier-1
+        // test-id locator the primary strategy across every Page Object.
+        testIdAttribute: 'data-test',
         screenshot: 'only-on-failure',
         video: 'retain-on-failure',
         trace: 'retain-on-failure',

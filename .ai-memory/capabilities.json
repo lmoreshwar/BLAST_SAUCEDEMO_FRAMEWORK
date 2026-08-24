@@ -2,14 +2,14 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:420f82f5487ef974e2d49ec8fb44dca332314c7a",
+  "sourceHash": "sha1:254c32ca31d9e831dcb08d7c6f13b2463948ab8b",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 1,
-    "modules": 1,
+    "pages": 4,
+    "modules": 4,
     "specs": 1,
     "tests": 1,
-    "domains": 1
+    "domains": 4
   },
   "fixtures": [
     "actions",
@@ -34,28 +34,76 @@
   ],
   "domains": [
     {
-      "domain": "CompleteProductPurchaseJourney",
-      "shard": ".ai-memory/domains/completeproductpurchasejourney.json",
+      "domain": "Cart",
+      "shard": ".ai-memory/domains/cart.json",
       "pages": [
-        "src/pages/CompleteProductPurchaseJourneyPage.ts"
+        "src/pages/CartPage.ts"
       ],
       "modules": [
-        "src/modules/CompleteProductPurchaseJourneyModule.ts"
+        "src/modules/CartModule.ts"
       ],
       "specs": [
         "src/tests/complete-product-purchase-journey.spec.ts"
       ],
       "counts": {
-        "locators": 6,
-        "methods": 4,
+        "locators": 1,
+        "methods": 1,
         "tests": 1
+      }
+    },
+    {
+      "domain": "Checkout",
+      "shard": ".ai-memory/domains/checkout.json",
+      "pages": [
+        "src/pages/CheckoutPage.ts"
+      ],
+      "modules": [
+        "src/modules/CheckoutModule.ts"
+      ],
+      "specs": [],
+      "counts": {
+        "locators": 4,
+        "methods": 1,
+        "tests": 0
+      }
+    },
+    {
+      "domain": "Inventory",
+      "shard": ".ai-memory/domains/inventory.json",
+      "pages": [
+        "src/pages/InventoryPage.ts"
+      ],
+      "modules": [
+        "src/modules/InventoryModule.ts"
+      ],
+      "specs": [],
+      "counts": {
+        "locators": 1,
+        "methods": 1,
+        "tests": 0
+      }
+    },
+    {
+      "domain": "Login",
+      "shard": ".ai-memory/domains/login.json",
+      "pages": [
+        "src/pages/LoginPage.ts"
+      ],
+      "modules": [
+        "src/modules/LoginModule.ts"
+      ],
+      "specs": [],
+      "counts": {
+        "locators": 3,
+        "methods": 2,
+        "tests": 0
       }
     }
   ],
   "testIndex": {
     "TC_001": [
       {
-        "domain": "CompleteProductPurchaseJourney",
+        "domain": "Cart",
         "spec": "src/tests/complete-product-purchase-journey.spec.ts",
         "title": "TC_001 complete product purchase journey reaches order review @CompleteProductPurchaseJourney @Smoke @Regression"
       }

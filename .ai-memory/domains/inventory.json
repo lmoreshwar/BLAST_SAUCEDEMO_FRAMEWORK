@@ -1,0 +1,24 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "Inventory",
+  "sourceHash": "sha1:254c32ca31d9e831dcb08d7c6f13b2463948ab8b",
+  "pages": [
+    {
+      "file": "src/pages/InventoryPage.ts",
+      "class": "InventoryPage",
+      "methods": [
+        "addToCartButton"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/InventoryModule.ts",
+      "class": "InventoryModule",
+      "methods": [
+        "addProductToCart"
+      ]
+    }
+  ],
+  "specs": []
+}
