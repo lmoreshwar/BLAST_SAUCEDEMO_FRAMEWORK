@@ -21,11 +21,15 @@ export class SauceDemoModule {
     await this.actions.navigate(urlFor(routes.login), { readyElement: this.sauceDemoPage.usernameInput() });
   }
 
-  async login(): Promise<void> {
+  async login(username?: string, password?: string): Promise<void> {
     this.logger.step(2, 'Submit valid credentials');
-    const { username, password } = credentials('app');
-    await this.actions.fill(this.sauceDemoPage.usernameInput(), username);
-    await this.actions.fill(this.sauceDemoPage.passwordInput(), password);
+    const appCredentials = credentials('app');
+    await this.actions.fill(this.sauceDemoPage.usernameInput(), username ?? appCredentials.username);
+    await this.actions.fill(this.sauceDemoPage.passwordInput(), password ?? appCredentials.password);
     await this.actions.click(this.sauceDemoPage.loginButton());
+  }
+
+  async loginWithAppCredentials(): Promise<void> {
+    await this.login();
   }
 }
