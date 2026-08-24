@@ -1,0 +1,50 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "CompleteProductPurchaseJourney",
+  "sourceHash": "sha1:503e733bbf12fce4c10c156120fc6922e1011b04",
+  "pages": [
+    {
+      "file": "src/pages/CompleteProductPurchaseJourneyPage.ts",
+      "class": "CompleteProductPurchaseJourneyPage",
+      "methods": [
+        "continueButton",
+        "firstNameInput",
+        "lastNameInput",
+        "postalCodeInput"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/CompleteProductPurchaseJourneyModule.ts",
+      "class": "CompleteProductPurchaseJourneyModule",
+      "methods": [
+        "enterCheckoutInformation",
+        "goto"
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "file": "src/tests/completeProductPurchaseJourney.spec.ts",
+      "describes": [
+        "Complete Product Purchase Journey"
+      ],
+      "tags": [
+        "@CompleteProductPurchaseJourney",
+        "@Regression",
+        "@Smoke"
+      ],
+      "reuses": [
+        "CompleteProductPurchaseJourneyModule",
+        "CompleteProductPurchaseJourneyPage"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "TC_001 customer can continue checkout with valid information @CompleteProductPurchaseJourney @Smoke @Regression"
+        }
+      ]
+    }
+  ]
+}
