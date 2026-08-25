@@ -1,0 +1,58 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "CompleteProductPurchaseJourney",
+  "sourceHash": "sha1:653fb91f43b8f7b4184dc091b2411388fa66d53a",
+  "pages": [
+    {
+      "file": "src/pages/CompleteProductPurchaseJourneyPage.ts",
+      "class": "CompleteProductPurchaseJourneyPage",
+      "methods": [
+        "addToCartButton",
+        "checkoutButton",
+        "continueButton",
+        "firstNameInput",
+        "lastNameInput",
+        "loginButton",
+        "openMenuButton",
+        "passwordInput",
+        "postalCodeInput",
+        "usernameInput"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/modules/CompleteProductPurchaseJourneyModule.ts",
+      "class": "CompleteProductPurchaseJourneyModule",
+      "methods": [
+        "addProduct",
+        "beginCheckout",
+        "goto",
+        "login",
+        "submitCheckoutInformation"
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "file": "src/tests/completeProductPurchaseJourney.spec.ts",
+      "describes": [
+        "Complete Product Purchase Journey"
+      ],
+      "tags": [
+        "@CompleteProductPurchaseJourney",
+        "@Regression",
+        "@Smoke"
+      ],
+      "reuses": [
+        "CompleteProductPurchaseJourneyModule"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "TC_001 standard user can complete the product purchase journey @CompleteProductPurchaseJourney @Smoke @Regression"
+        }
+      ]
+    }
+  ]
+}
