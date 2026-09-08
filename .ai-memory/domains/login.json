@@ -1,0 +1,19 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "Login",
+  "sourceHash": "sha1:313e61d8eff0a02d20f58be6338220d0808bb6e0",
+  "pages": [
+    {
+      "file": "src/pages/LoginPage.ts",
+      "class": "LoginPage",
+      "methods": [
+        "loginButton",
+        "openMenuButton",
+        "passwordInput",
+        "usernameInput"
+      ]
+    }
+  ],
+  "modules": [],
+  "specs": []
+}

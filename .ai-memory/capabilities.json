@@ -2,14 +2,14 @@
   "$schema": "reuse-capability-index/v2-sharded",
   "purpose": "Root manifest — READ THIS FIRST for EVERY skill (new, modify, debug, delete). It lists all domains and a global testIndex (TC id → domain/spec) so duplicates are caught across ALL domains without loading every shard. For a domain’s locators/methods/tests, load its shard from `shardDir` (load ONLY the domain you are working on — keeps it fast at scale).",
   "regenerateWith": "npm run index",
-  "sourceHash": "sha1:919e4ae24db24273dca52dbe82c9ac18d0b9907b",
+  "sourceHash": "sha1:313e61d8eff0a02d20f58be6338220d0808bb6e0",
   "shardDir": ".ai-memory/domains",
   "counts": {
-    "pages": 0,
-    "modules": 0,
-    "specs": 0,
-    "tests": 0,
-    "domains": 0
+    "pages": 1,
+    "modules": 1,
+    "specs": 1,
+    "tests": 5,
+    "domains": 2
   },
   "fixtures": [
     "actions",
@@ -32,6 +32,73 @@
     "types",
     "visual"
   ],
-  "domains": [],
-  "testIndex": {}
+  "domains": [
+    {
+      "domain": "Login",
+      "shard": ".ai-memory/domains/login.json",
+      "pages": [
+        "src/pages/LoginPage.ts"
+      ],
+      "modules": [],
+      "specs": [],
+      "counts": {
+        "locators": 4,
+        "methods": 0,
+        "tests": 0
+      }
+    },
+    {
+      "domain": "SauceDemo",
+      "shard": ".ai-memory/domains/saucedemo.json",
+      "pages": [],
+      "modules": [
+        "src/modules/SauceDemoModule.ts"
+      ],
+      "specs": [
+        "src/tests/saucedemo.spec.ts"
+      ],
+      "counts": {
+        "locators": 0,
+        "methods": 6,
+        "tests": 5
+      }
+    }
+  ],
+  "testIndex": {
+    "TC_001": [
+      {
+        "domain": "SauceDemo",
+        "spec": "src/tests/saucedemo.spec.ts",
+        "title": "[TC_001] Login with valid credentials @SauceDemo @Smoke @Regression"
+      }
+    ],
+    "TC_002": [
+      {
+        "domain": "SauceDemo",
+        "spec": "src/tests/saucedemo.spec.ts",
+        "title": "[TC_002] Redirect to inventory page after successful login @SauceDemo @Regression"
+      }
+    ],
+    "TC_003": [
+      {
+        "domain": "SauceDemo",
+        "spec": "src/tests/saucedemo.spec.ts",
+        "title": "[TC_003] Error for invalid credentials @SauceDemo @Regression"
+      }
+    ],
+    "TC_004": [
+      {
+        "domain": "SauceDemo",
+        "spec": "src/tests/saucedemo.spec.ts",
+        "title": "[TC_004] Error when both username and password are empty @SauceDemo @Regression"
+      }
+    ],
+    "TC_005": [
+      {
+        "domain": "SauceDemo",
+        "spec": "src/tests/saucedemo.spec.ts",
+        "title": "[TC_005] Error when either username or password is empty @SauceDemo @Regression"
+      }
+    ]
+  }
 }

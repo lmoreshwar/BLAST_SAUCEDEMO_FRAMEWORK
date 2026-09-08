@@ -1,0 +1,58 @@
+{
+  "$schema": "reuse-capability-shard/v1",
+  "domain": "SauceDemo",
+  "sourceHash": "sha1:313e61d8eff0a02d20f58be6338220d0808bb6e0",
+  "pages": [],
+  "modules": [
+    {
+      "file": "src/modules/SauceDemoModule.ts",
+      "class": "SauceDemoModule",
+      "methods": [
+        "goto",
+        "login",
+        "loginWithInvalidCredentials",
+        "loginWithValidCredentials",
+        "submitEmptyLogin",
+        "submitWithUsernameOnly"
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "file": "src/tests/saucedemo.spec.ts",
+      "describes": [
+        "SauceDemo"
+      ],
+      "tags": [
+        "@Regression",
+        "@SauceDemo",
+        "@Smoke"
+      ],
+      "reuses": [
+        "SauceDemoModule"
+      ],
+      "tests": [
+        {
+          "id": "TC_001",
+          "title": "[TC_001] Login with valid credentials @SauceDemo @Smoke @Regression"
+        },
+        {
+          "id": "TC_002",
+          "title": "[TC_002] Redirect to inventory page after successful login @SauceDemo @Regression"
+        },
+        {
+          "id": "TC_003",
+          "title": "[TC_003] Error for invalid credentials @SauceDemo @Regression"
+        },
+        {
+          "id": "TC_004",
+          "title": "[TC_004] Error when both username and password are empty @SauceDemo @Regression"
+        },
+        {
+          "id": "TC_005",
+          "title": "[TC_005] Error when either username or password is empty @SauceDemo @Regression"
+        }
+      ]
+    }
+  ]
+}
